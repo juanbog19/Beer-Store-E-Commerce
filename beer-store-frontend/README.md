@@ -68,3 +68,81 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+---
+
+# Sitos de interes para el desarrollo de la App
+
+- [Strapi](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/installation/cli.html#preparing-the-installation)
+
+- [Instalación Tailwind Css en Vite](https://tailwindcss.com/docs/guides/vite)
+
+- [Tailwind Padding](https://tailwindcss.com/docs/padding)
+
+- [Tailwind Background-Color](https://tailwindcss.com/docs/background-color)
+
+- [Tailwind Width](https://tailwindcss.com/docs/width)
+
+- [Tailwind Border-Radius](https://tailwindcss.com/docs/border-radius)
+
+- [Tailwind Theme Colors](https://tailwindcss.com/docs/theme#colors)
+
+- [Tailwind Opacity](https://tailwindcss.com/docs/opacity)
+
+- [Tailwind Flex-Grow](https://tailwindcss.com/docs/flex-grow)
+
+- [Tailwind Reusing-Styles](https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction)
+
+- [React Router](https://reactrouter.com/en/main)
+
+- [React Router Instalación](https://reactrouter.com/en/v6.3.0/getting-started/installation#basic-installation)
+
+- [React Router Component Link](https://reactrouter.com/en/main/components/link)
+
+- [React Router Component NavLink](https://reactrouter.com/en/main/components/nav-link)
+
+- [React Router Component Navigate](https://reactrouter.com/en/main/components/navigate)
+
+- [React Router Hooks Use-Params](https://reactrouter.com/en/main/hooks/use-params)
+
+- [React Redux](https://react-redux.js.org/)
+
+- [Redux](https://redux.js.org/style-guide/#priority-b-rules-strongly-recommended)
+
+- [Redux-Toolkit](https://redux-toolkit.js.org/)
+
+- [Redux-Persist](https://www.npmjs.com/package/redux-persist)
+
+- [Redux-Thunk](https://www.npmjs.com/package/redux-thunk)
+
+- [React ForwardRef](https://react.dev/reference/react/forwardRef)
+
+- [React-Hook-Form](https://react-hook-form.com/)
+
+- [React-Hook-Form](https://www.npmjs.com/package/react-hook-form)
+
+- [React-Hook-Form UseForm](https://react-hook-form.com/api/useform)
+
+- [Strapi](https://strapi.io/)
+
+- [Strapi Docs Developers](https://docs.strapi.io/developer-docs/latest/getting-started/introduction.html)
+
+- [Strapi Estructura de archivos](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/file-structure.html)
+
+- [@Strapi/provider-upload-cloadinary](https://www.npmjs.com/package/@strapi/provider-upload-cloudinary)
+
+- [Strapi Plugins](https://market.strapi.io/plugins/strapi-plugin-transformer)
+
+- [Axios](https://www.npmjs.com/package/axios)
+
+- [Animation](https://tailwindcss.com/docs/animation)
+
+- [Strapi Populale](https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/populating-fields.html#population)
+
+- [qs](https://www.npmjs.com/package/qs)
+
+- [Axios Cancellation](https://axios-http.com/docs/cancellation)
+
+- [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
+
+---
