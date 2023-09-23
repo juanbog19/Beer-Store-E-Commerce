@@ -52,7 +52,9 @@ El objetivo principal de este proyecto fue desarrollar una aplicación que permi
 
 ---
 
-- [Nombre del Estudiante]
+- **Cohorte 41a Grupo 14**
+- Colaboradores:
+     - []
 
 - FullStack Developers
 
