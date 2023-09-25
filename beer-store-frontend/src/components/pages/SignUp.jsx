@@ -52,7 +52,7 @@ const SignUp = () => {
     dispatch( userRegister( infoRegister ) )
     .unwrap()
     .then(() => {
-      navigate( '/checkout' );
+      navigate( '/home' );
     }).catch( error => {
       setErrorRegister( error.response.data.error.message );
     });

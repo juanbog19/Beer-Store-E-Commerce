@@ -10,65 +10,65 @@ import Spinner from "../svg/Spinner";
 import Button from "../UI/Button";
 
 const Login = () => {
-
-  const loading = useSelector( ( state ) => state.auth.loading );
+  const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [ errorUsername, setErrorUsername ] = useState( false );
-  const [ errorMessageUsername, setMessageErrorUsername ] = useState( null );
+  const [errorUsername, setErrorUsername] = useState(false);
+  const [errorMessageUsername, setMessageErrorUsername] = useState(null);
 
-  const [ errorPassword, setErrorPassword ] = useState( false );
-  const [ errorMessagePassword, setMessageErrorPassword ] = useState( null );
+  const [errorPassword, setErrorPassword] = useState(false);
+  const [errorMessagePassword, setMessageErrorPassword] = useState(null);
 
-  const [ errorLogin, setErrorLogin ] = useState( false );
+  const [errorLogin, setErrorLogin] = useState(false);
 
-  const classUsername = errorUsername ? 'border-error' : '';
+  const classUsername = errorUsername ? "border-error" : "";
   const classPassword = errorPassword ? "border-error" : "";
 
   const usernameInput = useRef();
   const passwordInput = useRef();
 
-  const userLogin = ( event ) => {
-    setErrorLogin( false );
+  const userLogin = (event) => {
+    setErrorLogin(false);
     event.preventDefault();
 
     const username = usernameInput.current.value;
     const password = passwordInput.current.value;
 
-    const usernameIsValid = username.trim() !== '';
-    const passwordIsValid = password.trim() !== '';
+    const usernameIsValid = username.trim() !== "";
+    const passwordIsValid = password.trim() !== "";
 
     const formIsValid = usernameIsValid && passwordIsValid;
 
-    if ( !formIsValid ) { 
-      if ( !usernameIsValid ) {
-        setErrorUsername( true );
-        setMessageErrorUsername( 'This field is required!' );
+    if (!formIsValid) {
+      if (!usernameIsValid) {
+        setErrorUsername(true);
+        setMessageErrorUsername("This field is required!");
       }
-      if ( !passwordIsValid ) {
-        setErrorPassword( true );
-        setMessageErrorPassword( 'This field is required!' );
+      if (!passwordIsValid) {
+        setErrorPassword(true);
+        setMessageErrorPassword("This field is required!");
       }
       return;
     }
-    
-    const data = { identifier:username, password }
-    dispatch( login( data ))
-    .unwrap()
-    .then( response => {
-      console.log( 'good', response );
-      navigate( '/checkout' );
-    }).catch( error => {
-      console.log( 'bad', error );
-      setErrorLogin( true );
-      usernameInput.current.value = "";
-      passwordInput.current.value = "";
-    });
-    // console.log( 'Send data ', username, ' ', password );
-  }
 
-  if ( loading ) {
+    const data = { identifier: username, password };
+    dispatch(login(data))
+      .unwrap()
+      .then((response) => {
+        console.log("good", response);
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.log("bad", error);
+        setErrorLogin(true);
+        usernameInput.current.value = "";
+        passwordInput.current.value = "";
+      });
+    // console.log( 'Send data ', username, ' ', password );
+  };
+
+  if (loading) {
     return (
       <div className="w-24 mx-auto">
         <Spinner />
@@ -114,6 +114,6 @@ const Login = () => {
       </div>
     </>
   );
-}
+};
 
 export default Login;
