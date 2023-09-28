@@ -15,6 +15,7 @@ import axiosURL from "../../tools/axiosInstance";
 import BrandCard from "./../UI/BrandCard";
 import Spinner from "./../svg/Spinner";
 import HasError from "./../svg/HasError";
+import Footer from "./Footer";
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
@@ -77,6 +78,7 @@ const Home = () => {
         ))}
         {brands.length <= 0 && <p>No beer data disponible</p>}
       </div>
+      <Footer />
     </>
   );
 };
