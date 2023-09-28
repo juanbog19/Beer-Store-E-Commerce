@@ -10,8 +10,8 @@ Si no hay errores ni carga en curso, se muestra una lista de tarjetas de marca u
 En general, este componente se utiliza para mostrar una lista de marcas de cerveza obtenidas de una API y manejar los estados de carga y error.
 */
 import { useState, useEffect } from "react";
-// import axios from "axios";
-import axios from "../../tools/axiosInstance";
+import axios from "axios";
+import axiosURL from "../../tools/axiosInstance";
 import BrandCard from "./../UI/BrandCard";
 import Spinner from "./../svg/Spinner";
 import HasError from "./../svg/HasError";
@@ -25,7 +25,7 @@ const Home = () => {
     // let isCancelled = false;
     const controller = new AbortController();
     setLoading(true);
-    axios
+    axiosURL
       .get("/api/brands?populate=*", {
         signal: controller.signal,
       })
