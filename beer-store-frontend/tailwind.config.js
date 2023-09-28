@@ -12,6 +12,10 @@ export default {
         secondary: '#212025',
         accent: '#E9E0D3',
         error: '#FF0000',
+      },
+      fontFamily: {
+        'mono': ['Roboto Mono', 'monospace'],
+        'abril': ['Abril Fatface', 'monospace'],
       }
     },
   },
