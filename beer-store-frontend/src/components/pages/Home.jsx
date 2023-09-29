@@ -24,7 +24,7 @@ const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const {id} = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     // let isCancelled = false;
