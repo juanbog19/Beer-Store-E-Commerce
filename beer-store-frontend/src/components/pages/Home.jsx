@@ -79,12 +79,6 @@ const Home = () => {
         {brands.map((brand) => (
           <div key={brand.id}>
             <BrandCard data={brand} />
-            <Link
-              className="bg-primary px-8 py-2 text-gray-100 hover:bg-secondary uppercase"
-              to={`/beers/${brand.id}`} // Usar brand.id para construir la ruta
-            >
-              Ver Birrita
-            </Link>
           </div>
         ))}
         {brands.length <= 0 && <p>No beer data disponible</p>}
