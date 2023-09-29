@@ -18,6 +18,7 @@ import BrandCard from "./../UI/BrandCard";
 import Spinner from "./../svg/Spinner";
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
+import Filters from "../UI/filters";
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
@@ -75,20 +76,20 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex justify-around flex-wrap">
+    <div>
+      <div>
+      <Filters/>
+      </div>
+       <div className="flex justify-around flex-wrap">
         {brands.map((brand) => (
           <div key={brand.id}>
             <BrandCard data={brand} />
-            <Link
-              className="bg-primary px-8 py-2 text-gray-100 hover:bg-secondary uppercase"
-              to={`/beers/${brand.id}`} // Usar brand.id para construir la ruta
-            >
-              Ver Birrita
-            </Link>
           </div>
         ))}
         {brands.length <= 0 && <p>No beer data disponible</p>}
       </div>
+      </div>
+     
       <Footer />
     </>
   );
