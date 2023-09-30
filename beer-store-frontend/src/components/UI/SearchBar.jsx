@@ -21,12 +21,14 @@ const SearchBar = () => {
     };
   
  
-    return(
-        <div>
-            <input value={brand} onChange={handleInputChange} type='search' placeholder='Your favorite brand here'/>            
-            <button onClick={handleOnClick}>Search</button>            
-        </div>
-    )
+    return (
+			<div>
+				<input value={brand} onChange={handleInputChange} type='search' placeholder='Your favorite brand here' />
+				<button className='bg-primary px-8 py-2 text-gray-100 hover:bg-secondary' onClick={handleOnClick}>
+					Search
+				</button>
+			</div>
+		);
 };
 
 export default SearchBar;
