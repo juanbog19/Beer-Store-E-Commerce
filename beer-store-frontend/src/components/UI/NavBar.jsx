@@ -4,9 +4,10 @@ Componente de barra de navegación que muestra el logo y los enlaces a las difer
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { authLogout } from "../../store/authSlice";
-import Logo from "../svg/Logo";
+//import Logo from "../svg/Logo";
 import CartButton from "../cart/CartButton";
 import CardUser from "./CardUser";
+import SearchBar from "./SearchBar";
 
 
 const NavBar = () => {
@@ -20,10 +21,11 @@ const NavBar = () => {
 
   return (
     <header className="pt-0">
-      <nav className="flex items-center justify-between bg-accent p-6 mb-2">
+      <nav className="flex items-center justify-between bg-accent p-6 mb-2 font-mono font-normal border-b-2 border-[#374151]">
         <div className="flex items-center mr-5">
-          <Logo />
-          <span className="font-semibold text-2xl mx-2">ChatBot Bar</span>
+          {/* <Logo /> */}
+          {/* <span className="font-semibold text-2xl mx-2">Search Bar</span> */}
+          <SearchBar/>
         </div>
         <div className="grow flex items-center">
           <div className="grow">
@@ -44,6 +46,7 @@ const NavBar = () => {
               About
             </NavLink>
           </div>
+          <div className="flex-grow font-semibold text-2xl mx-2"> E-Beer-Store </div>
           <div className="flex">
             {!isLoggedin && (
               <NavLink

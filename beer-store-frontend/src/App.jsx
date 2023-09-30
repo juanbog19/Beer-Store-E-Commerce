@@ -30,6 +30,7 @@ import SignUp from "./components/pages/SignUp";
 import Products from "./components/pages/Products";
 import Checkout from "./components/pages/Checkout";
 import Orders from "./components/pages/Orders";
+import Detail from "./components/pages/Detail";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
             { !isLoggedin && <Route path="/login" element={ <Login/> } />}
             { !isLoggedin && <Route path="/signup" element={ <SignUp/> } />}
             <Route path="/products/:id" element={ <Products /> } />
+            <Route path="/beers/:id" element={ <Detail /> } />
             <Route path="/checkout" element={ <Checkout/> } />
             { isLoggedin && <Route path="/orders" element={ <Orders /> } />}
             <Route path="*" element={ <Navigate to='/' /> } />

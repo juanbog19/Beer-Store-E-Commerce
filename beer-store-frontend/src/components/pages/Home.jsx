@@ -10,22 +10,27 @@ Si no hay errores ni carga en curso, se muestra una lista de tarjetas de marca u
 En general, este componente se utiliza para mostrar una lista de marcas de cerveza obtenidas de una API y manejar los estados de carga y error.
 */
 import { useState, useEffect } from "react";
-// import axios from "axios";
-import axios from "../../tools/axiosInstance";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import axiosURL from "../../tools/axiosInstance";
 import BrandCard from "./../UI/BrandCard";
 import Spinner from "./../svg/Spinner";
 import HasError from "./../svg/HasError";
+import Footer from "./Footer";
+import Filters from "../UI/filters";
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
     // let isCancelled = false;
     const controller = new AbortController();
     setLoading(true);
-    axios
+    axiosURL
       .get("/api/brands?populate=*", {
         signal: controller.signal,
       })
@@ -71,12 +76,21 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex justify-around flex-wrap">
+    <div>
+      <div>
+      <Filters/>
+      </div>
+       <div className="flex justify-around flex-wrap">
         {brands.map((brand) => (
-          <BrandCard key={brand.id} data={brand} />
+          <div key={brand.id}>
+            <BrandCard data={brand} />
+          </div>
         ))}
         {brands.length <= 0 && <p>No beer data disponible</p>}
       </div>
+      </div>
+     
+      <Footer />
     </>
   );
 };
