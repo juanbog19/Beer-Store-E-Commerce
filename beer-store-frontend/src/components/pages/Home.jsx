@@ -31,7 +31,7 @@ const Home = () => {
     // let isCancelled = false;
     const controller = new AbortController();
     setLoading(true);
-    axios
+    axiosURL
       .get("/api/brands?populate=*", {
         signal: controller.signal,
       })
