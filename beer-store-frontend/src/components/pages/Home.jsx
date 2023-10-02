@@ -78,9 +78,7 @@ const Home = () => {
   return (
     <>
     <div>
-      <div>
-        <Banner></Banner>
-      </div>
+      
       <div>
       <FilterHome></FilterHome>
       </div>
@@ -89,6 +87,9 @@ const Home = () => {
           <BrandCard key={brand.id} data={brand} />
         ))}
         {brands.length <= 0 && <p>No beer data disponible</p>}
+      </div>
+      <div>
+        <Banner></Banner>
       </div>
       </div>
     </>
