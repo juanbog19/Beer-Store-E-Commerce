@@ -67,10 +67,10 @@ const ProductItem = ( props ) => {
             />
           </div>
           <Link
-              className="bg-primary px-2 py-1 text-gray-100 hover:bg-secondary"
+              className="bg-primary px-1 py-1 mr-2 text-gray-100 hover:bg-secondary"
               to={`/beers/${id}`} // Usar brand.id para construir la ruta
             >
-              Detalle birra
+              Detalle
             </Link>
 
           <button className="bg-primary px-2 py-1 text-gray-100 hover:bg-secondary">
