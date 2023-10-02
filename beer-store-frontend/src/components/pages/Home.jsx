@@ -11,14 +11,14 @@ En general, este componente se utiliza para mostrar una lista de marcas de cerve
 */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 import axiosURL from "../../tools/axiosInstance";
 import BrandCard from "./../UI/BrandCard";
 import Spinner from "./../svg/Spinner";
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
-import Filters from "../UI/filters";
+//import Filters from "../UI/filters";
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
@@ -77,9 +77,9 @@ const Home = () => {
   return (
     <>
     <div>
-      <div>
-      <Filters/>
-      </div>
+    <div>
+      {/*<Filters/>*/} 
+      </div> 
        <div className="flex justify-around flex-wrap">
         {brands.map((brand) => (
           <div key={brand.id}>
