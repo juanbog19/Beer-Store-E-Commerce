@@ -18,7 +18,7 @@ const About = () => {
       más reconocidas hasta las joyas ocultas de la producción local, ofrecemos una selección diversa y emocionante para satisfacer todos los paladares.
       </p>
       <p>
-      Facilitamos la Venta de Cervezas Artesanales: En CervezaArte.mx, creemos en la diversidad y la inclusión. Damos la bienvenida a todas las marcas de 
+      Facilitamos la Venta de Cervezas Artesanales: En E-Beer-Store, creemos en la diversidad y la inclusión. Damos la bienvenida a todas las marcas de 
       cerveza artesanal, grandes y pequeñas, para que promocionen y vendan sus productos en nuestra plataforma. Esto crea un espacio donde las cervecerías 
       emergentes pueden llegar a una audiencia más amplia y diversa.
       </p>
