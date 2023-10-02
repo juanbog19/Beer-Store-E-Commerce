@@ -33,15 +33,9 @@ const About = () => {
       solo promociona productos de alta calidad, sino que también apoya el crecimiento continuo de la comunidad cervecera artesanal.
       </p>
       <p>
-      En , estamos comprometidos con la excelencia, la diversidad y el crecimiento de la industria cervecera artesanal. Te invitamos a explorar 
+      En E-Beer-Store, estamos comprometidos con la excelencia, la diversidad y el crecimiento de la industria cervecera artesanal. Te invitamos a explorar 
       nuestra selección, descubrir nuevas cervezas y ser parte de nuestra comunidad cervecera en línea. ¡Gracias por unirte a nosotros en esta emocionante 
       aventura cervecera!
-
-
-
-
-
-
       </p>
       {/*<Navigate to='/' replace={ true } /> */}
     </>
