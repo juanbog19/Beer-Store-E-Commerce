@@ -9,7 +9,7 @@ const About = () => {
     <>
       <h1 className="text-center text-xl mb-4 mt-2">¡Bienvenidos a nuestra página web de E-Beer-Store!</h1>
       <p>
-      En CervezaArte.mx, nos enorgullece presentar un emocionante e-commerce dedicado a la venta de cervezas artesanales de la 
+      En E-Beer-Store, nos enorgullece presentar un emocionante e-commerce dedicado a la venta de cervezas artesanales de la 
       más alta calidad. Nuestra plataforma ha sido diseñada para satisfacer los gustos más exigentes de los amantes de la cerveza,
       brindando una experiencia única de compra y descubrimiento.Nuestros principales objetivos son:
       </p>
