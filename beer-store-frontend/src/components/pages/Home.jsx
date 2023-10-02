@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import axiosURL from "../../tools/axiosInstance";
 import BrandCard from "./../UI/BrandCard";
-import Spinner from "./../svg/Spinner";
+import Spinner from './../svg/Spinner';
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
 import FilterHome from '../UI/FilterHome';
@@ -26,39 +26,37 @@ const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const { id } = useParams();
 
   useEffect(() => {
     // let isCancelled = false;
     const controller = new AbortController();
     setLoading(true);
-    axiosURL
+    axios
       .get("/api/brands?populate=*", {
         signal: controller.signal,
       })
       .then((response) => {
         // if ( !isCancelled ) {
         // console.log(response);
-        setBrands(response.data.data);
-        setLoading(false);
-        // }
-      })
-      .catch((error) => {
-        console.log(error);
-        if (axios.isCancel(error)) {
-          console.log("request canceled");
-          return;
-        }
-        setHasError(true);
-        setLoading(false);
-      });
+        setBrands( response.data.data );
+        setLoading( false );
+      // }
+    }).catch((error) => {
+     // console.log(error);
+      if ( axios.isCancel( error ) ) {
+       // console.log( 'request canceled' );
+        return;
+      }
+      setHasError( true );
+      setLoading( false );
+    });
     return () => {
       // isCancelled = true;
       controller.abort();
-    };
-  }, []);
+    }
+  },[]);
 
-  if (loading) {
+  if ( loading ) {
     return (
       <div className="w-24 mx-auto">
         <Spinner />
@@ -66,7 +64,7 @@ const Home = () => {
     );
   }
 
-  if (hasError) {
+  if ( hasError ) {
     return (
       <div>
         <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">404</h1>
@@ -75,6 +73,7 @@ const Home = () => {
       </div>
     );
   }
+ 
 
   return (
     <>
@@ -87,17 +86,12 @@ const Home = () => {
       </div>
        <div className="flex justify-around flex-wrap">
         {brands.map((brand) => (
-          <div key={brand.id}>
-            <BrandCard data={brand} />
-          </div>
+          <BrandCard key={brand.id} data={brand} />
         ))}
         {brands.length <= 0 && <p>No beer data disponible</p>}
       </div>
-      </div>
-     
-      <Footer />
     </>
-  );
-};
+  )
+}
 
 export default Home;

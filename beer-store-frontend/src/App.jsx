@@ -5,6 +5,7 @@ El componente App renderiza un div con una clase de fondo y contiene el componen
 
 Las rutas incluyen las siguientes páginas:
 
+- Landing : Por recomendacion de PO Henry, se ha agregado una Landing con verificacion de edad // juan1ennon83
 - Home: se muestra en la ruta raíz ("/") de la aplicación.
 - About: se muestra en la ruta "/about".
 - Login: se muestra en la ruta "/login" si el usuario no ha iniciado sesión.
@@ -22,6 +23,7 @@ import Layout from "./components/UI/Layout"
 import NavBar from "./components/UI/NavBar";
 
 // Pages
+import Landing from "./components/pages/Landing"
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Login from "./components/pages/Login";
