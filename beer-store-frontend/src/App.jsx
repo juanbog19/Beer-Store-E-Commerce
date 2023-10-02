@@ -5,6 +5,7 @@ El componente App renderiza un div con una clase de fondo y contiene el componen
 
 Las rutas incluyen las siguientes páginas:
 
+- Landing : Por recomendacion de PO Henry, se ha agregado una Landing con verificacion de edad // juan1ennon83
 - Home: se muestra en la ruta raíz ("/") de la aplicación.
 - About: se muestra en la ruta "/about".
 - Login: se muestra en la ruta "/login" si el usuario no ha iniciado sesión.
@@ -22,6 +23,7 @@ import Layout from "./components/UI/Layout"
 import NavBar from "./components/UI/NavBar";
 
 // Pages
+import Landing from "./components/pages/Landing"
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Login from "./components/pages/Login";
@@ -30,6 +32,7 @@ import SignUp from "./components/pages/SignUp";
 import Products from "./components/pages/Products";
 import Checkout from "./components/pages/Checkout";
 import Orders from "./components/pages/Orders";
+import Detail from "./components/pages/Detail";
 
 
 function App() {
@@ -47,6 +50,7 @@ function App() {
             { !isLoggedin && <Route path="/login" element={ <Login/> } />}
             { !isLoggedin && <Route path="/signup" element={ <SignUp/> } />}
             <Route path="/products/:id" element={ <Products /> } />
+            <Route path="/beers/:id" element={ <Detail /> } />
             <Route path="/checkout" element={ <Checkout/> } />
             { isLoggedin && <Route path="/orders" element={ <Orders /> } />}
             <Route path="*" element={ <Navigate to='/' /> } />

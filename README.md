@@ -1,4 +1,3 @@
-
 # Desarrollo de Aplicación Micro-Ecommerce con React y Strapi
 
 Es un honor para nosotros presentarles el PF de este Bootcamp, donde abordamos en profundidad el desarrollo de interfaces modernas para la web utilizando React, una de las librerías más populares en la actualidad. Asimismo, exploramos el backend a través de Strapi, permitiendo la creación de un proyecto Micro-Ecommerce totalmente funcional.
@@ -9,41 +8,51 @@ El objetivo principal de este proyecto fue desarrollar una aplicación que permi
 **Contenido:**
 
 1. **Iniciación a React:**
+
    - Cómo iniciar un proyecto en React.
    - Instalación y configuración de TailwindCss.
 
 2. **Componentes en React:**
+
    - Declaración y utilización de componentes.
    - Propiedades en los componentes.
 
 3. **Gestión de Rutas:**
+
    - Creación de rutas con React Router V6.
    - Rutas dinámicas.
 
 4. **Eventos y Renderización:**
+
    - Tipos de eventos en React.
    - Renderización de listas.
 
 5. **Explorando Hooks de React:**
+
    - Diferentes tipos de ganchos (Hooks) de React.
    - Captura de valores de formularios.
 
 6. **Implementación de ReduxToolkit:**
+
    - Creación de un store con reduxToolkit.
    - Ganchos de reduxToolkit y slices.
 
 7. **Validación de Formularios:**
+
    - Utilización de ReactHookForm.
 
 8. **Configuración de Strapi:**
+
    - Instalación y configuración de Strapi.
    - Colecciones y relaciones en Strapi.
 
 9. **Interacción con Strapi:**
+
    - Envío de peticiones a Strapi vía Axios.
    - Populate Data.
 
 10. **Autenticación y Seguridad:**
+
     - Registro e inicio de sesión con JWT y Strapi.
     - Filtros Strapi.
 
@@ -54,11 +63,19 @@ El objetivo principal de este proyecto fue desarrollar una aplicación que permi
 
 - **Cohorte 41a Grupo 14**
 - Colaboradores:
-     - []
+
+  - [Juan Buglione](https://github.com/juanbog19)
+  - [Emiliano Castro](https://github.com/EmiCastro1997)
+  - [Ruben Carrilo](https://github.com/OmarCarrillo1121)
+  - [Juan Salva](https://github.com/juan1ennon83)
+  - [Karina Romero](https://github.com/KariRomero)
+  - [Mariana Vallejos](https://github.com/Mariana8819)
+  - [Xavier Montalvo](https://github.com/xmontalvvo)
+  - [Bladimir Parra](https://github.com/ipproyectosysoluciones)
 
 - FullStack Developers
 
-- soyHenry
+- [soyHenry](https://soyhenry.us10.list-manage.com/track/click?u=14d57963b9f86943cd9ae5117&id=5df328308c&e=e7d0e7ed48)
 
 ---
 

@@ -25,7 +25,7 @@ const BrandCard = ( props ) => {
           className="bg-primary px-8 py-2 text-gray-100 hover:bg-secondary uppercase"
           to={`/products/${id}`}
         >
-          Visit store
+          Visit
         </Link>
       </div>
     </>

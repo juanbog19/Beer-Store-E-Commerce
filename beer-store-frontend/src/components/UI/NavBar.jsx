@@ -1,15 +1,18 @@
 /**
 Componente de barra de navegación que muestra el logo y los enlaces a las diferentes secciones del sitio web, así como los botones de inicio de sesión, registro y carrito de compras. El botón de inicio de sesión y registro se muestra dependiendo si el usuario ha iniciado sesión o no. Si el usuario ha iniciado sesión, se muestra un componente de usuario con su información. Se utiliza la librería react-router-dom para manejar las rutas de navegación. Se utiliza la librería react-redux para obtener el estado de inicio de sesión del usuario.
  */
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { authLogout } from "../../store/authSlice";
-import Logo from "../svg/Logo";
+//import Logo from "../svg/Logo";
 import CartButton from "../cart/CartButton";
 import CardUser from "./CardUser";
+import SearchBar from "./SearchBar";
 
 
 const NavBar = () => {
+
+  // const location = useLocation();
 
   // const dispatch = useDispatch();
   const isLoggedin = useSelector( ( state ) => state.auth.loggedin );
@@ -20,12 +23,13 @@ const NavBar = () => {
 
   return (
     <header className="pt-0">
-      <nav className="flex items-center justify-between bg-accent p-6 mb-2">
+      <nav className="flex items-center justify-between bg-accent p-6 mb-2 font-mono font-normal border-b-2 border-[#374151]">
         <div className="flex items-center mr-5">
-          <Logo />
-          <span className="font-semibold text-2xl mx-2">ChatBot Bar</span>
+          {/* <Logo /> */}
+          {/* <span className="mx-2 text-2xl font-semibold">Search Bar</span> */}
+          <SearchBar />
         </div>
-        <div className="grow flex items-center">
+        <div className="flex items-center grow">
           <div className="grow">
             <NavLink
               to="/"
@@ -44,6 +48,7 @@ const NavBar = () => {
               About
             </NavLink>
           </div>
+          <div className="flex-grow mx-2 text-2xl font-semibold"> E-Beer-Store </div>
           <div className="flex">
             {!isLoggedin && (
               <NavLink
