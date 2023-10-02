@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 const Banner = () => {  
 
   const slides = [
-    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696265823/beerStore/advertencia_v66mci.png',
     'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696265823/beerStore/p1_utwm7x.png',
     'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696265823/beerStore/p2_u3lheg.png',
     'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696265823/beerStore/p3_sgmndc.png'

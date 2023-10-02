@@ -11,6 +11,7 @@ En general, este componente se utiliza para mostrar una lista de marcas de cerve
 */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import axiosURL from "../../tools/axiosInstance";
@@ -18,7 +19,7 @@ import BrandCard from "./../UI/BrandCard";
 import Spinner from "./../svg/Spinner";
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
-import Filters from "../UI/filters";
+import FilterHome from '../UI/FilterHome';
 import Banner from "../UI/Banner";
 
 const Home = () => {
@@ -82,7 +83,7 @@ const Home = () => {
         <Banner></Banner>
       </div>
       <div>
-      <Filters/>
+      <FilterHome></FilterHome>
       </div>
        <div className="flex justify-around flex-wrap">
         {brands.map((brand) => (
