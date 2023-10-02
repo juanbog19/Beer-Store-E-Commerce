@@ -18,7 +18,8 @@ import BrandCard from "./../UI/BrandCard";
 import Spinner from "./../svg/Spinner";
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
-//import Filters from "../UI/filters";
+import Filters from "../UI/filters";
+import Banner from "../UI/Banner";
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
@@ -77,9 +78,12 @@ const Home = () => {
   return (
     <>
     <div>
-    <div>
-      {/*<Filters/>*/} 
-      </div> 
+      <div>
+        <Banner></Banner>
+      </div>
+      <div>
+      <Filters/>
+      </div>
        <div className="flex justify-around flex-wrap">
         {brands.map((brand) => (
           <div key={brand.id}>
