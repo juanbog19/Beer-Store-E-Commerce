@@ -11,26 +11,27 @@ En general, este componente se utiliza para mostrar una lista de marcas de cerve
 */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-// import axios from "axios";
-import axios from "../../tools/axiosInstance";
+// import { Link } from "react-router-dom";
+import axios from "axios";
+import axiosURL from "../../tools/axiosInstance";
 import BrandCard from "./../UI/BrandCard";
 import Spinner from "./../svg/Spinner";
 import HasError from "./../svg/HasError";
-import { Link } from "react-router-dom";
-
+import Footer from "./Footer";
+import Filters from "../UI/filters";
+import Banner from "../UI/Banner";
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const {id} = useParams();
-
+  const { id } = useParams();
 
   useEffect(() => {
     // let isCancelled = false;
     const controller = new AbortController();
     setLoading(true);
-    axios
+    axiosURL
       .get("/api/brands?populate=*", {
         signal: controller.signal,
       })
@@ -74,24 +75,28 @@ const Home = () => {
     );
   }
 
-    return (
-      <>
-        <div className="flex justify-around flex-wrap">
-          {brands.map((brand) => (
-            <div key={brand.id}>
-              <BrandCard data={brand} />
-              <Link
-                className="bg-primary px-8 py-2 text-gray-100 hover:bg-secondary uppercase"
-                to={`/beers/${brand.id}`} // Usar brand.id para construir la ruta
-              >
-                Ver Birrita
-              </Link>
-            </div>
-          ))}
-          {brands.length <= 0 && <p>No beer data disponible</p>}
-        </div>
-      </>
-    );
+  return (
+    <>
+    <div>
+      <div>
+        <Banner></Banner>
+      </div>
+      <div>
+      <Filters/>
+      </div>
+       <div className="flex justify-around flex-wrap">
+        {brands.map((brand) => (
+          <div key={brand.id}>
+            <BrandCard data={brand} />
+          </div>
+        ))}
+        {brands.length <= 0 && <p>No beer data disponible</p>}
+      </div>
+      </div>
+     
+      <Footer />
+    </>
+  );
 };
 
 export default Home;

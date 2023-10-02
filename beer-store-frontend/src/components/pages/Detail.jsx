@@ -32,8 +32,8 @@ function Detail() {
           alt={`logo of ${beer.name}`}
           className="w-24 h-24 rounded-full mx-auto shadow-lg"
         />*/}
-            <h2>Nombre de la cerveza: {beer.data.name}</h2>
-            <p>Descripción: {beer.data.description}</p>
+            <h2>Beer: {beer.data.name}</h2>
+            <p>Description: {beer.data.description}</p>
             
             
           </>
@@ -44,7 +44,7 @@ function Detail() {
           className="bg-primary px-8 py-2 text-gray-100 hover:bg-secondary uppercase"
           to={`/products/${id}`}
         >
-          Comprar birrita
+          Buy beer
         </Link>
     </div>
   );
