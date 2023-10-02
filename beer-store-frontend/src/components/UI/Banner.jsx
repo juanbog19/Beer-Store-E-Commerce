@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 const Banner = () => {  
 
   const slides = [
-    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696265823/beerStore/p1_utwm7x.png',
-    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696265823/beerStore/p2_u3lheg.png',
-    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696265823/beerStore/p3_sgmndc.png'
+    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696287020/beerStore/oktober_xskoti.png',
+    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696286736/beerStore/promo_pqbnrl.png',
+    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696287348/beerStore/club_zjczaz.png'
   ]
   //console.log(banner);
   // console.log(slides);
