@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 const Banner = () => {  
 
+  const [banner, setBanner] = useState()
+
+
   const slides = [
     'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696287020/beerStore/oktober_xskoti.png',
     'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696286736/beerStore/promo_pqbnrl.png',
@@ -36,9 +39,10 @@ const Banner = () => {
 
    return (
     <div className='max-w h-[240px] w-full relative group bg-black block'>
-      
-      <div style={{ backgroundImage: `url(${slides[currentIndex]})` }} className='w-full h-full duration-500 bg-center bg-cover'></div>
-
+      {slides.length 
+      ? <div style={{ backgroundImage: `url(${slides[currentIndex]})` }} className='w-full h-full duration-500 bg-center bg-cover'></div>
+      : 'No hay banners disponibles'
+      }
     </div>
   );
 };
