@@ -1,6 +1,15 @@
 const Footer = () => {
     return (
-<section>
+        <div>
+
+        </div>
+);
+}
+
+export default Footer;
+
+
+{/* <section>
     <div className="mx-auto space-y-8 overflow-hidden sm:px-6 absolute inset-x-0 bottom-0 border-t-2 border-[#374151]">
         <div className="flex justify-center mt-8 space-x-6">
             <a href="#" className="text-[#374151] hover:text-[#cb5930]">
@@ -39,8 +48,4 @@ const Footer = () => {
             © 2023 SomeCompany, Inc. All rights reserved.
         </p>
     </div>
-</section>
-);
-}
-
-export default Footer;
+</section> */}

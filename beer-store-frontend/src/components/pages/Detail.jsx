@@ -8,8 +8,7 @@ function Detail() {
  
     const [beer, setBeer] = useState({});
     const {id} = useParams();
-
-
+  
  useEffect(() =>{
     axios
     .get(`/api/beers/${id}`)
@@ -23,7 +22,7 @@ function Detail() {
   }, [id]);
 
   return (
-    <div className="flex justify-around flex-wrap">
+    <div className="flex justify-around flex-wrap" class="p-4">
        {Object.keys(beer).length > 0 ? ( // Verifica si 'beer' contiene datos
           console.log(Object.keys(beer)),
           <>
@@ -31,9 +30,14 @@ function Detail() {
           src={beer.img.url}
           alt={`logo of ${beer.name}`}
           className="w-24 h-24 rounded-full mx-auto shadow-lg"
-        />*/}
-            <h2>Nombre de la cerveza: {beer.data.name}</h2>
-            <p>Descripción: {beer.data.description}</p>
+        />*/}<img
+          src={beer.url}
+          alt={`logo of ${beer.name}`}
+          className="w-32 h-32 shadow-xl rounded-full mb-3 mx-auto"
+        />
+        
+            <h2  class="text-3xl font-semibold text-gray-800">Beer: {beer.data.name}</h2>
+            <p  class="mt-2 text-gray-600 font-serif italic font-light text-lg">Description: {beer.data.description}</p>
             
             
           </>
@@ -44,7 +48,7 @@ function Detail() {
           className="bg-primary px-8 py-2 text-gray-100 hover:bg-secondary uppercase"
           to={`/products/${id}`}
         >
-          Comprar birrita
+          Buy beer
         </Link>
     </div>
   );

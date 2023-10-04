@@ -11,20 +11,32 @@ En general, este componente se utiliza para mostrar una lista de marcas de cerve
 */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import axiosURL from "../../tools/axiosInstance";
 import BrandCard from "./../UI/BrandCard";
-import Spinner from "./../svg/Spinner";
+import Spinner from './../svg/Spinner';
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
-import Filters from "../UI/filters";
+import FilterHome from '../UI/FilterHome';
+import Banner from "../UI/Banner";
+import { getBanner } from '../../store/bannerSlice';
+
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const { id } = useParams();
+  const [hasError, setHasError] = useState(false); 
+
+  const dispatch = useDispatch();
+  const { data } = useSelector(state=>state.banner.banner);
+  
+  useEffect(()=>{
+    dispatch(getBanner())    
+  },[])
+
+ //console.log('log de brands',brands);
 
   useEffect(() => {
     // let isCancelled = false;
@@ -37,26 +49,25 @@ const Home = () => {
       .then((response) => {
         // if ( !isCancelled ) {
         // console.log(response);
-        setBrands(response.data.data);
-        setLoading(false);
-        // }
-      })
-      .catch((error) => {
-        console.log(error);
-        if (axios.isCancel(error)) {
-          console.log("request canceled");
-          return;
-        }
-        setHasError(true);
-        setLoading(false);
-      });
+        setBrands( response.data.data );
+        setLoading( false );
+      // }
+    }).catch((error) => {
+     // console.log(error);
+      if ( axios.isCancel( error ) ) {
+       // console.log( 'request canceled' );
+        return;
+      }
+      setHasError( true );
+      setLoading( false );
+    });
     return () => {
       // isCancelled = true;
       controller.abort();
-    };
-  }, []);
+    }
+  },[]);
 
-  if (loading) {
+  if ( loading ) {
     return (
       <div className="w-24 mx-auto">
         <Spinner />
@@ -64,7 +75,7 @@ const Home = () => {
     );
   }
 
-  if (hasError) {
+  if ( hasError ) {
     return (
       <div>
         <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">404</h1>
@@ -74,25 +85,28 @@ const Home = () => {
     );
   }
 
+  
+ 
+
   return (
     <>
     <div>
+      
       <div>
-      <Filters/>
+      <FilterHome></FilterHome>
       </div>
        <div className="flex justify-around flex-wrap">
         {brands.map((brand) => (
-          <div key={brand.id}>
-            <BrandCard data={brand} />
-          </div>
+          <BrandCard key={brand.id} data={brand} />
         ))}
         {brands.length <= 0 && <p>No beer data disponible</p>}
       </div>
+      <div>
+        <Banner data={data}/>
       </div>
-     
-      <Footer />
+      </div>
     </>
-  );
-};
+  )
+}
 
 export default Home;

@@ -39,27 +39,24 @@
 
 
 export default function Filters() {
-      return (
-    <div>      
-        <div>
-        
-        <select>
-            <option disabled>Order By Price</option>
-            <option value="menor a mayor">menor a mayor</option>
-            <option value="mayor a menor">mayor a menor</option>
-        </select>
+    return (
+  <div>      
+      <div>
+      <select>
+          <option disabled>Filter By Brands</option>
+          <option value="Antares">Antares</option>
+          <option value="Patagonia">Patagonia</option>
+          <option value="Corona">Corona</option>
+          <option value="Brahma">Brahma</option>
+          <option value="Quilmes">Quilmes</option>            
+      </select>
 
-        <select>
-            <option disabled>Order By Type</option>
-            <option value="IPA">IPA</option>
-            <option value="STOUT">STOUT</option>
-            <option value="RED">RED</option> 
-            <option value="LAGER">LAGER</option> 
-            <option value="PALE ALE">PALE ALE</option> 
-            <option value="KOLSCH">KOLSCH</option> 
-            <option value="HIBRIDA">HIBRIDA</option>  
-        </select>
-    </div>
-    </div>
-  )
+      <select>
+          <option disabled>Order by Alphabetic</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
+      </select>
+      </div>
+  </div>
+)
 }

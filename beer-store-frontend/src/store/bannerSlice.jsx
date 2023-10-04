@@ -2,11 +2,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../tools/axiosInstance";
 
 
-export const getBrands = createAsyncThunk(
-  "brands/getBrands",
-  async (brand) => {
+export const getBanner = createAsyncThunk(
+  "banner/getBanner",
+  async () => {
     try {
-      const resp = await axios.get(`/api/brands?filters[name][$containsi]=${brand}`, {
+      const resp = await axios.get(`/api/banners?populate=*`, {
         headers: {
           Accept: 'application/json',
         },
@@ -21,30 +21,32 @@ export const getBrands = createAsyncThunk(
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 import { createSlice } from "@reduxjs/toolkit";
+
+
 const initialState = {
-  brandsSearch: [],      // Almacena los datos de las marcas
-  loading: false,  // Indica si se está cargando la información
-  error: null,     // Almacena cualquier error que ocurra
+  banner: [],
+  loading: false, 
+  error: null,  
 };
 
-const brandsSlice = createSlice({
-  name: "brands",
+const bannerSlice = createSlice({
+  name: "banner",
   initialState,
   reducers: {},
   extraReducers:(builder) => {
     builder
-      .addCase(getBrands.pending, (state) => {
+      .addCase(getBanner.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(getBrands.fulfilled, (state, action) => {
+      .addCase(getBanner.fulfilled, (state, action) => {
         state.loading = false;
-        state.brandsSearch= action.payload;
+        state.banner= action.payload;
       })
-      .addCase(getBrands.rejected, (state, action) => {
+      .addCase(getBanner.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message; 
       })
   },
 });
-export default brandsSlice.reducer;
+export default bannerSlice.reducer;
