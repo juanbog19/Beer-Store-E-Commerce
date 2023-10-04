@@ -28,6 +28,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
+  
+
 //   const [slides, setSlides] = useState()
 //   const dispatch = useDispatch();
 
@@ -107,9 +109,7 @@ const Home = () => {
         {brands.length <= 0 && <p>No beer data disponible</p>}
       </div>
       <div>
-        <Banner 
-        //slides={slides} 
-        />
+        <Banner/>
       </div>
       </div>
     </>
