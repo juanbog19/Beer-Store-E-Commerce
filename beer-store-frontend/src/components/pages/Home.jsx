@@ -19,7 +19,7 @@ import BrandCard from "./../UI/BrandCard";
 import Spinner from './../svg/Spinner';
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
-import FilterHome from '../UI/FilterHome';
+//import Filters from "../UI/filters";
 import Banner from "../UI/Banner";
 import { getBanner } from '../../store/bannerSlice';
 
@@ -78,8 +78,8 @@ const Home = () => {
   if ( hasError ) {
     return (
       <div>
-        <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">404</h1>
-        <h2 className="text-stone-600 text-center mb-2">Please try again later</h2>
+        <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">404</h1>
+        <h2 className="mb-2 text-center text-stone-600">Please try again later</h2>
         <HasError />
       </div>
     );
@@ -93,9 +93,12 @@ const Home = () => {
     <div>
       
       <div>
-      <FilterHome></FilterHome>
+        <Banner></Banner>
       </div>
-       <div className="flex justify-around flex-wrap">
+      <div>
+      <Filters/>
+      </div>
+       <div className="flex flex-wrap justify-around">
         {brands.map((brand) => (
           <BrandCard key={brand.id} data={brand} />
         ))}
