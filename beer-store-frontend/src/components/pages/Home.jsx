@@ -96,7 +96,7 @@ const Home = () => {
         <Banner></Banner>
       </div>
       <div>
-      <Filters/>
+      {/* <Filters/> */}
       </div>
        <div className="flex flex-wrap justify-around">
         {brands.map((brand) => (

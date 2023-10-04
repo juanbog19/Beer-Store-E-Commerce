@@ -19,7 +19,7 @@ const Banner = ({data}) => {
 
   
   useEffect(() => {
-    if (data.length > 0) {
+    if (data) {
       const interval = setInterval(nextSlide, 5000);
 
       return () => {
@@ -28,7 +28,7 @@ const Banner = ({data}) => {
     }
   }, [currentIndex, data]);
 
-  if (data.length === 0) {
+  if (!data) {
     
     return <div>No hay banners disponibles.</div>;
   }
