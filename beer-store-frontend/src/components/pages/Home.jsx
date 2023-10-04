@@ -21,29 +21,14 @@ import HasError from "./../svg/HasError";
 import Footer from "./Footer";
 import FilterHome from '../UI/FilterHome';
 import Banner from "../UI/Banner";
-import { getBanner } from '../../store/bannerSlice';
+
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(false); 
 
-  
-
-//   const [slides, setSlides] = useState()
-//   const dispatch = useDispatch();
-
-//   const { data } = useSelector(state=>state.banner.banner);
-  
-//   useEffect(()=>{
-//     dispatch(getBanner())
-//     setSlides(data)
-//   },[])
-
-//  console.log('log de slides',slides);
-
-//  console.log('log de brands',brands);
-
+ //console.log('log de brands',brands);
 
   useEffect(() => {
     // let isCancelled = false;

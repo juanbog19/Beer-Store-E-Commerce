@@ -22,7 +22,7 @@ export const getBrands = createAsyncThunk(
 
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  brands: [],      // Almacena los datos de las marcas
+  brandsSearch: [],      // Almacena los datos de las marcas
   loading: false,  // Indica si se está cargando la información
   error: null,     // Almacena cualquier error que ocurra
 };
@@ -39,7 +39,7 @@ const brandsSlice = createSlice({
       })
       .addCase(getBrands.fulfilled, (state, action) => {
         state.loading = false;
-        state.brands = action.payload;
+        state.brandsSearch= action.payload;
       })
       .addCase(getBrands.rejected, (state, action) => {
         state.loading = false;

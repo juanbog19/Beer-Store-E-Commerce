@@ -1,47 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axiosURL from "../../tools/axiosInstance";
+import { getBanner } from '../../store/bannerSlice';
 
-const Banner = (props) => {  
+const Banner = () => {  
 
-  // const { img } = props.data;
+  const dispatch = useDispatch();
+  const { data } = useSelector(state=>state.banner.banner);
+  
+  useEffect(()=>{
+    dispatch(getBanner())    
+  },[])
 
-
-  const slides = [
-    // 'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696287020/beerStore/oktober_xskoti.png',
-    // 'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696286736/beerStore/promo_pqbnrl.png',
-    // 'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696287348/beerStore/club_zjczaz.png'
-  ]
-  //console.log(banner);
-  // console.log(slides);
+ //console.log('log de banner',data);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
  
   const nextSlide = () => {
-    const newIndex = (currentIndex + 1) % slides.length;
+    const newIndex = (currentIndex + 1) % data.length;
     setCurrentIndex(newIndex);
   };
 
   
   useEffect(() => {
-    if (slides.length > 0) {
+    if (data.length > 0) {
       const interval = setInterval(nextSlide, 5000);
 
       return () => {
         clearInterval(interval);
       };
     }
-  }, [currentIndex, slides]);
+  }, [currentIndex, data]);
 
-  if (slides.length === 0) {
+  if (data.length === 0) {
     
     return <div>No hay banners disponibles.</div>;
   }
 
    return (
     <div className='max-w h-[240px] w-full relative group bg-black block'>
-      {slides.length 
-      ? <div style={{ backgroundImage: `url(${slides[currentIndex]})` }} className='w-full h-full duration-500 bg-center bg-cover'></div>
+      {data.length 
+      ? <div style={{ backgroundImage: `url(${data[currentIndex].img.url})` }} className='w-full h-full duration-500 bg-center bg-cover'></div>
       : 'No hay banners disponibles'
       }
     </div>
