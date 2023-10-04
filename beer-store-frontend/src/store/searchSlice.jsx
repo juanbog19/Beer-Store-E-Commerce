@@ -6,13 +6,18 @@ export const getBrands = createAsyncThunk(
   "brands/getBrands",
   async (brand) => {
     try {
-      const resp = await axios.get(`/api/brands?filters[name][$containsi]=${brand}`, {
+      // const resp = await axios.get(`/api/brands?filters[name][$containsi]=${brand}`, {
+      const resp = await axios.get('/api/brands?populate=*', {
         headers: {
           Accept: 'application/json',
         },
       });
-      //console.log(resp.data);
-      return resp.data;      
+      // console.log(resp.data.data);
+      const brands = resp.data.data;
+      const searchedBrand = brands.filter((b)=>b.name===brand);
+      console.log(searchedBrand);
+      return searchedBrand;      
+      // return resp.data
     } catch (error) {
       throw new Error(error.response.data.message);
     }

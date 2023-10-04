@@ -29,8 +29,11 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false); 
 
+  console.log(brands);
+
   const dispatch = useDispatch();
   const { data } = useSelector(state=>state.banner.banner);
+  const { brandsSearch } = useSelector(state=>state.brandsSearch)
   
   useEffect(()=>{
     dispatch(getBanner())    
@@ -92,9 +95,7 @@ const Home = () => {
     <>
     <div>
       
-      <div>
-        <Banner></Banner>
-      </div>
+      
       <div>
       {/* <Filters/> */}
       </div>
