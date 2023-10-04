@@ -41,7 +41,7 @@
 export default function Filters() {
       return (
     <div>      
-        <div>
+        {/* <div>
         <select>
             <option disabled>Filter By Brands</option>
             <option value="Antares">Antares</option>
@@ -73,7 +73,7 @@ export default function Filters() {
             <option value="KOLSCH">KOLSCH</option> 
             <option value="HIBRIDA">HIBRIDA</option>  
         </select>
-    </div>
+    </div> */}
     </div>
   )
 }

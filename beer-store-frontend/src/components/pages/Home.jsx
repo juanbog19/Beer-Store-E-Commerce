@@ -18,7 +18,7 @@ import BrandCard from "./../UI/BrandCard";
 import Spinner from "./../svg/Spinner";
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
-import Filters from "../UI/filters";
+//import Filters from "../UI/filters";
 import Banner from "../UI/Banner";
 
 const Home = () => {
@@ -68,8 +68,8 @@ const Home = () => {
   if (hasError) {
     return (
       <div>
-        <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">404</h1>
-        <h2 className="text-stone-600 text-center mb-2">Please try again later</h2>
+        <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">404</h1>
+        <h2 className="mb-2 text-center text-stone-600">Please try again later</h2>
         <HasError />
       </div>
     );
@@ -79,12 +79,12 @@ const Home = () => {
     <>
     <div>
       <div>
-        <Banner></Banner>
+        <Banner> </Banner>
       </div>
-      <div>
+      {/* <div>
       <Filters/>
-      </div>
-       <div className="flex justify-around flex-wrap">
+      </div> */}
+       <div className="flex flex-wrap justify-around">
         {brands.map((brand) => (
           <div key={brand.id}>
             <BrandCard data={brand} />
