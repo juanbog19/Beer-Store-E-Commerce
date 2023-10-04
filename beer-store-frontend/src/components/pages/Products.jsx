@@ -10,6 +10,7 @@ import Section from "../UI/Section";
 import qs from 'qs';
 import HasError from "../svg/HasError";
 import Spinner from "../svg/Spinner";
+import Filters from "../UI/filters";
 
 const Products = () => {
   const params = useParams();
@@ -90,6 +91,7 @@ const Products = () => {
 
   return (
     <>
+    <Filters></Filters>
       <div className="text-center mb-3">
         {/* <div className={ `w-24 h-24 rounded-full ${ brand.img } mx-auto shadow-lg` }></div> */}
         <img

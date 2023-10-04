@@ -57,6 +57,8 @@ export default function Filters() {
             <option value="Z-A">Z-A</option>
         </select>
 
+        <div>
+        
         <select>
             <option disabled>Order By Price</option>
             <option value="menor a mayor">menor a mayor</option>
