@@ -4,7 +4,8 @@
   "info": {
     "singularName": "banner",
     "pluralName": "banners",
-    "displayName": "banner"
+    "displayName": "banner",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -22,13 +23,13 @@
       "unique": true
     },
     "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": true,
-      "required": true
+      ]
     }
   }
 }

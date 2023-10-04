@@ -11,7 +11,7 @@ En general, este componente se utiliza para mostrar una lista de marcas de cerve
 */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import axiosURL from "../../tools/axiosInstance";
@@ -21,11 +21,27 @@ import HasError from "./../svg/HasError";
 import Footer from "./Footer";
 import FilterHome from '../UI/FilterHome';
 import Banner from "../UI/Banner";
+import { getBanner } from '../../store/bannerSlice';
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
+
+//   const [slides, setSlides] = useState()
+//   const dispatch = useDispatch();
+
+//   const { data } = useSelector(state=>state.banner.banner);
+  
+//   useEffect(()=>{
+//     dispatch(getBanner())
+//     setSlides(data)
+//   },[])
+
+//  console.log('log de slides',slides);
+
+//  console.log('log de brands',brands);
+
 
   useEffect(() => {
     // let isCancelled = false;
@@ -73,6 +89,8 @@ const Home = () => {
       </div>
     );
   }
+
+  
  
 
   return (
@@ -89,7 +107,9 @@ const Home = () => {
         {brands.length <= 0 && <p>No beer data disponible</p>}
       </div>
       <div>
-        <Banner></Banner>
+        <Banner 
+        //slides={slides} 
+        />
       </div>
       </div>
     </>

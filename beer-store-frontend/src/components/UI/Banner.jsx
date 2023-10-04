@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import axiosURL from "../../tools/axiosInstance";
 
-const Banner = () => {  
+const Banner = (props) => {  
 
-  const [banner, setBanner] = useState()
+  // const { img } = props.data;
 
 
   const slides = [
-    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696287020/beerStore/oktober_xskoti.png',
-    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696286736/beerStore/promo_pqbnrl.png',
-    'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696287348/beerStore/club_zjczaz.png'
+    // 'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696287020/beerStore/oktober_xskoti.png',
+    // 'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696286736/beerStore/promo_pqbnrl.png',
+    // 'https://res.cloudinary.com/dm9glx5a7/image/upload/v1696287348/beerStore/club_zjczaz.png'
   ]
   //console.log(banner);
   // console.log(slides);
