@@ -10,7 +10,7 @@ import Section from "../UI/Section";
 import qs from 'qs';
 import HasError from "../svg/HasError";
 import Spinner from "../svg/Spinner";
-import Filters from "../UI/filters";
+//import Filters from "../UI/filters";
 
 const Products = () => {
   const params = useParams();
@@ -69,8 +69,8 @@ const Products = () => {
   if ( hasError ) {
     return (
       <div>
-        <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">404</h1>
-        <h2 className="text-stone-600 text-center mb-2">Please try again later</h2>
+        <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">404</h1>
+        <h2 className="mb-2 text-center text-stone-600">Please try again later</h2>
         <HasError />
       </div>
     );
@@ -91,16 +91,16 @@ const Products = () => {
 
   return (
     <>
-    <Filters></Filters>
-      <div className="text-center mb-3">
+    {/* <Filters></Filters> */}
+      <div className="mb-3 text-center">
         {/* <div className={ `w-24 h-24 rounded-full ${ brand.img } mx-auto shadow-lg` }></div> */}
         <img
           src={brand.img.url}
           alt={`logo of ${brand.name}`}
-          className="w-24 h-24 rounded-full mx-auto shadow-lg"
+          className="w-24 h-24 mx-auto rounded-full shadow-lg"
         />
-        <h1 className="text-2x1 text-gray-700 uppercase">{brand.name}</h1>
-        <p className="test-sm font-semibold my-2 text-stone-600">{ brand.description }</p>
+        <h1 className="text-gray-700 uppercase text-2x1">{brand.name}</h1>
+        <p className="my-2 font-semibold test-sm text-stone-600">{ brand.description }</p>
       </div>
 
       <Section>
@@ -112,9 +112,9 @@ const Products = () => {
         { productsList.length <= 0 && <div className="text-center">No beer were found</div> }
       </Section>
 
-      <div className="text-center mt-3">
+      <div className="mt-3 text-center">
         <Link
-          className="bg-primary px-2 py-1 text-gray-100 hover:bg-secondary"
+          className="px-2 py-1 text-gray-100 bg-primary hover:bg-secondary"
           to="/"
         >
           Back
