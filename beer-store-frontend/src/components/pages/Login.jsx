@@ -1,5 +1,12 @@
 /**
-Componente de inicio de sesión que permite a los usuarios ingresar a su cuenta. Utiliza el estado local para manejar los errores de validación del formulario y el estado global de Redux para controlar el estado de carga y realizar la autenticación. El componente renderiza un formulario con campos de nombre de usuario y contraseña, y muestra mensajes de error si los campos están vacíos o si las credenciales de inicio de sesión son incorrectas. Cuando el usuario envía el formulario, se llama a la acción de Redux "login" para autenticar al usuario. Si la autenticación es exitosa, se redirige al usuario a la página de pago. Si hay un error durante el proceso de autenticación, se muestra un mensaje de error en pantalla. Si el estado de carga es verdadero, se muestra un spinner de carga.
+Componente de inicio de sesión que permite a los usuarios ingresar a su cuenta. Utiliza el estado local 
+para manejar los errores de validación del formulario y el estado global de Redux para controlar el estado
+de carga y realizar la autenticación. El componente renderiza un formulario con campos de nombre de usuario 
+y contraseña, y muestra mensajes de error si los campos están vacíos o si las credenciales de inicio de 
+sesión son incorrectas. Cuando el usuario envía el formulario, se llama a la acción de Redux "login" para 
+autenticar al usuario. Si la autenticación es exitosa, se redirige al usuario a la página de pago. 
+Si hay un error durante el proceso de autenticación, se muestra un mensaje de error en pantalla. 
+Si el estado de carga es verdadero, se muestra un spinner de carga.
  */
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";

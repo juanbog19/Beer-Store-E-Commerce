@@ -43,7 +43,7 @@ export default function Filters() {
     <div>      
         <div>
         <select>
-            <option disabled>Filter By Brands</option>
+            <option enabled>Filter By Brands</option>
             <option value="Antares">Antares</option>
             <option value="Patagonia">Patagonia</option>
             <option value="Corona">Corona</option>
