@@ -10,9 +10,9 @@ Si no hay errores ni carga en curso, se muestra una lista de tarjetas de marca u
 En general, este componente se utiliza para mostrar una lista de marcas de cerveza obtenidas de una API y manejar los estados de carga y error.
 */
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import axios from "axios";
 import axiosURL from "../../tools/axiosInstance";
 import BrandCard from "./../UI/BrandCard";
@@ -107,8 +107,6 @@ useEffect(() => {
   return (
     <>
     <div>
-      
-      
       <div>
       {/* <Filters/> */}
       </div>
@@ -128,6 +126,7 @@ useEffect(() => {
       <div>
         <Banner data={data}/>
       </div>
+      <Footer />
       </div>
     </>
   )
