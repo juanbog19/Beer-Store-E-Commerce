@@ -19,6 +19,12 @@ const SearchBar = () => {
             setBrand('');           
         } 
     };
+
+    const handlerReset = () => {
+        
+        setBrand('');
+        dispatch(getBrands())
+    };
   
  
     return (
@@ -27,6 +33,9 @@ const SearchBar = () => {
 				<button className='bg-primary px-8 py-2 text-gray-100 hover:bg-secondary' onClick={handleOnClick}>
 					Search
 				</button>
+                <button className='bg-primary px-8 py-2 text-gray-100 hover:bg-secondary' onClick={handlerReset}>
+                    Reset
+                </button>
 			</div>
 		);
 };

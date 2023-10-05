@@ -29,18 +29,22 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false); 
 
-  console.log(brands);
+  
 
   const dispatch = useDispatch();
   const { data } = useSelector(state=>state.banner.banner);
   const { brandsSearch } = useSelector(state=>state.brandsSearch)
+  const renderBrands = brandsSearch.length > 0 ? brandsSearch : brands;
+
+  //console.log(brands.map((b)=>b.img.url));
+ // console.log(brandsSearch[0].img.url);
+
   
   useEffect(()=>{
     dispatch(getBanner())    
   },[])
 
- //console.log('log de brands',brands);
-
+ 
   useEffect(() => {
     // let isCancelled = false;
     const controller = new AbortController();
@@ -100,9 +104,17 @@ const Home = () => {
       {/* <Filters/> */}
       </div>
        <div className="flex flex-wrap justify-around">
-        {brands.map((brand) => (
+        {renderBrands.map((brand) => (
           <BrandCard key={brand.id} data={brand} />
-        ))}
+        ))
+        }
+        {/* {brandsSearch
+        ? brandsSearch.map((brand) => (
+          <BrandCard key={brand.id} data={brand} />
+        ))
+        : brands.map((brand) => (
+          <BrandCard key={brand.id} data={brand} />
+        ))} */}
         {brands.length <= 0 && <p>No beer data disponible</p>}
       </div>
       <div>
