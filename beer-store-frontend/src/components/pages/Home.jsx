@@ -108,14 +108,8 @@ const Home = () => {
           <BrandCard key={brand.id} data={brand} />
         ))
         }
-        {/* {brandsSearch
-        ? brandsSearch.map((brand) => (
-          <BrandCard key={brand.id} data={brand} />
-        ))
-        : brands.map((brand) => (
-          <BrandCard key={brand.id} data={brand} />
-        ))} */}
-        {brands.length <= 0 && <p>No beer data disponible</p>}
+        
+        {renderBrands.length <= 0 && <p>No beer data disponible</p>}
       </div>
       <div>
         <Banner data={data}/>
