@@ -19,6 +19,7 @@ import BrandCard from "./../UI/BrandCard";
 import Spinner from './../svg/Spinner';
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
+import Paginated from "../UI/Paginated";
 //import Filters from "../UI/filters";
 import Banner from "../UI/Banner";
 import { getBanner } from '../../store/bannerSlice';
@@ -27,9 +28,7 @@ import { getBanner } from '../../store/bannerSlice';
 const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [hasError, setHasError] = useState(false); 
-
-  
+  const [hasError, setHasError] = useState(false);   
 
   const dispatch = useDispatch();
   const { data } = useSelector(state=>state.banner.banner);
@@ -39,11 +38,24 @@ const Home = () => {
   //console.log(brands.map((b)=>b.img.url));
  // console.log(brandsSearch[0].img.url);
 
+ const [currentPage, setCurrentPage] = useState(1) //lo seteo en 1 porque siempre arranco por la primer pagina
+  const brandsPerPage = 6//cantidad de juegos que debe haber por pagina
+  const indexOfLastGame = currentPage * brandsPerPage // 1 * 6 = 6
+  const indexOfFirstGame= indexOfLastGame - brandsPerPage // 6 - 6 = 0
+  //const currentGames = displayVideogames.slice(indexOfFirstGame, indexOfLastGame) //para dividir la cantidad de juegos por pagina
+  const currentBrands = Array.isArray(renderBrands) ? renderBrands.slice(indexOfFirstGame, indexOfLastGame) : [];
+
+  const paginado = (pageNumber) => { //establece el numero de pagina
+    setCurrentPage(pageNumber)
+}
+
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, [currentPage])
   
   useEffect(()=>{
     dispatch(getBanner())    
   },[])
-
  
   useEffect(() => {
     // let isCancelled = false;
@@ -92,9 +104,6 @@ const Home = () => {
     );
   }
 
-  
- 
-
   return (
     <>
     <div>
@@ -104,13 +113,18 @@ const Home = () => {
       {/* <Filters/> */}
       </div>
        <div className="flex flex-wrap justify-around">
-        {renderBrands.map((brand) => (
+        {currentBrands.map((brand) => (
           <BrandCard key={brand.id} data={brand} />
         ))
         }
         
-        {renderBrands.length <= 0 && <p>No beer data disponible</p>}
+        {currentBrands.length <= 0 && <p>No beer data disponible</p>}
       </div>
+
+      <div>
+        <Paginated brandsPerPage={brandsPerPage} allBrands={renderBrands.length} paginado={paginado}/>
+      </div>
+
       <div>
         <Banner data={data}/>
       </div>
