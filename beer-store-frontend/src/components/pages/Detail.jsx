@@ -22,7 +22,7 @@ function Detail() {
   }, [id]);
 
   return (
-    <div className="flex justify-around flex-wrap" class="p-4">
+    <div className="flex justify-around flex-wrap p-4">
        {Object.keys(beer).length > 0 ? ( // Verifica si 'beer' contiene datos
           console.log(Object.keys(beer)),
           <>
@@ -31,13 +31,13 @@ function Detail() {
           alt={`logo of ${beer.name}`}
           className="w-24 h-24 rounded-full mx-auto shadow-lg"
         />*/}<img
-          src={beer.url}
+          src={beer.url} 
           alt={`logo of ${beer.name}`}
           className="w-32 h-32 shadow-xl rounded-full mb-3 mx-auto"
         />
         
-            <h2  class="text-3xl font-semibold text-gray-800">Beer: {beer.data.name}</h2>
-            <p  class="mt-2 text-gray-600 font-serif italic font-light text-lg">Description: {beer.data.description}</p>
+            <h2  className="text-3xl font-semibold text-gray-800">Beer: {beer.data.name}</h2>
+            <p  className="mt-2 text-gray-600 font-serif italic font-light text-lg">Description: {beer.data.description}</p>
             
             
           </>
