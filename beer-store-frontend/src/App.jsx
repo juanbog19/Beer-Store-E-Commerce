@@ -23,7 +23,7 @@ import Layout from "./components/UI/Layout"
 import NavBar from "./components/UI/NavBar";
 
 // Pages
-import Landing from "./components/pages/Landing"
+import Landing from "./components/pages/Landing"   //Landing pendiente por renderizar @juan1ennon
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Login from "./components/pages/Login";
@@ -43,9 +43,10 @@ function App() {
     <>
       <div className="bg-accent min-h-screen">
         <NavBar></NavBar>
-        <Layout>
+        <Layout>6
       <Routes>
-            <Route path="/" element={ <Home/> } />
+            <Route path="/" element={ <Landing/> } />
+            <Route path="/home" element={ <Home/> } /> 
             <Route path="/about" element={ <About/> } />
             { !isLoggedin && <Route path="/login" element={ <Login/> } />}
             { !isLoggedin && <Route path="/signup" element={ <SignUp/> } />}
