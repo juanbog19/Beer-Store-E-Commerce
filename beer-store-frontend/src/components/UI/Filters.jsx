@@ -1,3 +1,46 @@
+import { useEffect, useState } from "react";
+import { filterBeer, getBeers } from "../../store/beersSliceR";
+import { useDispatch, useSelector } from "react-redux";
+
+export default function Filters() {
+  const dispatch = useDispatch();
+  const beers = useSelector((state)=> state.beers)
+  const [beer, setBeer] = useState();
+
+useEffect(()=>{
+  dispatch(getBeers())
+},[dispatch])
+
+const handleChangeBeer = (event)=>{
+    dispatch(filterBeer(event.target.value));
+    setBeer(!beer);
+  }
+    
+  return (
+    <div>
+      <legend>Filter by Beer´s type</legend>
+        <select onChange={(event)=>handleChangeBeer(event)} defaultValue='default' >
+          <option value='default' disabled>Filter By Type</option>
+            {beers &&
+            beers?.map((beer)=>(
+                <option key={beer.id} value={beer.name}>
+                    {beer.name}
+                </option>
+            ))}
+        </select>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
 // import { useEffect, useState } from 'react';
 // import {useDispatch, useSelector} from 'react-redux';
 // import { getBrands } from '../../store/brandsSliceR';
@@ -36,7 +79,31 @@
 //     </div>
 //   )
 // }
+//filterrr como estaba antes
 
+<<<<<<< HEAD
+// export default function Filters() {
+//       return (
+//     <div>      
+//         <div>
+        
+//         <select>
+//             <option disabled>Order By Price</option>
+//             <option value="$1-$5">$1-$5</option>
+//             <option value="$5-$10">$5-$10</option>
+//             <option value="$10-$15">$10-$15</option>
+//             <option value="$15-$20">$10-$15</option>
+//         </select>
+//         {/* <TypeFilter /> */}
+//         {/* <select>
+//             <option disabled>Order By Type</option>
+          
+//         </select> */}
+//     </div>
+//     </div>
+//   )
+// }
+=======
 
 export default function Filters() {
       return (
@@ -79,3 +146,4 @@ export default function Filters() {
     </div>
   )
 }
+>>>>>>> 942c9c9a42b0e1b2352890ea6ddf56812ad2dbea
