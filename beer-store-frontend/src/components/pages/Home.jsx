@@ -39,11 +39,11 @@ const Home = () => {
  // console.log(brandsSearch[0].img.url);
 
  const [currentPage, setCurrentPage] = useState(1) //lo seteo en 1 porque siempre arranco por la primer pagina
-  const brandsPerPage = 6//cantidad de juegos que debe haber por pagina
-  const indexOfLastGame = currentPage * brandsPerPage // 1 * 6 = 6
-  const indexOfFirstGame= indexOfLastGame - brandsPerPage // 6 - 6 = 0
-  //const currentGames = displayVideogames.slice(indexOfFirstGame, indexOfLastGame) //para dividir la cantidad de juegos por pagina
-  const currentBrands = Array.isArray(renderBrands) ? renderBrands.slice(indexOfFirstGame, indexOfLastGame) : [];
+  const brandsPerPage = 8//cantidad de Brand que debe haber por pagina
+  const indexOfLastBrand = currentPage * brandsPerPage // 1 * 6 = 6
+  const indexOfFirstBrand= indexOfLastBrand - brandsPerPage // 6 - 6 = 0
+  //const currentBrand = displayBrand.slice(indexOfFirstBrand, indexOfLastBrand) //para dividir la cantidad de Brands por pagina
+  const currentBrands = Array.isArray(renderBrands) ? renderBrands.slice(indexOfFirstBrand, indexOfLastBrand) : [];
 
   const paginado = (pageNumber) => { //establece el numero de pagina
     setCurrentPage(pageNumber)

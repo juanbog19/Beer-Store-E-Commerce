@@ -12,17 +12,17 @@ const BrandCard = ( props ) => {
   const { id, name, img, description } = props.data;
   return (
     <>
-      <div className="bg-white border shadow-xl py-10 px-3 text-center font-semibold w-80">
+      <div className="px-5 py-10 font-semibold text-center bg-white border shadow-xl w-80">
         {/* <div className={ `w-32 h-32 ${ img } shadow-xl rounded-full mb-3 mx-auto` }></div> */}
         <img
           src={img.url}
           alt={img.alternativeText}
-          className="w-32 h-32 shadow-xl rounded-full mb-3 mx-auto"
+          className="w-32 h-32 mx-auto mb-3 rounded-full shadow-xl"
         />
-        <h1 className="text-lg text-gray-700 mt-3 mb-4">{name}</h1>
-        <p className="text-sm text-gray-400 mt-4 mb-8">{ description }</p>
+        <h1 className="mt-3 mb-4 text-lg text-gray-700 font-abril">{name}</h1>
+        <p className="mt-4 mb-8 text-sm text-gray-400 ">{ description }</p>
         <Link
-          className="bg-primary px-8 py-2 text-gray-100 hover:bg-secondary uppercase"
+          className="px-8 py-2 text-gray-100 uppercase bg-primary hover:bg-secondary font-abril"
           to={`/products/${id}`}
         >
           Visit
@@ -33,3 +33,4 @@ const BrandCard = ( props ) => {
 }
 
 export default BrandCard;
+
