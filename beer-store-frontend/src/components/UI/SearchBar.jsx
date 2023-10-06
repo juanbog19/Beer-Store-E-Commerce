@@ -19,14 +19,23 @@ const SearchBar = () => {
             setBrand('');           
         } 
     };
+
+    const handlerReset = () => {
+        
+        setBrand('');
+        dispatch(getBrands())
+    };
   
  
     return (
 			<div>
-				<input value={brand} onChange={handleInputChange} type='search' placeholder='Your favorite brand here' />
-				<button className='bg-primary px-8 py-2 text-gray-100 hover:bg-secondary' onClick={handleOnClick}>
+				<input value={brand} onChange={handleInputChange} type='search' placeholder='Your favorite brand here' className="px-8 py-2 border-black rounded-lg"/>
+				<button className='px-8 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handleOnClick}>
 					Search
 				</button>
+                <button className='px-8 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handlerReset}>
+                    Reset
+                </button>
 			</div>
 		);
 };
