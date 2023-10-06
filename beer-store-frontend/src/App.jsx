@@ -41,9 +41,9 @@ function App() {
 
   return (
     <>
-      <div className="bg-accent min-h-screen">
+      <div className="min-h-screen bg-accent">
         <NavBar></NavBar>
-        <Layout>6
+        <Layout>
       <Routes>
             <Route path="/" element={ <Landing/> } />
             <Route path="/home" element={ <Home/> } /> 
