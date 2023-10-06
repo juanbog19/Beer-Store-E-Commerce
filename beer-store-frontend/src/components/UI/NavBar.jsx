@@ -12,7 +12,7 @@ import SearchBar from "./SearchBar";
 
 const NavBar = () => {
 
-  // const location = useLocation();
+  const location = useLocation();
 
   // const dispatch = useDispatch();
   const isLoggedin = useSelector( ( state ) => state.auth.loggedin );
@@ -37,8 +37,18 @@ const NavBar = () => {
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-              Home
+              {location.pathname !== "/home" && "Landing" }
             </NavLink>
+            
+            <NavLink
+              to="/home" 
+              className={({ isActive }) =>
+                isActive ? "btn-primary-active" : "btn-primary"
+              }
+            >
+            {location.pathname !== "/" && "Home"}
+            </NavLink> 
+            
             <NavLink
               to="/about"
               className={({ isActive }) =>
