@@ -1,33 +1,97 @@
 import { useEffect, useState } from "react";
-import { filterBeer, getBeers } from "../../store/beersSliceR";
+import { getBeers } from "../../store/beersSliceR";
 import { useDispatch, useSelector } from "react-redux";
+import { getBrands } from "../../store/searchSlice";
 
 export default function Filters() {
   const dispatch = useDispatch();
+  
   const beers = useSelector((state)=> state.beers)
-  const [beer, setBeer] = useState();
+  const brandsSearch = useSelector((state)=>state.brandsSearch);
+
+  const [inputType, setInputType] = useState();
+  const [inputPrice, setInputPrice]= useState();
+
+  const [brand, setBrand] = useState();
+  const [inputAbc, setInputAbc] = useState();
 
 useEffect(()=>{
+  dispatch(getBrands())
   dispatch(getBeers())
 },[dispatch])
 
+
 const handleChangeBeer = (event)=>{
-    dispatch(filterBeer(event.target.value));
-    setBeer(!beer);
+    dispatch(getBeers(event.target.value));
+    setInputType(!inputType);
   }
+
+const handleChangePrice = (event)=>{
+  dispatch(getBeers(event.target.value));
+  setInputPrice(!inputPrice);
+}  
+
+const handleChangeBrands = (event)=>{
+  dispatch(getBrands(event.target.value));
+  setBrand(!brand);
+}  
+
+const handleChangeABC =(event)=>{
+  event.preventDefault();
+  dispatch(filterABC(event.target.value))
+  setInputAbc(!inputAbc);
+}
     
   return (
     <div>
+      <div>
       <legend>Filter by Beer´s type</legend>
         <select onChange={(event)=>handleChangeBeer(event)} defaultValue='default' >
           <option value='default' disabled>Filter By Type</option>
             {beers &&
-            beers?.map((beer)=>(
-                <option key={beer.id} value={beer.name}>
-                    {beer.name}
+            beers?.map((typ)=>(
+                <option key={typ.id} value={typ.type}>
+                    {typ.type}
                 </option>
             ))}
+        </select>        
+        </div>
+
+        <div>
+          <legend>Filter By Beer´s price</legend>
+          <select onChange={(event)=>handleChangePrice(event)} defaultValue='default'>
+            <option>Filter By Price</option>
+            {beers &&
+            beers?.map((pric)=>(
+              <option key={pric.id} value={pric.price}>
+                {pric.price}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <legend>Filter By Beer´s brands</legend>
+        <select onChange={(event)=>handleChangeBrands(event)} defaultValue='default'>
+          <option value='default'>Filter By Brand</option>
+          {brandsSearch &&
+          brandsSearch?.map((brand)=>(
+            <option key={brand.id} value={brand.name}>
+              {brand.name}
+            </option>
+          ))}          
         </select>
+        </div> 
+
+        <div>
+          <legend>Filetr By Beer´s Order Alphabetic</legend>
+          <select onChange={(event)=>handleChangeABC(event)}>
+            <option value='default'> Filter by Order Alphabetic</option>
+            <option value='A-Z'>A-Z</option>
+            <option value='Z.A'>Z-A</option>
+          </select>
+        </div>
+
     </div>
   )
 }
@@ -36,52 +100,6 @@ const handleChangeBeer = (event)=>{
 
 
 
-
-
-
-
-
-// import { useEffect, useState } from 'react';
-// import {useDispatch, useSelector} from 'react-redux';
-// import { getBrands } from '../../store/brandsSliceR';
-// import { brandsFilter } from '../../store/filterBrandsSliceR';
-
-// export default function Filters() {
-// const dispatch = useDispatch();
-
-// const [input, setInput] =useState('');
-
-// const brands = useSelector((state)=> state.brands.brands);
-
-// useEffect(()=>{
-//     dispatch(getBrands());
-// },[dispatch])
-
-// const handleBrandsFilter = (evento)=>{
-//     const selectedValue = evento.target.value;
-//     setInput(selectedValue);
-//     if(evento.target.value === 'default'){
-//         dispatch(getBrands());
-//     }else{
-//         dispatch(brandsFilter(selectedValue));
-//     }}
-    
-//   return (
-//     <div>
-//         <select onChange={handleBrandsFilter} value={input} >
-//             <option value='default'>Filter By Brand</option>
-//             {brands?.map((brand)=>(
-//                 <option key={brand.id} value={brand.name}>
-//                     {brand.name}
-//                 </option>
-//             ))}
-//         </select>
-//     </div>
-//   )
-// }
-//filterrr como estaba antes
-
-<<<<<<< HEAD
 // export default function Filters() {
 //       return (
 //     <div>      
@@ -103,11 +121,11 @@ const handleChangeBeer = (event)=>{
 //     </div>
 //   )
 // }
-=======
+//=======
 
-export default function Filters() {
-      return (
-    <div>      
+//export default function Filters() {
+    //   return (
+    // <div>      
         {/* <div>
         <select>
             <option disabled>Filter By Brands</option>
@@ -143,7 +161,7 @@ export default function Filters() {
             <option value="HIBRIDA">HIBRIDA</option>  
         </select>
     </div> */}
-    </div>
-  )
-}
->>>>>>> 942c9c9a42b0e1b2352890ea6ddf56812ad2dbea
+//     </div>
+//   )
+// }
+// >>>>>>> 942c9c9a42b0e1b2352890ea6ddf56812ad2dbea
