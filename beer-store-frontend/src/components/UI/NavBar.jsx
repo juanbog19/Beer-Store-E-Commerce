@@ -57,6 +57,13 @@ const NavBar = () => {
             >
               About
             </NavLink>
+            <NavLink
+              to="/about/us"
+              className={({ isActive }) =>
+                isActive ? "btn-primary-active" : "btn-primary"
+              }>
+              Team
+            </NavLink>
           </div>
           <div className="flex-grow mx-2 text-2xl font-semibold"> E-Beer-Store </div>
           <div className="flex">
