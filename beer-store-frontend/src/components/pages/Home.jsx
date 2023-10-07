@@ -116,7 +116,7 @@ useEffect(() => {
         ))
         }
         
-        {currentBrands.length <= 0 && <p>No beer data disponible</p>}
+        {currentBrands.length <= 0 && <p>No beer data available</p>}
       </div>
 
       <div>

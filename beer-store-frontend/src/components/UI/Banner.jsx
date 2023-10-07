@@ -20,7 +20,7 @@ const Banner = ({data}) => {
   
   useEffect(() => {
     if (data) {
-      const interval = setInterval(nextSlide, 5000);
+      const interval = setInterval(nextSlide, 5000);   //tiempo entre anuncios
 
       return () => {
         clearInterval(interval);

@@ -22,6 +22,7 @@ function Landing() {
       {!mostrarBanner && (
         <div className="age-verification">
           <h2>Verificación de Edad</h2>
+          <p>En The Beer Store Fomentamos el consumo responsable</p>
           <p>Por favor, confirma que eres mayor de edad para ingresar.</p>
           <input
             type="number"
