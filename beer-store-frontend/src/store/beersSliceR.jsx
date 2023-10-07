@@ -68,10 +68,7 @@ const initialState = {
 const beersSlice = createSlice({
   name: "beers",
   initialState,
-  reducers: {
-    filterPrice(state, action){}},
-
-  },
+  reducers: {},
   extraReducers:(builder) => {
     builder
       .addCase(getBeers.pending, (state) => {

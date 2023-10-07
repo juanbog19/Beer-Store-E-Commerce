@@ -5,7 +5,6 @@ import { getBrands } from "../../store/searchSlice";
 
 export default function Filters() {
   const dispatch = useDispatch();
-  
   const beers = useSelector((state)=> state.beers)
   const brandsSearch = useSelector((state)=>state.brandsSearch);
 
@@ -13,7 +12,7 @@ export default function Filters() {
   const [inputPrice, setInputPrice]= useState();
 
   const [brand, setBrand] = useState();
-  const [inputAbc, setInputAbc] = useState();
+ // const [inputAbc, setInputAbc] = useState();
 
 useEffect(()=>{
   dispatch(getBrands())
@@ -36,11 +35,11 @@ const handleChangeBrands = (event)=>{
   setBrand(!brand);
 }  
 
-const handleChangeABC =(event)=>{
-  event.preventDefault();
-  dispatch(filterABC(event.target.value))
-  setInputAbc(!inputAbc);
-}
+// const handleChangeABC =(event)=>{
+//   event.preventDefault();
+//   dispatch(filterAB(event.target.value))
+//   setInputAbc(!inputAbc);
+// }
     
   return (
     <div>
@@ -83,14 +82,14 @@ const handleChangeABC =(event)=>{
         </select>
         </div> 
 
-        <div>
+        {/* <div>
           <legend>Filetr By Beer´s Order Alphabetic</legend>
           <select onChange={(event)=>handleChangeABC(event)}>
             <option value='default'> Filter by Order Alphabetic</option>
             <option value='A-Z'>A-Z</option>
             <option value='Z.A'>Z-A</option>
           </select>
-        </div>
+        </div> */}
 
     </div>
   )
