@@ -15,6 +15,7 @@ import { login } from "../../store/authSlice";
 import Input from "../UI/Input";
 import Spinner from "../svg/Spinner";
 import Button from "../UI/Button";
+import { GoogleLogin } from 'react-google-login';
 
 const Login = () => {
   const loading = useSelector((state) => state.auth.loading);
@@ -28,6 +29,8 @@ const Login = () => {
   const [errorMessagePassword, setMessageErrorPassword] = useState(null);
 
   const [errorLogin, setErrorLogin] = useState(false);
+
+  const [email, setEmail] = useState("");
 
   const classUsername = errorUsername ? "border-error" : "";
   const classPassword = errorPassword ? "border-error" : "";
@@ -83,6 +86,15 @@ const Login = () => {
     );
   }
 
+  const googleResponse = async (response) => {
+    //console.trace("googleResponse se llamó desde aquí:");
+    //console.log(response)
+    const profile = response.profileObj
+    setEmail(profile.email)
+  }
+
+  console.log(email)
+
   return (
     <>
       <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">Login</h1>
@@ -118,6 +130,15 @@ const Login = () => {
           )}
           <Button type="submit" label="Send" full />
         </form>
+          <div className="flex items-center justify-center mt-4">
+            <GoogleLogin
+              clientId="976149304153-pq3kqlvrqrc5mfpfsmlg9uvmd58q7poa.apps.googleusercontent.com"
+              buttonText="Continuar con Google"
+              onSuccess={googleResponse}
+              onFailure={googleResponse}
+              cookiePolicy={'single_host_origin'}
+            />
+          </div>
       </div>
     </>
   );
