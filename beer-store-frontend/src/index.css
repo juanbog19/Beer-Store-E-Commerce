@@ -1,11 +1,18 @@
 /* 
-El siguiente código está escrito en Tailwind CSS, que es un framework de CSS de utilidades. Las directivas "@tailwind" se utilizan para importar los estilos base, componentes y utilidades. La directiva "@layer" se utiliza para organizar los estilos en diferentes capas. La capa "base" contiene estilos para el cuerpo y párrafos, mientras que la capa "components" contiene estilos para botones primarios y su estado activo. La directiva "@apply" se utiliza para aplicar múltiples clases de utilidad a un solo elemento. Los estilos están escritos de manera concisa y eficiente, lo que facilita la creación y mantenimiento de un sistema de diseño consistente.
+El siguiente código está escrito en Tailwind CSS, que es un framework de utilidades CSS.
+ Las directivas "@tailwind" se utilizan para importar los estilos base, componentes y utilidades.
+  La directiva "@layer" se utiliza para organizar los estilos en diferentes capas. 
+  La capa "base" contiene estilos para el cuerpo y párrafos, mientras que la capa "components" 
+  contiene estilos para botones primarios y su estado activo. La directiva "@apply" se utiliza 
+  para aplicar múltiples clases de utilidad a un solo elemento. Los estilos están 
+  escritos de manera concisa y eficiente, lo que facilita la creación y mantenimiento de
+   un sistema de diseño consistente.
 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+@layer base {   
   body{
     @apply bg-accent;
   }

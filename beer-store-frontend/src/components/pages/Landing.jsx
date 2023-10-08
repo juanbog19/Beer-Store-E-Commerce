@@ -16,8 +16,8 @@ function Landing() {
   return (
     <div className="landing-page">
       <img
-        src="https://www.peakpx.com/es/hd-wallpaper-desktop-gzjmy"
-        alt=""
+        src=""
+        alt="Could not load IMAGE"
       />
       {!mostrarBanner && (
         <div className="age-verification">
