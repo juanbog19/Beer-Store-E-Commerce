@@ -18,7 +18,7 @@ import Input from '../UI/Input';
 import HolyBeer from '../svg/HolyBeer';
 import Spinner from '../svg/Spinner';
 import Button from '../UI/Button';
-import { GoogleLogin } from 'react-google-login';
+//import { GoogleLogin } from 'react-google-login';
 
 
 const SignUp = () => {
@@ -75,8 +75,8 @@ const SignUp = () => {
 
   return (
     <>
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">Sign Up</h1>
-      <div className="max-w-4xl mx-auto grid grid-cols-6 gap-2 bg-white">
+      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">Sign Up</h1>
+      <div className="grid max-w-4xl grid-cols-6 gap-2 mx-auto bg-white">
         <div className="col-span-3 p-10">
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input
@@ -120,7 +120,7 @@ const SignUp = () => {
               errors={errors.confirmPassword ? errors.confirmPassword.message : null}
             />
             {errorRegister && (
-              <div className="bg-red-200 p-2 mb-2">{errorRegister}</div>
+              <div className="p-2 mb-2 bg-red-200">{errorRegister}</div>
             )}
             <Button type="submit" label="Send" full />
           </form>
@@ -134,7 +134,7 @@ const SignUp = () => {
             />
           </div>
         </div>
-        <div className="col-span-3 grid content-center justify-items-center">
+        <div className="grid content-center col-span-3 justify-items-center">
           <div className="w-56 h-56">
             <HolyBeer />
           </div>

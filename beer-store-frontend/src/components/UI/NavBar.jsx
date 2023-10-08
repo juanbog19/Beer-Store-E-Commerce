@@ -58,7 +58,7 @@ const NavBar = () => {
               About
             </NavLink>
             <NavLink
-              to="/about/u"
+              to="/about/us"
               className={({ isActive }) =>
                 isActive ? "btn-primary-active" : "btn-primary"
               }>
