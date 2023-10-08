@@ -18,6 +18,7 @@ import Input from '../UI/Input';
 import HolyBeer from '../svg/HolyBeer';
 import Spinner from '../svg/Spinner';
 import Button from '../UI/Button';
+import { GoogleLogin } from 'react-google-login';
 
 
 const SignUp = () => {
@@ -27,7 +28,8 @@ const SignUp = () => {
 
   const loading = useSelector( ( state ) => state.auth.loading );
   const [ errorRegister, setErrorRegister ] = useState( null );
-
+  const [email, setEmail] = useState("");
+  const clientId = "976149304153-pq3kqlvrqrc5mfpfsmlg9uvmd58q7poa.apps.googleusercontent.com";
   const { register, handleSubmit, formState:{ errors }, watch } = useForm();
 
   const _password = useRef({});
@@ -67,10 +69,20 @@ const SignUp = () => {
     );
   }
 
+  const googleResponse = async (response) => {
+    const profile = response.profileObj;
+    setEmail(profile.email);
+
+    console.log(response)
+  };
+  const onGoogleLoginFailure = (error) => {
+    console.error("ERROR AL REGISTRASE CON GOOGLE: ", error);
+  };
+
   return (
     <>
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">Sign Up</h1>
-      <div className="max-w-4xl mx-auto grid grid-cols-6 gap-2 bg-white">
+      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">Sign Up</h1>
+      <div className="grid max-w-4xl grid-cols-6 gap-2 mx-auto bg-white">
         <div className="col-span-3 p-10">
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input
@@ -114,12 +126,21 @@ const SignUp = () => {
               errors={errors.confirmPassword ? errors.confirmPassword.message : null}
             />
             {errorRegister && (
-              <div className="bg-red-200 p-2 mb-2">{errorRegister}</div>
+              <div className="p-2 mb-2 bg-red-200">{errorRegister}</div>
             )}
             <Button type="submit" label="Send" full />
           </form>
+          <div className="flex items-center justify-center mt-4">
+            <GoogleLogin
+              clientId={clientId}
+              buttonText="Registrarse con Google"
+              onSuccess={googleResponse}
+              onFailure={onGoogleLoginFailure}
+              cookiePolicy={'single_host_origin'}
+            />
+          </div>
         </div>
-        <div className="col-span-3 grid content-center justify-items-center">
+        <div className="grid content-center col-span-3 justify-items-center">
           <div className="w-56 h-56">
             <HolyBeer />
           </div>

@@ -23,7 +23,7 @@ import Layout from "./components/UI/Layout"
 import NavBar from "./components/UI/NavBar";
 
 // Pages
-import Landing from "./components/pages/Landing"
+import Landing from "./components/pages/Landing"   //Landing pendiente por renderizar @juan1ennon
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Login from "./components/pages/Login";
@@ -33,6 +33,7 @@ import Products from "./components/pages/Products";
 import Checkout from "./components/pages/Checkout";
 import Orders from "./components/pages/Orders";
 import Detail from "./components/pages/Detail";
+import AboutUs from "./components/pages/AboutUs";
 
 
 function App() {
@@ -41,19 +42,21 @@ function App() {
 
   return (
     <>
-      <div className="bg-accent min-h-screen">
+      <div className="min-h-screen bg-accent">
         <NavBar></NavBar>
         <Layout>
       <Routes>
-            <Route path="/" element={ <Home/> } />
-            <Route path="/about" element={ <About/> } />
+            <Route path="/" element={ <Landing /> } />
+            <Route path="/home" element={ <Home /> } /> 
+            <Route path="/about" element={ <About /> } />
             { !isLoggedin && <Route path="/login" element={ <Login/> } />}
             { !isLoggedin && <Route path="/signup" element={ <SignUp/> } />}
             <Route path="/products/:id" element={ <Products /> } />
             <Route path="/beers/:id" element={ <Detail /> } />
-            <Route path="/checkout" element={ <Checkout/> } />
+            <Route path="/checkout" element={ <Checkout /> } />
             { isLoggedin && <Route path="/orders" element={ <Orders /> } />}
             <Route path="*" element={ <Navigate to='/' /> } />
+            <Route path="/about/us" element={ <AboutUs /> } />
           </Routes>
         </Layout>
       </div>

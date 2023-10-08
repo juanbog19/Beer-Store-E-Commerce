@@ -36,14 +36,14 @@ const ProductItem = ( props ) => {
   }
 
   return (
-    <li className="flex justify-between border-b border-secondary my-2">
+    <li className="flex justify-between my-2 border-b border-secondary">
       <div className="flex">
         {/* <div className={ `w-14 h-14 rounded-full shadow-lg ${ img }` }></div> */}
-        <img src={ img.url } alt={ `logo of the beer ${ name }` } className="w-14 h-14 rounded-full shadow-lg" />
+        <img src={ img.url } alt={ `logo of the beer ${ name }` } className="rounded-full shadow-lg w-14 h-14" />
         <div className="ml-2">
           <h3 className="text-xl font-bold">{name}</h3>
           <div className="font-light">{description}</div>
-          <p className="font-semibold text-lg text-primary">$ {price}</p>
+          <p className="text-lg font-semibold text-primary">$ {price}</p>
         </div>
       </div>
 
@@ -51,13 +51,13 @@ const ProductItem = ( props ) => {
         <form className="text-right" onSubmit={addNewItem} noValidate>
           <div className="mb-2">
             <label
-              className="block uppercase text-gray-500 text-xs font-bold mb-2 tracking-wide"
+              className="block mb-2 text-xs font-bold tracking-wide text-gray-500 uppercase"
               htmlFor="amopunt"
             >
               Amount
             </label>
             <input
-              className="w-12 border border-gray-500 pl-1"
+              className="w-12 pl-1 border border-gray-500"
               type="number"
               id="amount"
               max={6}
@@ -67,17 +67,17 @@ const ProductItem = ( props ) => {
             />
           </div>
           <Link
-              className="bg-primary px-1 py-1 mr-2 text-gray-100 hover:bg-secondary"
+              className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
               to={`/beers/${id}`} // Usar brand.id para construir la ruta
             >
               Detail
             </Link>
 
-          <button className="bg-primary px-2 py-1 text-gray-100 hover:bg-secondary">
+          <button className="px-2 py-1 text-gray-100 bg-primary hover:bg-secondary">
             add
           </button>
           {!amountIsValid && (
-            <p className="text-red-800 text-sm mt-2">Please enter a value 1-6</p>
+            <p className="mt-2 text-sm text-red-800">Please enter a value 1-6</p>
           )}
         </form>
       </div>

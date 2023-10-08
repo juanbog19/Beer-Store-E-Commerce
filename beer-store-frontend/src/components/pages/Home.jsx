@@ -10,15 +10,16 @@ Si no hay errores ni carga en curso, se muestra una lista de tarjetas de marca u
 En general, este componente se utiliza para mostrar una lista de marcas de cerveza obtenidas de una API y manejar los estados de carga y error.
 */
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import axios from "axios";
 import axiosURL from "../../tools/axiosInstance";
 import BrandCard from "./../UI/BrandCard";
 import Spinner from './../svg/Spinner';
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
+import Paginated from "../UI/Paginated";
 //import Filters from "../UI/filters";
 import Banner from "../UI/Banner";
 import { getBanner } from '../../store/bannerSlice';
@@ -27,17 +28,35 @@ import { getBanner } from '../../store/bannerSlice';
 const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [hasError, setHasError] = useState(false); 
+  const [hasError, setHasError] = useState(false);   
 
   const dispatch = useDispatch();
   const { data } = useSelector(state=>state.banner.banner);
+  const { brandsSearch } = useSelector(state=>state.brandsSearch)
+  const renderBrands = brandsSearch.length > 0 ? brandsSearch : brands;
+
+  //console.log(brands.map((b)=>b.img.url));
+ // console.log(brandsSearch[0].img.url);
+
+ const [currentPage, setCurrentPage] = useState(1) //lo seteo en 1 porque siempre arranco por la primer pagina
+  const brandsPerPage = 8//cantidad de Brand que debe haber por pagina
+  const indexOfLastBrand = currentPage * brandsPerPage // 1 * 6 = 6
+  const indexOfFirstBrand= indexOfLastBrand - brandsPerPage // 6 - 6 = 0
+  //const currentBrand = displayBrand.slice(indexOfFirstBrand, indexOfLastBrand) //para dividir la cantidad de Brands opor pagina
+  const currentBrands = Array.isArray(renderBrands) ? renderBrands.slice(indexOfFirstBrand, indexOfLastBrand) : [];
+
+  const paginado = (pageNumber) => { //establece el numero de pagina
+    setCurrentPage(pageNumber)
+}
+
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, [currentPage])
   
   useEffect(()=>{
     dispatch(getBanner())    
   },[])
-
- //console.log('log de brands',brands);
-
+ 
   useEffect(() => {
     // let isCancelled = false;
     const controller = new AbortController();
@@ -85,28 +104,29 @@ const Home = () => {
     );
   }
 
-  
- 
-
   return (
     <>
     <div>
-      
       <div>
-        <Banner></Banner>
-      </div>
-      <div>
-      <Filters/>
+      {/* <Filters/> */}
       </div>
        <div className="flex flex-wrap justify-around">
-        {brands.map((brand) => (
+        {currentBrands.map((brand) => (
           <BrandCard key={brand.id} data={brand} />
-        ))}
-        {brands.length <= 0 && <p>No beer data disponible</p>}
+        ))
+        }
+        
+        {currentBrands.length <= 0 && <p>No beer data available</p>}
       </div>
+
+      <div>
+        <Paginated brandsPerPage={brandsPerPage} allBrands={renderBrands.length} paginado={paginado}/>
+      </div>
+
       <div>
         <Banner data={data}/>
       </div>
+      <Footer />
       </div>
     </>
   )

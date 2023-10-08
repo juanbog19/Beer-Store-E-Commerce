@@ -5,8 +5,6 @@ import axiosURL from "../../tools/axiosInstance";
 
 const Banner = ({data}) => {  
 
-
-
  //console.log('log de banner',data);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,8 +17,8 @@ const Banner = ({data}) => {
 
   
   useEffect(() => {
-    if (data.length > 0) {
-      const interval = setInterval(nextSlide, 5000);
+    if (data) {
+      const interval = setInterval(nextSlide, 5000);   //tiempo entre anuncios
 
       return () => {
         clearInterval(interval);
@@ -28,7 +26,7 @@ const Banner = ({data}) => {
     }
   }, [currentIndex, data]);
 
-  if (data.length === 0) {
+  if (!data) {
     
     return <div>No hay banners disponibles.</div>;
   }
