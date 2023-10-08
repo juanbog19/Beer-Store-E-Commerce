@@ -42,7 +42,7 @@ const Home = () => {
   const brandsPerPage = 8//cantidad de Brand que debe haber por pagina
   const indexOfLastBrand = currentPage * brandsPerPage // 1 * 6 = 6
   const indexOfFirstBrand= indexOfLastBrand - brandsPerPage // 6 - 6 = 0
-  //const currentBrand = displayBrand.slice(indexOfFirstBrand, indexOfLastBrand) //para dividir la cantidad de Brands por pagina
+  //const currentBrand = displayBrand.slice(indexOfFirstBrand, indexOfLastBrand) //para dividir la cantidad de Brands opor pagina
   const currentBrands = Array.isArray(renderBrands) ? renderBrands.slice(indexOfFirstBrand, indexOfLastBrand) : [];
 
   const paginado = (pageNumber) => { //establece el numero de pagina

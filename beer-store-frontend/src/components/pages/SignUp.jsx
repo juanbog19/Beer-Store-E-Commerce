@@ -18,6 +18,7 @@ import Input from '../UI/Input';
 import HolyBeer from '../svg/HolyBeer';
 import Spinner from '../svg/Spinner';
 import Button from '../UI/Button';
+import { GoogleLogin } from 'react-google-login';
 
 
 const SignUp = () => {
@@ -65,6 +66,11 @@ const SignUp = () => {
         <Spinner />
       </div>
     );
+  }
+
+  const googleResponse = (response) => {
+    console.trace("googleResponse se llamó desde aquí:");
+    console.log(response)
   }
 
   return (
@@ -118,6 +124,15 @@ const SignUp = () => {
             )}
             <Button type="submit" label="Send" full />
           </form>
+          <div className="flex items-center justify-center mt-4">
+            <GoogleLogin
+              clientId="976149304153-pq3kqlvrqrc5mfpfsmlg9uvmd58q7poa.apps.googleusercontent.com"
+              buttonText="Registrarse con Google"
+              onSuccess={googleResponse}
+              onFailure={googleResponse}
+              cookiePolicy={'single_host_origin'}
+            />
+          </div>
         </div>
         <div className="col-span-3 grid content-center justify-items-center">
           <div className="w-56 h-56">
