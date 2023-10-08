@@ -5,8 +5,6 @@ import axiosURL from "../../tools/axiosInstance";
 
 const Banner = ({data}) => {  
 
-
-
  //console.log('log de banner',data);
 
   const [currentIndex, setCurrentIndex] = useState(0);
