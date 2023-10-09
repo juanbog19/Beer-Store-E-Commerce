@@ -12,7 +12,7 @@ function Landing() {
         setMostrarBanner(false);
       }, 60);
     } else {
-      alert('Lamentablemente, debido a tu edad o ubicación, no podemos permitirte entrar en nuestro sitio en este momento');
+      alert('Por el momento, te permitiremos la entrada a nuestro sitio amiguit@, pero no podrás realizar compras');
     }
   };
 
