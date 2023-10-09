@@ -89,7 +89,7 @@ const handleChangeABC =(event)=>{
           <select onChange={(event)=>handleChangeABC(event)}>
             <option value='default'> Filter by Order Alphabetic</option>
             <option value='A-Z'>A-Z</option>
-            <option value='Z.A'>Z-A</option>
+            <option value='Z-A'>Z-A</option>
           </select>
         </div>
 
