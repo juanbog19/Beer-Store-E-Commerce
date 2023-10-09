@@ -13,9 +13,10 @@ import SearchBar from "./SearchBar";
 const NavBar = () => {
 
   const location = useLocation();
+  const isProductPage = location.pathname.startsWith('/products') || location.pathname.startsWith('/beers')
 
   // const dispatch = useDispatch();
-  const isLoggedin = useSelector( ( state ) => state.auth.loggedin );
+  const isLoggedin = useSelector((state) => state.auth.loggedin);
   const btnLink =
     "block inline-block py-1 px-4 border border-black text-black hover:text-white hover:bg-primary hover:border-transparent cursor-pointer mr-4";
   const activeLink =
@@ -37,18 +38,18 @@ const NavBar = () => {
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-              {location.pathname !== "/home" && "Landing" }
+              {location.pathname !== "/home" && "Landing"}
             </NavLink>
-            
+
             <NavLink
-              to="/home" 
+              to="/home"
               className={({ isActive }) =>
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-            {location.pathname !== "/" && "Inicio"}
-            </NavLink> 
-            
+              {location.pathname !== "/" && "Inicio"}
+            </NavLink>
+
             <NavLink
               to="/about"
               className={({ isActive }) =>
