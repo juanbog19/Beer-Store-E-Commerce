@@ -31,7 +31,7 @@ const SearchBar = () => {
  
     return (
 			<div>
-				<input value={brand} onChange={handleInputChange} type='search' placeholder='Buscar...' className="px-8 py-2 border-black rounded-lg"/>
+				<input value={brand} onChange={handleInputChange} type='search' placeholder='Buscar...' className="px-12 py-2 border-black rounded-lg"/>
 				<button className='px-3 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handleOnClick}>
                 <Icons icon={faMagnifyingGlass} />
 				</button>

@@ -27,7 +27,7 @@ const NavBar = () => {
         <div className="flex items-center mr-5">
           {/* <Logo /> */}
           {/* <span className="mx-2 text-2xl font-semibold">Search Bar</span> */}
-          <SearchBar />
+          <div className="flex-grow mx-2 text-2xl font-semibold"> E-Beer-Store </div>
         </div>
         <div className="flex items-center grow">
           <div className="grow">
@@ -65,7 +65,8 @@ const NavBar = () => {
               Conócenos
             </NavLink>
           </div>
-          <div className="flex-grow mx-2 text-2xl font-semibold"> E-Beer-Store </div>
+        </div>
+          <div className="mx-10"><SearchBar /></div>
           <div className="flex">
             {!isLoggedin && (
               <NavLink
@@ -88,7 +89,6 @@ const NavBar = () => {
             {isLoggedin && <CardUser />}
             <CartButton />
           </div>
-        </div>
       </nav>
     </header>
   );
