@@ -27,9 +27,9 @@ const NavBar = () => {
         <div className="flex items-center mr-5">
           {/* <Logo /> */}
           {/* <span className="mx-2 text-2xl font-semibold">Search Bar</span> */}
-          <SearchBar />
+          <div className="flex-grow mx-2 text-2xl font-semibold"> E-Beer-Store </div>
         </div>
-        <div className="flex items-center grow">
+        <div className="flex grow">
           <div className="grow">
             <NavLink
               to="/"
@@ -65,7 +65,9 @@ const NavBar = () => {
               Team
             </NavLink>
           </div>
-          <div className="flex-grow mx-2 text-2xl font-semibold"> E-Beer-Store </div>
+          <div className="mx-52">
+          <SearchBar />
+          </div>
           <div className="flex">
             {!isLoggedin && (
               <NavLink
