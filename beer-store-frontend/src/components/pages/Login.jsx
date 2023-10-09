@@ -15,6 +15,7 @@ import { login } from "../../store/authSlice";
 import Input from "../UI/Input";
 import Spinner from "../svg/Spinner";
 import Button from "../UI/Button";
+//import { GoogleLogin } from 'react-google-login';
 
 const Login = () => {
   const loading = useSelector((state) => state.auth.loading);
@@ -28,6 +29,8 @@ const Login = () => {
   const [errorMessagePassword, setMessageErrorPassword] = useState(null);
 
   const [errorLogin, setErrorLogin] = useState(false);
+
+  const [email, setEmail] = useState("");
 
   const classUsername = errorUsername ? "border-error" : "";
   const classPassword = errorPassword ? "border-error" : "";
@@ -83,10 +86,19 @@ const Login = () => {
     );
   }
 
+  const googleResponse = async (response) => {
+    //console.trace("googleResponse se llamó desde aquí:");
+    //console.log(response)
+    const profile = response.profileObj
+    setEmail(profile.email)
+  }
+
+  console.log(email)
+
   return (
     <>
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">Login</h1>
-      <div className="bg-white mx-auto w-4/12 p-10">
+      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">Login</h1>
+      <div className="w-4/12 p-10 mx-auto bg-white">
         <form onSubmit={userLogin}>
           <Input
             id="username"
@@ -114,10 +126,19 @@ const Login = () => {
             errors={errorMessagePassword}
           />
           {errorLogin && (
-            <div className="bg-red-200 p-2 mb-2">Wrong password or username</div>
+            <div className="p-2 mb-2 bg-red-200">Wrong password or username</div>
           )}
           <Button type="submit" label="Send" full />
         </form>
+          <div className="flex items-center justify-center mt-4">
+            <GoogleLogin
+              clientId="976149304153-pq3kqlvrqrc5mfpfsmlg9uvmd58q7poa.apps.googleusercontent.com"
+              buttonText="Continuar con Google"
+              onSuccess={googleResponse}
+              onFailure={googleResponse}
+              cookiePolicy={'single_host_origin'}
+            />
+          </div>
       </div>
     </>
   );

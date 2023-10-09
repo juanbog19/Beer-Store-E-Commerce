@@ -8,22 +8,25 @@ function Landing() {
   const verificarEdad = () => {
     if (edad >= 18) {
       setMostrarBanner(true);
+      setTimeout(()=>{
+        setMostrarBanner(false);
+      }, 60);
     } else {
-      alert('Debes ser mayor de edad para ingresar.');
+      alert('Por el momento, te permitiremos la entrada a nuestro sitio amiguit@, pero no podrás realizar compras');
     }
   };
 
   return (
-    <div className="landing-page">
-      <img
-        src="https://www.peakpx.com/es/hd-wallpaper-desktop-gzjmy"
-        alt=""
-      />
+    <div className="bg-cover bg-center h-screen"
+    style={{
+      backgroundImage: 'url(https://as1.ftcdn.net/v2/jpg/06/26/00/50/1000_F_626005031_5Jrwm0kSt3U9lyrZNuBXBD96OAAeEUfH.jpg)',
+    }}
+      >
       {!mostrarBanner && (
-        <div className="age-verification">
-          <h2>Verificación de Edad</h2>
-          <p>En The Beer Store Fomentamos el consumo responsable</p>
-          <p>Por favor, confirma que eres mayor de edad para ingresar.</p>
+        <div className="age-verification text-center">
+          <h2 className="text-3xl font-semibold text-yellow-500">Verificación de Edad</h2>
+          <p className="flex items-center justify-center p-3 space-x-3 border-t-2 text-yellow-500">En The Beer Store Fomentamos el consumo responsable</p>
+          <p className="mt-2 font-serif text-lg italic items-center font-light text-yellow-600">Por favor, confirma que eres mayor de edad para ingresar.</p>
           <input
             type="number"
             placeholder="Ingresa tu edad"
@@ -31,7 +34,9 @@ function Landing() {
             onChange={(e) => setEdad(e.target.value)}
           />
           <NavLink to="/home">
-          <button onClick={verificarEdad}>Verificar</button>
+          <button onClick={verificarEdad}
+          className="mt-3 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full border border-gray-300 hover:border-gray-400"
+          >Verificar</button>
           </NavLink>
         </div>
       )}
