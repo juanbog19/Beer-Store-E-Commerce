@@ -97,8 +97,8 @@ const Login = () => {
 
   return (
     <>
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">Login</h1>
-      <div className="bg-white mx-auto w-4/12 p-10">
+      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">Login</h1>
+      <div className="w-4/12 p-10 mx-auto bg-white">
         <form onSubmit={userLogin}>
           <Input
             id="username"
@@ -126,7 +126,7 @@ const Login = () => {
             errors={errorMessagePassword}
           />
           {errorLogin && (
-            <div className="bg-red-200 p-2 mb-2">Wrong password or username</div>
+            <div className="p-2 mb-2 bg-red-200">Wrong password or username</div>
           )}
           <Button type="submit" label="Send" full />
         </form>
