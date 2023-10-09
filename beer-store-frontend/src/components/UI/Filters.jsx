@@ -33,8 +33,9 @@ const handleChangePrice = (event)=>{
 }  
 
 const handleChangeBrands = (event)=>{
-  dispatch(getBrands(event.target.value));
-  setBrand(!brand);
+  setBrand(event.target.value);
+  dispatch(getBrands(brand));
+  // setBrand(!brand);
 }  
 
 const handleChangeABC =(event)=>{
@@ -46,9 +47,9 @@ const handleChangeABC =(event)=>{
   return (
     <div>
       <div>
-      <legend>Filter by Beer´s type</legend>
+      <legend>Tipos de cerveza</legend>
         <select onChange={(event)=>handleChangeBeer(event)} defaultValue='default' >
-          <option value='default' disabled>Filter By Type</option>
+          <option value='default' disabled>Filtrar por tipo</option>
             {beersSearch &&
             beersSearch?.map((typ)=>(
                 <option key={typ.id} value={typ.type}>
@@ -59,9 +60,9 @@ const handleChangeABC =(event)=>{
         </div>
 
         <div>
-          <legend>Filter By Beer´s price</legend>
+          <legend>Precios</legend>
           <select onChange={(event)=>handleChangePrice(event)} defaultValue='default'>
-            <option>Filter By Price</option>
+            <option>Filtrar por precio</option>
             {beersSearch &&
             beersSearch?.map((pric)=>(
               <option key={pric.id} value={pric.price}>
@@ -72,9 +73,9 @@ const handleChangeABC =(event)=>{
         </div>
 
         <div>
-          <legend>Filter By Beer´s brands</legend>
+          <legend>Marcas</legend>
         <select onChange={(event)=>handleChangeBrands(event)} defaultValue='default'>
-          <option value='default'>Filter By Brand</option>
+          <option value='default'>Filtrar por marca</option>
           {brandsSearch &&
           brandsSearch?.map((brand)=>(
             <option key={brand.id} value={brand.name}>
@@ -85,9 +86,9 @@ const handleChangeABC =(event)=>{
         </div> 
 
         <div>
-          <legend>Filetr By Beer´s Order Alphabetic</legend>
+          <legend>Marcas en orden alfabetico</legend>
           <select onChange={(event)=>handleChangeABC(event)}>
-            <option value='default'> Filter by Order Alphabetic</option>
+            <option value='default'> Filtrar en orden alfabetico</option>
             <option value='A-Z'>A-Z</option>
             <option value='Z-A'>Z-A</option>
           </select>

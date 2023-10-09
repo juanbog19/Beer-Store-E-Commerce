@@ -4,9 +4,9 @@ export default function FiltersHome() {
     return (
   <div>      
       <div>
-        <legend>Filter By Brands</legend>
+        <legend>Marcas</legend>
       <select>
-          <option disabled>Filter By Brands</option>
+          <option disabled>Filtrar por marca</option>
           <option value="Antares">Antares</option>
           <option value="Patagonia">Patagonia</option>
           <option value="Corona">Corona</option>
@@ -16,14 +16,14 @@ export default function FiltersHome() {
       </div>
 
       <div>
-        <legend> Filter by Order Alphabetic</legend>
+        <legend> Marcas en orden alfabetico</legend>
       <select>
-          <option disabled>Order by Alphabetic</option>
+          <option disabled>Filtrar por orden alfabetico</option>
           <option value="A-Z">A-Z</option>
           <option value="Z-A">Z-A</option>
       </select>
       </div>
-      
+
   </div>
 )
 }
