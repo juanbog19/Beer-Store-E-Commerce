@@ -15,7 +15,7 @@ import { login } from "../../store/authSlice";
 import Input from "../UI/Input";
 import Spinner from "../svg/Spinner";
 import Button from "../UI/Button";
-import { GoogleLogin } from 'react-google-login';
+//import { GoogleLogin } from 'react-google-login';
 
 const Login = () => {
   const loading = useSelector((state) => state.auth.loading);

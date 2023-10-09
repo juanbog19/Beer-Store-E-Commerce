@@ -9,14 +9,14 @@ function Landing() {
     if (edad >= 18) {
       setMostrarBanner(true);
     } else {
-      alert('Debes ser mayor de edad para ingresar.');
+      alert('Lamentablemente, debido a tu edad o ubicación, no podemos permitirte entrar en nuestro sitio en este momento');
     }
   };
 
   return (
     <div className="landing-page">
       <img
-        src=""
+        src="https%3A%2F%2Fwww.photowall.co.uk%2Fbeer-wallpaper&psig=AOvVaw3KUH7GTWn2IDJUYnaMdTQf&ust=1696920793087000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCLiYjdqw6IEDFQAAAAAdAAAAABAE"
         alt="Could not load IMAGE"
       />
       {!mostrarBanner && (

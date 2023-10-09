@@ -95,17 +95,17 @@ const AboutUs = () => {
               <img
                 alt="imagen"
                 className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                src="https://avatars.githubusercontent.com/u/116746591?v=4"
+                src="https://media.licdn.com/dms/image/C4E03AQEu7MDhg4g4Wg/profile-displayphoto-shrink_400_400/0/1550007227350?e=1702512000&v=beta&t=3noGR1v99IC7jrFb1sxZ8NhrF7oswzQ3rBsxR8q67ZA"
               />
   
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Hasan Engin Kubat</p>
+                <p className="text-xl font-semibold leadi">Juan Salvá</p>
                 <p>Full Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href="juanmasalros@gmail.com"
                   title="Email"
                   className="text-[#585552] hover:text-[#B99768]"
                 >
@@ -121,7 +121,7 @@ const AboutUs = () => {
                 </a>
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href="www.twitter.com/juan1ennon"
                   title="Twitter"
                   className="text-[#585552] hover:text-[#B99768]"
                 >
@@ -137,8 +137,7 @@ const AboutUs = () => {
                 <a
                   rel="noopener noreferrer"
   
-                  href="#"
-  
+                  href="https://www.linkedin.com/in/juansalva/"
                   title="LinkedIn"
                   className="text-[#585552] hover:text-[#B99768]"
                 >
@@ -154,8 +153,7 @@ const AboutUs = () => {
                 <a
                   rel="noopener noreferrer"
   
-                  href="#"
-  
+                  href="https://github.com/juan1ennon83"
                   title="GitHub"
                   className="text-[#585552] hover:text-[#B99768]"
                 >
@@ -558,10 +556,10 @@ const AboutUs = () => {
               <img
                 alt="imagen"
                 className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500"
-                src="#"
+                src="https://media.licdn.com/dms/image/D4D03AQElwMsgO50AKg/profile-displayphoto-shrink_400_400/0/1695767910192?e=1702512000&v=beta&t=_Q5dwBAvl0iG2vAwTbirF6wJ468rMJsngkiWzVZrnso"
               />
               <div className="flex-1 my-4">
-                <p className="text-xl font-semibold leadi">Dany </p>
+                <p className="text-xl font-semibold leadi">Mariana Vallejos </p>
                 <p>Full Stack Developer</p>
               </div>
               <div className="flex items-center justify-center p-3 space-x-3 border-t-2">
