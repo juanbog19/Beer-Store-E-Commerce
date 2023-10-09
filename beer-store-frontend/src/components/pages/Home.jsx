@@ -20,7 +20,7 @@ import Spinner from './../svg/Spinner';
 import HasError from "./../svg/HasError";
 import Footer from "./Footer";
 import Paginated from "../UI/Paginated";
-//import Filters from "../UI/filters";
+import Filters from "../UI/Filters";
 import Banner from "../UI/Banner";
 import { getBanner } from '../../store/bannerSlice';
 
@@ -108,7 +108,7 @@ useEffect(() => {
     <>
     <div>
       <div>
-      {/* <Filters/> */}
+      <Filters/>
       </div>
        <div className="flex flex-wrap justify-around">
         {currentBrands.map((brand) => (

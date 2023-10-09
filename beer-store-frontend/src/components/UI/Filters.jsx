@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
-import { getBeers } from "../../store/beersSliceR";
+import { getBeers } from "../../store/beersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../../store/searchSlice";
+//import {brandsSearch} from "../../store/searchSlice";
+//import {beersSearch} from "../../store/beersSlice";
 
 export default function Filters() {
   const dispatch = useDispatch();
-  const beers = useSelector((state)=> state.beers)
-  const brandsSearch = useSelector((state)=>state.brandsSearch);
+  const beersSearch = useSelector((state)=> state.beers.beersSearch)
+  const brandsSearch = useSelector((state)=>state.brands.brandsSearch);
 
   const [inputType, setInputType] = useState();
   const [inputPrice, setInputPrice]= useState();
 
   const [brand, setBrand] = useState();
- // const [inputAbc, setInputAbc] = useState();
+  const [inputAbc, setInputAbc] = useState();
 
 useEffect(()=>{
-  dispatch(getBrands())
-  dispatch(getBeers())
+  dispatch(getBrands());
+  dispatch(getBeers());
 },[dispatch])
 
 
@@ -35,11 +37,11 @@ const handleChangeBrands = (event)=>{
   setBrand(!brand);
 }  
 
-// const handleChangeABC =(event)=>{
-//   event.preventDefault();
-//   dispatch(filterAB(event.target.value))
-//   setInputAbc(!inputAbc);
-// }
+const handleChangeABC =(event)=>{
+  event.preventDefault();
+  dispatch((event.target.value))
+  setInputAbc(!inputAbc);
+}
     
   return (
     <div>
@@ -47,8 +49,8 @@ const handleChangeBrands = (event)=>{
       <legend>Filter by Beer´s type</legend>
         <select onChange={(event)=>handleChangeBeer(event)} defaultValue='default' >
           <option value='default' disabled>Filter By Type</option>
-            {beers &&
-            beers?.map((typ)=>(
+            {beersSearch &&
+            beersSearch?.map((typ)=>(
                 <option key={typ.id} value={typ.type}>
                     {typ.type}
                 </option>
@@ -60,8 +62,8 @@ const handleChangeBrands = (event)=>{
           <legend>Filter By Beer´s price</legend>
           <select onChange={(event)=>handleChangePrice(event)} defaultValue='default'>
             <option>Filter By Price</option>
-            {beers &&
-            beers?.map((pric)=>(
+            {beersSearch &&
+            beersSearch?.map((pric)=>(
               <option key={pric.id} value={pric.price}>
                 {pric.price}
               </option>
@@ -82,14 +84,14 @@ const handleChangeBrands = (event)=>{
         </select>
         </div> 
 
-        {/* <div>
+        <div>
           <legend>Filetr By Beer´s Order Alphabetic</legend>
           <select onChange={(event)=>handleChangeABC(event)}>
             <option value='default'> Filter by Order Alphabetic</option>
             <option value='A-Z'>A-Z</option>
             <option value='Z.A'>Z-A</option>
           </select>
-        </div> */}
+        </div>
 
     </div>
   )

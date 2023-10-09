@@ -49,8 +49,8 @@ export const getBeers = createAsyncThunk(
       // const searchedType = beers.filter((beer)=>beer.type===inputType);
       const searchedPrice = beers.filter((beer)=>beer.price===inputPrice);
     //console.log(searchedType);
-      return (searchedPrice);      
-      // return resp.data
+      return searchedPrice;      
+       //return resp.data
     } catch (error) {
       throw new Error(error.response.data.message);
     }
@@ -68,7 +68,12 @@ const initialState = {
 const beersSlice = createSlice({
   name: "beers",
   initialState,
-  reducers: {},
+  reducers: {
+  setBeers(state,action){
+      state.beersSearch = action.payload
+    },
+
+  },
   extraReducers:(builder) => {
     builder
       .addCase(getBeers.pending, (state) => {
