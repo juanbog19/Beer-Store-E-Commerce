@@ -18,7 +18,7 @@ import Input from '../UI/Input';
 import HolyBeer from '../svg/HolyBeer';
 import Spinner from '../svg/Spinner';
 import Button from '../UI/Button';
-//import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 
 
 const SignUp = () => {
@@ -28,7 +28,8 @@ const SignUp = () => {
 
   const loading = useSelector( ( state ) => state.auth.loading );
   const [ errorRegister, setErrorRegister ] = useState( null );
-
+  const [email, setEmail] = useState("");
+  const clientId = "976149304153-pq3kqlvrqrc5mfpfsmlg9uvmd58q7poa.apps.googleusercontent.com";
   const { register, handleSubmit, formState:{ errors }, watch } = useForm();
 
   const _password = useRef({});
@@ -68,10 +69,15 @@ const SignUp = () => {
     );
   }
 
-  const googleResponse = (response) => {
-    console.trace("googleResponse se llamó desde aquí:");
+  const googleResponse = async (response) => {
+    const profile = response.profileObj;
+    setEmail(profile.email);
+
     console.log(response)
-  }
+  };
+  const onGoogleLoginFailure = (error) => {
+    console.error("ERROR AL REGISTRASE CON GOOGLE: ", error);
+  };
 
   return (
     <>
@@ -126,10 +132,10 @@ const SignUp = () => {
           </form>
           <div className="flex items-center justify-center mt-4">
             <GoogleLogin
-              clientId="976149304153-pq3kqlvrqrc5mfpfsmlg9uvmd58q7poa.apps.googleusercontent.com"
+              clientId={clientId}
               buttonText="Registrarse con Google"
               onSuccess={googleResponse}
-              onFailure={googleResponse}
+              onFailure={onGoogleLoginFailure}
               cookiePolicy={'single_host_origin'}
             />
           </div>
