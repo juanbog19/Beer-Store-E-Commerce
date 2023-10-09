@@ -60,7 +60,7 @@ const Detail = ()=>{
           className="px-8 py-2 text-gray-100 uppercase bg-primary hover:bg-secondary"
           to={`/products/${id}`} //creo que no funciona bien porque el codigo interpreta que es el id de la beer en lugar de ser el id de la brand
         >
-          Buy beer
+          Comprar Cerveza
         </Link>
     </div>
   )

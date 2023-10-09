@@ -118,7 +118,7 @@ const Products = () => {
           className="px-2 py-1 text-gray-100 bg-primary hover:bg-secondary"
           to="/"
         >
-          Back
+          Regresar
         </Link>
       </div>
     </>
