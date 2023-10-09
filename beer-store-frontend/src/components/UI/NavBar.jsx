@@ -66,7 +66,7 @@ const NavBar = () => {
             </NavLink>
           </div>
         </div>
-          <div className="mx-10"><SearchBar /></div>
+          <div className="mx-44"><SearchBar /></div>
           <div className="flex">
             {!isLoggedin && (
               <NavLink
