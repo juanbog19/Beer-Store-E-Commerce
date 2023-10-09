@@ -101,7 +101,7 @@ const SignUp = () => {
                 },
               })}
               label="Email"
-              placeholder="bladimir@test.co"
+              placeholder="youremail@domain.com"
               extraClass={errors.email ? "border-error" : ""}
               errors={errors.email ? errors.email.message : null}
             />
