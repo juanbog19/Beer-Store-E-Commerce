@@ -116,7 +116,7 @@ const Products = () => {
       <div className="mt-3 text-center">
         <Link
           className="px-2 py-1 text-gray-100 bg-primary hover:bg-secondary"
-          to="/"
+          to="/home"
         >
           Regresar
         </Link>
