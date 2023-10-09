@@ -46,7 +46,7 @@ const NavBar = () => {
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-            {location.pathname !== "/" && "Home"}
+            {location.pathname !== "/" && "Inicio"}
             </NavLink> 
             
             <NavLink
@@ -55,14 +55,14 @@ const NavBar = () => {
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-              About
+              Acerca de
             </NavLink>
             <NavLink
               to="/about/us"
               className={({ isActive }) =>
                 isActive ? "btn-primary-active" : "btn-primary"
               }>
-              Team
+              Conócenos
             </NavLink>
           </div>
           <div className="flex-grow mx-2 text-2xl font-semibold"> E-Beer-Store </div>
@@ -74,7 +74,7 @@ const NavBar = () => {
                   isActive ? "btn-primary-active" : "btn-primary"
                 }
               >
-                Log in
+                Iniciar Sesión
               </NavLink>
             )}
             {!isLoggedin && (
@@ -82,7 +82,7 @@ const NavBar = () => {
                 to="/signup"
                 className={({ isActive }) => (isActive ? activeLink : btnLink)}
               >
-                Sign Up
+                Registrarse
               </NavLink>
             )}
             {isLoggedin && <CardUser />}

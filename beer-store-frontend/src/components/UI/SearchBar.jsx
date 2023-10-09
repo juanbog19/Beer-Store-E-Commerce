@@ -29,12 +29,12 @@ const SearchBar = () => {
  
     return (
 			<div>
-				<input value={brand} onChange={handleInputChange} type='search' placeholder='Your favorite brand here' className="px-8 py-2 border-black rounded-lg"/>
-				<button className='px-8 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handleOnClick}>
-					Search
+				<input value={brand} onChange={handleInputChange} type='search' placeholder='Buscar...' className="px-8 py-2 border-black rounded-lg"/>
+				<button className='px-3 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handleOnClick}>
+					Buscar
 				</button>
-                <button className='px-8 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handlerReset}>
-                    Reset
+                <button className='px-4 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handlerReset}>
+                    Recargar
                 </button>
                 {/* <button className='px-8 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handlerReset}>
                     <Link to={'/home'}>
