@@ -10,7 +10,8 @@ import Section from "../UI/Section";
 import qs from 'qs';
 import HasError from "../svg/HasError";
 import Spinner from "../svg/Spinner";
-//import Filters from "../UI/filters";
+import FiltersHome from "../UI/FilterHome";
+
 
 const Products = () => {
   const params = useParams();
@@ -91,7 +92,7 @@ const Products = () => {
 
   return (
     <>
-    {/* <Filters></Filters> */}
+    <FiltersHome />
       <div className="mb-3 text-center">
         {/* <div className={ `w-24 h-24 rounded-full ${ brand.img } mx-auto shadow-lg` }></div> */}
         <img
@@ -117,7 +118,7 @@ const Products = () => {
           className="px-2 py-1 text-gray-100 bg-primary hover:bg-secondary"
           to="/"
         >
-          Back
+          Regresar
         </Link>
       </div>
     </>

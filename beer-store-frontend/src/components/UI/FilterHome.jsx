@@ -1,62 +1,29 @@
-// import { useEffect, useState } from 'react';
-// import {useDispatch, useSelector} from 'react-redux';
-// import { getBrands } from '../../store/brandsSliceR';
-// import { brandsFilter } from '../../store/filterBrandsSliceR';
-
-// export default function Filters() {
-// const dispatch = useDispatch();
-
-// const [input, setInput] =useState('');
-
-// const brands = useSelector((state)=> state.brands.brands);
-
-// useEffect(()=>{
-//     dispatch(getBrands());
-// },[dispatch])
-
-// const handleBrandsFilter = (evento)=>{
-//     const selectedValue = evento.target.value;
-//     setInput(selectedValue);
-//     if(evento.target.value === 'default'){
-//         dispatch(getBrands());
-//     }else{
-//         dispatch(brandsFilter(selectedValue));
-//     }}
-    
-//   return (
-//     <div>
-//         <select onChange={handleBrandsFilter} value={input} >
-//             <option value='default'>Filter By Brand</option>
-//             {brands?.map((brand)=>(
-//                 <option key={brand.id} value={brand.name}>
-//                     {brand.name}
-//                 </option>
-//             ))}
-//         </select>
-//     </div>
-//   )
-// }
 
 
-export default function Filters() {
+export default function FiltersHome() {
     return (
-  <div>      
-      <div>
+  <div className="flex justify-center space-x-4 mb-4">      
+      <div className="flex flex-col items-center">
+        <legend>Marcas</legend>
       <select>
-          <option disabled>Filter By Brands</option>
+          <option disabled>Filtrar por marca</option>
           <option value="Antares">Antares</option>
           <option value="Patagonia">Patagonia</option>
           <option value="Corona">Corona</option>
           <option value="Brahma">Brahma</option>
           <option value="Quilmes">Quilmes</option>            
       </select>
+      </div>
 
+      <div>
+        <legend> Marcas en orden alfabetico</legend>
       <select>
-          <option disabled>Order by Alphabetic</option>
+          <option disabled>Filtrar por orden alfabetico</option>
           <option value="A-Z">A-Z</option>
           <option value="Z-A">Z-A</option>
       </select>
       </div>
+
   </div>
 )
 }

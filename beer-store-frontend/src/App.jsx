@@ -19,11 +19,11 @@ El componente App se exporta como el componente principal de la aplicación.
  */
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Layout from "./components/UI/Layout"
+import Layout from "./components/UI/Layout";
 import NavBar from "./components/UI/NavBar";
 
 // Pages
-import Landing from "./components/pages/Landing"   //Landing pendiente por renderizar @juan1ennon
+import Landing from "./components/pages/Landing"; //Landing pendiente por renderizar @juan1ennon
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Login from "./components/pages/Login";
@@ -34,34 +34,36 @@ import Checkout from "./components/pages/Checkout";
 import Orders from "./components/pages/Orders";
 import Detail from "./components/pages/Detail";
 import AboutUs from "./components/pages/AboutUs";
-
+import UserProfile from "./components/pages/UserProfile";
 
 function App() {
-
-  const isLoggedin = useSelector( ( state ) => state.auth.loggedin );
+  const isLoggedin = useSelector((state) => state.auth.loggedin);
 
   return (
     <>
       <div className="min-h-screen bg-accent">
         <NavBar></NavBar>
         <Layout>
-      <Routes>
-            <Route path="/" element={ <Landing /> } />
-            <Route path="/home" element={ <Home /> } /> 
-            <Route path="/about" element={ <About /> } />
-            { !isLoggedin && <Route path="/login" element={ <Login/> } />}
-            { !isLoggedin && <Route path="/signup" element={ <SignUp/> } />}
-            <Route path="/products/:id" element={ <Products /> } />
-            <Route path="/beers/:id" element={ <Detail /> } />
-            <Route path="/checkout" element={ <Checkout /> } />
-            { isLoggedin && <Route path="/orders" element={ <Orders /> } />}
-            <Route path="*" element={ <Navigate to='/' /> } />
-            <Route path="/about/us" element={ <AboutUs /> } />
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            {!isLoggedin && <Route path="/login" element={<Login />} />}
+            {!isLoggedin && <Route path="/signup" element={<SignUp />} />}
+            <Route path="/products/:id" element={<Products />} />
+            <Route path="/beers/:id" element={<Detail />} />
+            <Route path="/checkout" element={<Checkout />} />
+            {isLoggedin && <Route path="/orders" element={<Orders />} />}
+            {isLoggedin && (
+              <Route path="/my-profile" element={<UserProfile />} />
+            )}
+            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/about/us" element={<AboutUs />} />
           </Routes>
         </Layout>
       </div>
     </>
-  )
+  );
 }
 
 export default App;

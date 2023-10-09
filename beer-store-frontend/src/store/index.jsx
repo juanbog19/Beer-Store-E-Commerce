@@ -28,6 +28,7 @@ import authSlice from "./authSlice";
 import brandsSlice from "./searchSlice";
 import bannerSlice from "./bannerSlice";
 import searchSlice from "./searchSlice";
+import beersSlice from "./beersSlice";
 
 // Configuración de Redux Persist. 
 const configReducer = {
@@ -42,7 +43,8 @@ const reducers = combineReducers({
   auth:authSlice,
   brands:brandsSlice,
   banner: bannerSlice,
-  brandsSearch: searchSlice
+  brandsSearch: searchSlice,
+  beers: beersSlice
 });
 
 // Se aplica la persistencia al reducer combinado. 

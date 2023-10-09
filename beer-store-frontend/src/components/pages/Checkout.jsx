@@ -26,11 +26,11 @@ const Checkout = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">Checkout</h1>
+      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">CARRITO DE COMPRAS</h1>
 
       {!hasItems && (
         <div className="text-center mt-10">
-          <h2 className="text-stone-600 mb-2">Your cart is empty</h2>
+          <h2 className="text-stone-600 mb-2">Tu carrito de compras esta vacío</h2>
 
           <div className="w-40 mx-auto mb-3 text-stone-00">
             <CartIcon />
@@ -40,7 +40,7 @@ const Checkout = () => {
             className="bg-primary px-8 py-2 text-gray-100 hover:bg-secondary"
             to="/"
           >
-            Visit store
+            Inicio
           </Link>
         </div>
       )}

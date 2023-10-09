@@ -81,14 +81,14 @@ const SignUp = () => {
 
   return (
     <>
-      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">Sign Up</h1>
+      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">REGISTRATE POR PRIMERA VEZ</h1>
       <div className="grid max-w-4xl grid-cols-6 gap-2 mx-auto bg-white">
         <div className="col-span-3 p-10">
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input
               {...register("username", minValidation)}
-              label="Username"
-              placeholder="Bladmir"
+              label="Usuario"
+              placeholder="Digita tu usuario"
               extraClass={errors.username ? "border-error" : ""}
               errors={errors.username ? errors.username.message : null}
             />
@@ -101,13 +101,13 @@ const SignUp = () => {
                 },
               })}
               label="Email"
-              placeholder="bladimir@test.co"
+              placeholder="youremail@domain.com"
               extraClass={errors.email ? "border-error" : ""}
               errors={errors.email ? errors.email.message : null}
             />
             <Input
               {...register("password")}
-              label="Password"
+              label="Contraseña"
               type="password"
               placeholder="******"
               extraClass={errors.password ? "border-error" : ""}
@@ -119,7 +119,7 @@ const SignUp = () => {
                 validate: (value) =>
                   value === _password.current || "Password do not match",
               })}
-              label="Confirm Password"
+              label="Confirmar contraseña"
               type="password"
               placeholder="******"
               extraClass={errors.confirmPassword ? "border-error" : ""}
@@ -128,7 +128,7 @@ const SignUp = () => {
             {errorRegister && (
               <div className="p-2 mb-2 bg-red-200">{errorRegister}</div>
             )}
-            <Button type="submit" label="Send" full />
+            <Button type="submit" label="Registrarse" full />
           </form>
           <div className="flex items-center justify-center mt-4">
             <GoogleLogin

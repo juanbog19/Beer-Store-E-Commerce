@@ -1,33 +1,98 @@
 import { useEffect, useState } from "react";
-import { filterBeer, getBeers } from "../../store/beersSliceR";
+import { getBeers } from "../../store/beersSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getBrands } from "../../store/searchSlice";
+//import {brandsSearch} from "../../store/searchSlice";
+//import {beersSearch} from "../../store/beersSlice";
 
 export default function Filters() {
   const dispatch = useDispatch();
-  const beers = useSelector((state)=> state.beers)
-  const [beer, setBeer] = useState();
+  const beersSearch = useSelector((state) => state.beers.beersSearch)
+  const brandsSearch = useSelector((state) => state.brands.brandsSearch);
 
-useEffect(()=>{
-  dispatch(getBeers())
-},[dispatch])
+  const [inputType, setInputType] = useState();
+  const [inputPrice, setInputPrice] = useState();
 
-const handleChangeBeer = (event)=>{
-    dispatch(filterBeer(event.target.value));
-    setBeer(!beer);
+  const [brand, setBrand] = useState();
+  const [inputAbc, setInputAbc] = useState();
+
+  useEffect(() => {
+    dispatch(getBrands());
+    dispatch(getBeers());
+  }, [dispatch])
+
+
+  const handleChangeBeer = (event) => {
+    dispatch(getBeers(event.target.value));
+    setInputType(!inputType);
   }
-    
+
+  const handleChangePrice = (event) => {
+    dispatch(getBeers(event.target.value));
+    setInputPrice(!inputPrice);
+  }
+
+  const handleChangeBrands = (event) => {
+    setBrand(event.target.value);
+    dispatch(getBrands(brand));
+    // setBrand(!brand);
+  }
+
+  const handleChangeABC = (event) => {
+    event.preventDefault();
+    dispatch((event.target.value))
+    setInputAbc(!inputAbc);
+  }
+
   return (
-    <div>
-      <legend>Filter by Beer´s type</legend>
-        <select onChange={(event)=>handleChangeBeer(event)} defaultValue='default' >
-          <option value='default' disabled>Filter By Type</option>
-            {beers &&
-            beers?.map((beer)=>(
-                <option key={beer.id} value={beer.name}>
-                    {beer.name}
-                </option>
+    <div className="flex justify-center space-x-4 mb-4">
+      <div className="flex flex-col items-center">
+        <legend>Tipos de cerveza</legend>
+        <select onChange={(event) => handleChangeBeer(event)} defaultValue="default">
+          <option value="default" disabled>Filtrar por tipo</option>
+          {beersSearch &&
+            beersSearch?.map((typ) => (
+              <option key={typ.id} value={typ.type}>
+                {typ.type}
+              </option>
             ))}
         </select>
+      </div>
+
+      <div className="flex flex-col items-center">
+        <legend>Precios</legend>
+        <select onChange={(event) => handleChangePrice(event)} defaultValue="default">
+          <option>Filtrar por precio</option>
+          {beersSearch &&
+            beersSearch?.map((pric) => (
+              <option key={pric.id} value={pric.price}>
+                {pric.price}
+              </option>
+            ))}
+        </select>
+      </div>
+
+      <div className="flex flex-col items-center">
+        <legend>Marcas</legend>
+        <select onChange={(event) => handleChangeBrands(event)} defaultValue="default">
+          <option value="default">Filtrar por marca</option>
+          {brandsSearch &&
+            brandsSearch?.map((brand) => (
+              <option key={brand.id} value={brand.name}>
+                {brand.name}
+              </option>
+            ))}
+        </select>
+      </div>
+
+      <div className="flex flex-col items-center">
+        <legend>Marcas en orden alfabético</legend>
+        <select onChange={(event) => handleChangeABC(event)}>
+          <option value="default">Filtrar en orden alfabético</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
+        </select>
+      </div>
     </div>
   )
 }
@@ -36,57 +101,11 @@ const handleChangeBeer = (event)=>{
 
 
 
-
-
-
-
-
-// import { useEffect, useState } from 'react';
-// import {useDispatch, useSelector} from 'react-redux';
-// import { getBrands } from '../../store/brandsSliceR';
-// import { brandsFilter } from '../../store/filterBrandsSliceR';
-
-// export default function Filters() {
-// const dispatch = useDispatch();
-
-// const [input, setInput] =useState('');
-
-// const brands = useSelector((state)=> state.brands.brands);
-
-// useEffect(()=>{
-//     dispatch(getBrands());
-// },[dispatch])
-
-// const handleBrandsFilter = (evento)=>{
-//     const selectedValue = evento.target.value;
-//     setInput(selectedValue);
-//     if(evento.target.value === 'default'){
-//         dispatch(getBrands());
-//     }else{
-//         dispatch(brandsFilter(selectedValue));
-//     }}
-    
-//   return (
-//     <div>
-//         <select onChange={handleBrandsFilter} value={input} >
-//             <option value='default'>Filter By Brand</option>
-//             {brands?.map((brand)=>(
-//                 <option key={brand.id} value={brand.name}>
-//                     {brand.name}
-//                 </option>
-//             ))}
-//         </select>
-//     </div>
-//   )
-// }
-//filterrr como estaba antes
-
-<<<<<<< HEAD
 // export default function Filters() {
 //       return (
 //     <div>      
 //         <div>
-        
+
 //         <select>
 //             <option disabled>Order By Price</option>
 //             <option value="$1-$5">$1-$5</option>
@@ -97,18 +116,18 @@ const handleChangeBeer = (event)=>{
 //         {/* <TypeFilter /> */}
 //         {/* <select>
 //             <option disabled>Order By Type</option>
-          
+
 //         </select> */}
 //     </div>
 //     </div>
 //   )
 // }
-=======
+//=======
 
-export default function Filters() {
-      return (
-    <div>      
-        {/* <div>
+//export default function Filters() {
+//   return (
+// <div>      
+{/* <div>
         <select>
             <option disabled>Filter By Brands</option>
             <option value="Antares">Antares</option>
@@ -143,7 +162,7 @@ export default function Filters() {
             <option value="HIBRIDA">HIBRIDA</option>  
         </select>
     </div> */}
-    </div>
-  )
-}
->>>>>>> 942c9c9a42b0e1b2352890ea6ddf56812ad2dbea
+//     </div>
+//   )
+// }
+// >>>>>>> 942c9c9a42b0e1b2352890ea6ddf56812ad2dbea
