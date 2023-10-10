@@ -54,7 +54,7 @@ const ProductItem = ( props ) => {
               className="block mb-2 text-xs font-bold tracking-wide text-gray-500 uppercase"
               htmlFor="amopunt"
             >
-              Amount
+              Cantidad
             </label>
             <input
               className="w-12 pl-1 border border-gray-500"
@@ -70,11 +70,11 @@ const ProductItem = ( props ) => {
               className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
               to={`/beers/${id}`} // Usar brand.id para construir la ruta
             >
-              Detail
+              Detalle
             </Link>
 
           <button className="px-2 py-1 text-gray-100 bg-primary hover:bg-secondary">
-            add
+            Comprar
           </button>
           {!amountIsValid && (
             <p className="mt-2 text-sm text-red-800">Please enter a value 1-6</p>

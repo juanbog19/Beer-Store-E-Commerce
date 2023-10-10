@@ -2,8 +2,8 @@
 
 export default function FiltersHome() {
     return (
-  <div>      
-      <div>
+  <div className="flex justify-center space-x-4 mb-4">      
+      <div className="flex flex-col items-center">
         <legend>Marcas</legend>
       <select>
           <option disabled>Filtrar por marca</option>

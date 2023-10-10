@@ -13,9 +13,10 @@ import SearchBar from "./SearchBar";
 const NavBar = () => {
 
   const location = useLocation();
+  const isProductPage = location.pathname.startsWith('/products') || location.pathname.startsWith('/beers')
 
   // const dispatch = useDispatch();
-  const isLoggedin = useSelector( ( state ) => state.auth.loggedin );
+  const isLoggedin = useSelector((state) => state.auth.loggedin);
   const btnLink =
     "block inline-block py-1 px-4 border border-black text-black hover:text-white hover:bg-primary hover:border-transparent cursor-pointer mr-4";
   const activeLink =
@@ -27,7 +28,7 @@ const NavBar = () => {
         <div className="flex items-center mr-5">
           {/* <Logo /> */}
           {/* <span className="mx-2 text-2xl font-semibold">Search Bar</span> */}
-          <SearchBar />
+          <div className="flex-grow mx-2 text-2xl font-semibold"> E-Beer-Store </div>
         </div>
         <div className="flex items-center grow">
           <div className="grow">
@@ -37,35 +38,36 @@ const NavBar = () => {
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-              {location.pathname !== "/home" && "Landing" }
+              {location.pathname !== "/home" && "Landing"}
             </NavLink>
-            
+
             <NavLink
-              to="/home" 
+              to="/home"
               className={({ isActive }) =>
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-            {location.pathname !== "/" && "Home"}
-            </NavLink> 
-            
+              {location.pathname !== "/" && "Inicio"}
+            </NavLink>
+
             <NavLink
               to="/about"
               className={({ isActive }) =>
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-              About
+              Acerca de
             </NavLink>
             <NavLink
               to="/about/us"
               className={({ isActive }) =>
                 isActive ? "btn-primary-active" : "btn-primary"
               }>
-              Team
+              Conócenos
             </NavLink>
           </div>
-          <div className="flex-grow mx-2 text-2xl font-semibold"> E-Beer-Store </div>
+        </div>
+          <div className="mx-44">{isProductPage ? null : <SearchBar />}</div>
           <div className="flex">
             {!isLoggedin && (
               <NavLink
@@ -74,7 +76,7 @@ const NavBar = () => {
                   isActive ? "btn-primary-active" : "btn-primary"
                 }
               >
-                Log in
+                Iniciar Sesión
               </NavLink>
             )}
             {!isLoggedin && (
@@ -82,13 +84,12 @@ const NavBar = () => {
                 to="/signup"
                 className={({ isActive }) => (isActive ? activeLink : btnLink)}
               >
-                Sign Up
+                Registrarse
               </NavLink>
             )}
             {isLoggedin && <CardUser />}
             <CartButton />
           </div>
-        </div>
       </nav>
     </header>
   );

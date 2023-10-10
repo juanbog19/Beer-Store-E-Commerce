@@ -7,93 +7,92 @@ import { getBrands } from "../../store/searchSlice";
 
 export default function Filters() {
   const dispatch = useDispatch();
-  const beersSearch = useSelector((state)=> state.beers.beersSearch)
-  const brandsSearch = useSelector((state)=>state.brands.brandsSearch);
+  const beersSearch = useSelector((state) => state.beers.beersSearch)
+  const brandsSearch = useSelector((state) => state.brands.brandsSearch);
 
   const [inputType, setInputType] = useState();
-  const [inputPrice, setInputPrice]= useState();
+  const [inputPrice, setInputPrice] = useState();
 
   const [brand, setBrand] = useState();
   const [inputAbc, setInputAbc] = useState();
 
-useEffect(()=>{
-  dispatch(getBrands());
-  dispatch(getBeers());
-},[dispatch])
+  useEffect(() => {
+    dispatch(getBrands());
+    dispatch(getBeers());
+  }, [dispatch])
 
 
-const handleChangeBeer = (event)=>{
+  const handleChangeBeer = (event) => {
     dispatch(getBeers(event.target.value));
     setInputType(!inputType);
   }
 
-const handleChangePrice = (event)=>{
-  dispatch(getBeers(event.target.value));
-  setInputPrice(!inputPrice);
-}  
+  const handleChangePrice = (event) => {
+    dispatch(getBeers(event.target.value));
+    setInputPrice(!inputPrice);
+  }
 
-const handleChangeBrands = (event)=>{
-  setBrand(event.target.value);
-  dispatch(getBrands(brand));
-  // setBrand(!brand);
-}  
+  const handleChangeBrands = (event) => {
+    setBrand(event.target.value);
+    dispatch(getBrands(brand));
+    // setBrand(!brand);
+  }
 
-const handleChangeABC =(event)=>{
-  event.preventDefault();
-  dispatch((event.target.value))
-  setInputAbc(!inputAbc);
-}
-    
+  const handleChangeABC = (event) => {
+    event.preventDefault();
+    dispatch((event.target.value))
+    setInputAbc(!inputAbc);
+  }
+
   return (
-    <div>
-      <div>
-      <legend>Tipos de cerveza</legend>
-        <select onChange={(event)=>handleChangeBeer(event)} defaultValue='default' >
-          <option value='default' disabled>Filtrar por tipo</option>
-            {beersSearch &&
-            beersSearch?.map((typ)=>(
-                <option key={typ.id} value={typ.type}>
-                    {typ.type}
-                </option>
+    <div className="flex justify-center space-x-4 mb-4">
+      <div className="flex flex-col items-center">
+        <legend>Tipos de cerveza</legend>
+        <select onChange={(event) => handleChangeBeer(event)} defaultValue="default">
+          <option value="default" disabled>Filtrar por tipo</option>
+          {beersSearch &&
+            beersSearch?.map((typ) => (
+              <option key={typ.id} value={typ.type}>
+                {typ.type}
+              </option>
             ))}
-        </select>        
-        </div>
+        </select>
+      </div>
 
-        <div>
-          <legend>Precios</legend>
-          <select onChange={(event)=>handleChangePrice(event)} defaultValue='default'>
-            <option>Filtrar por precio</option>
-            {beersSearch &&
-            beersSearch?.map((pric)=>(
+      <div className="flex flex-col items-center">
+        <legend>Precios</legend>
+        <select onChange={(event) => handleChangePrice(event)} defaultValue="default">
+          <option>Filtrar por precio</option>
+          {beersSearch &&
+            beersSearch?.map((pric) => (
               <option key={pric.id} value={pric.price}>
                 {pric.price}
               </option>
             ))}
-          </select>
-        </div>
-
-        <div>
-          <legend>Marcas</legend>
-        <select onChange={(event)=>handleChangeBrands(event)} defaultValue='default'>
-          <option value='default'>Filtrar por marca</option>
-          {brandsSearch &&
-          brandsSearch?.map((brand)=>(
-            <option key={brand.id} value={brand.name}>
-              {brand.name}
-            </option>
-          ))}          
         </select>
-        </div> 
+      </div>
 
-        <div>
-          <legend>Marcas en orden alfabetico</legend>
-          <select onChange={(event)=>handleChangeABC(event)}>
-            <option value='default'> Filtrar en orden alfabetico</option>
-            <option value='A-Z'>A-Z</option>
-            <option value='Z-A'>Z-A</option>
-          </select>
-        </div>
+      <div className="flex flex-col items-center">
+        <legend>Marcas</legend>
+        <select onChange={(event) => handleChangeBrands(event)} defaultValue="default">
+          <option value="default">Filtrar por marca</option>
+          {brandsSearch &&
+            brandsSearch?.map((brand) => (
+              <option key={brand.id} value={brand.name}>
+                {brand.name}
+              </option>
+            ))}
+        </select>
+      </div>
 
+      <div className="flex flex-col items-center">
+        <legend>Marcas en orden alfabético</legend>
+        <select onChange={(event) => handleChangeABC(event)}>
+          <option value="default">Filtrar en orden alfabético</option>
+          <option value="A-Z">A-Z</option>
+          <option value="Z-A">Z-A</option>
+        </select>
+      </div>
     </div>
   )
 }
@@ -106,7 +105,7 @@ const handleChangeABC =(event)=>{
 //       return (
 //     <div>      
 //         <div>
-        
+
 //         <select>
 //             <option disabled>Order By Price</option>
 //             <option value="$1-$5">$1-$5</option>
@@ -117,7 +116,7 @@ const handleChangeABC =(event)=>{
 //         {/* <TypeFilter /> */}
 //         {/* <select>
 //             <option disabled>Order By Type</option>
-          
+
 //         </select> */}
 //     </div>
 //     </div>
@@ -126,9 +125,9 @@ const handleChangeABC =(event)=>{
 //=======
 
 //export default function Filters() {
-    //   return (
-    // <div>      
-        {/* <div>
+//   return (
+// <div>      
+{/* <div>
         <select>
             <option disabled>Filter By Brands</option>
             <option value="Antares">Antares</option>

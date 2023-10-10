@@ -25,7 +25,7 @@ const BrandCard = ( props ) => {
           className="px-8 py-2 text-gray-100 uppercase bg-primary hover:bg-secondary font-abril"
           to={`/products/${id}`}
         >
-          Visit
+          Ver más
         </Link>
       </div>
     </>
