@@ -40,11 +40,11 @@ const brandsSlice = createSlice({
     filterBrands(state, action){
       const newInput = action.payload;
 
-      const brandFined= state.brandsList.find((brand)=> brand.name === newInput.name);
+      const brandFound= state.brandsList.find((brand)=> brand.name === newInput.name);
     
     if(newInput === 'default'){
      state.brandsList
-    } else{brandFined}    
+    } else{brandFound}    
   },
 },
   extraReducers:(builder) => {
