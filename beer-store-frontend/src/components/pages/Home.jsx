@@ -44,6 +44,7 @@ const Home = () => {
   const indexOfFirstBrand= indexOfLastBrand - brandsPerPage // 6 - 6 = 0
   //const currentBrand = displayBrand.slice(indexOfFirstBrand, indexOfLastBrand) //para dividir la cantidad de Brands opor pagina
   const currentBrands = Array.isArray(renderBrands) ? renderBrands.slice(indexOfFirstBrand, indexOfLastBrand) : [];
+  console.log(currentBrands);
 
   const paginado = (pageNumber) => { //establece el numero de pagina
     setCurrentPage(pageNumber)
@@ -107,9 +108,9 @@ useEffect(() => {
   return (
     <>
     <div>
-      <div>
+      {/* <div>
       <Filters/>
-      </div>
+      </div> */}
        <div className="flex flex-wrap justify-around">
         {currentBrands.map((brand) => (
           <BrandCard key={brand.id} data={brand} />
