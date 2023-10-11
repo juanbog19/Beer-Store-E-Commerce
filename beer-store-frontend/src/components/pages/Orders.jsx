@@ -48,7 +48,7 @@ const Orders = () => {
 
   return (
     <div>
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">
+      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">
         Order history
       </h1>
       <ul>
