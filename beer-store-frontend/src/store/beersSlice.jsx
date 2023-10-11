@@ -1,36 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-// import axios from '../tools/axiosInstance';
-
-// const beersSlice = createSlice({
-//   name:'beers',
-//   initialState:{ 
-//     list: []
-//    },
-//   reducers:{    
-//     addBeer( state, action ){
-//       state.list = action.payload;
-//     },
-  
-//     filterBeer (state, action){
-//       action.payload === "all"
-//       ?state.list 
-//       :state.list.filter((beer)=> beer?.name?.includes(action.payload));
-//     }
-//   },
-// });
-
-// export const { addBeer, filterBeer } = beersSlice.actions;
-
-// export default beersSlice.reducer;
-
-// export const getBeers =()=> (dispatch)=>{
-//   axios
-//   .get('/api/beers?populate=*')
-//   .then((response)=>{
-//     dispatch(addBeer(response.data));
-//   }) 
-//   .catch((error)=> console.log( error ));   
-//     }
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../tools/axiosInstance";
@@ -69,10 +36,15 @@ const beersSlice = createSlice({
   name: "beers",
   initialState,
   reducers: {
-  setBeers(state,action){
-      state.beersSearch = action.payload
+  setBeers(state,action){                  //aqui se vincula la action con el componente Filter en carpeta UI
+      state.beersSearch = action.payload;
     },
-
+  setByPrice(state, action){
+    state.beersSearch = state.beersSearch.filter((beer)=> beer.price === action.payload.price)
+  },
+  setByType(state, action){
+    state.beersSearch = state.beersSearch.filter((beer)=>beer.type === action.payload.type) //aun falta crear la propiedad type en la tabla de las Beers
+  },
   },
   extraReducers:(builder) => {
     builder
@@ -90,80 +62,11 @@ const beersSlice = createSlice({
       })
   },
 });
+
+export const { setBeers, setByPrice, setByType} = beersSlice.actions;
+
 export default beersSlice.reducer;
 
-///////////////////////////////////
 
 
 
-    // case filterBeer:
-    //   const BeerCopy = state.BeerCopy;
-
-    //   const gamesGenres =
-    //     payload === "all"
-    //       ? VideogamesCopy
-    //       : VideogamesCopy.filter((game) => game?.genres?.includes(payload));
-    //   return {
-    //     ...state,
-    //     Videogames: gamesGenres,
-    //     numPage: 1,
-    //   };
-
-    // case SORT_VIDEOGAMES_ASC_DESC:
-    //   let videogamesSort =
-    //     payload === "asc"
-    //       ? state.Videogames.sort((a, b) => {
-    //           if (a.name > b.name) {
-    //             return 1;
-    //           }
-    //           if (b.name > a.name) {
-    //             return -1;
-    //           }
-    //           return 0;
-    //         })
-    //       : state.Videogames.sort((a, b) => {
-    //           if (a.name > b.name) {
-    //             return -1;
-    //           }
-    //           if (b.name > a.name) {
-    //             return 1;
-    //           }
-    //           return 0;
-    //         });
-    //   return {
-    //     ...state,
-    //     Videogames: videogamesSort,
-    //     numPage: 1,
-    //   };
-
-
-
-
-
-
-
-
-
-/////////////////////////////////////
-
-
-
-
-
-// export const getBeers = createAsyncThunk(
-//   "beers/getBeers",
-//   async ()=>{
-//     try {
-//       const response = await axios.get('http://localhost:1337/api/beers?populate=*',{
-   
-//       headers:{
-//           Accept: 'appication/json',
-//         },
-//       });
-//       console.log('aquii mis beers', response);
-//       return response.data;
-//     } catch (error) {
-//       console.log( error );   
-//     }
-//   }
-// );

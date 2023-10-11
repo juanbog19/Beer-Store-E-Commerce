@@ -1,23 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../tools/axiosInstance";
 
-
 export const getBrands = createAsyncThunk(
   "brands/getBrands",
   async (brand) => {
     try {
-      // const resp = await axios.get(`/api/brands?filters[name][$containsi]=${brand}`, {
-      const resp = await axios.get('/api/brands?populate=*', {
+      const resp = await axios.get(`/api/brands?filters[name][$containsi]=${brand}&populate=img`, {      
         headers: {
           Accept: 'application/json',
         },
       });
-      // console.log(resp.data.data);
-      const brands = resp.data.data;
-      const searchedBrand = brands.filter((b)=>b.name===brand);
-      console.log(searchedBrand);
-      return searchedBrand;      
-      // return resp.data
+      //console.log(resp.data.data);      
+      return resp.data.data;            
     } catch (error) {
       throw new Error(error.response.data.message);
     }
