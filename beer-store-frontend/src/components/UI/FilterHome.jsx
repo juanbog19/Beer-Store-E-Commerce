@@ -7,11 +7,11 @@ export default function FiltersHome() {
         <legend>Marcas</legend>
       <select>
           <option disabled>Filtrar por marca</option>
-          <option value="Antares">Antares</option>
+          {/* <option value="Antares">Antares</option>
           <option value="Patagonia">Patagonia</option>
           <option value="Corona">Corona</option>
           <option value="Brahma">Brahma</option>
-          <option value="Quilmes">Quilmes</option>            
+          <option value="Quilmes">Quilmes</option>             */}
       </select>
       </div>
 

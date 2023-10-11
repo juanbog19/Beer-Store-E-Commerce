@@ -26,27 +26,38 @@ export const getBrands = createAsyncThunk(
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   brandsSearch: [],      // Almacena los datos de las marcas
   loading: false,  // Indica si se está cargando la información
   error: null,     // Almacena cualquier error que ocurra
-  brandsList:[]
+  //brandsList:[],
+  filtro:'',
+  orderAlphabetic:'ascendente',
 };
 
 const brandsSlice = createSlice({
   name: "brands",
   initialState,
   reducers: {
-    filterBrands(state, action){
-      const newInput = action.payload;
-
-      const brandFound= state.brandsList.find((brand)=> brand.name === newInput.name);
-    
-    if(newInput === 'default'){
-     state.brandsList
-    } else{brandFound}    
+    setBrands(state, action){
+      state.brandsSearch = action.payload;
+    },
+    setFiltro(state, action){
+      state.filtro= state.brandsSearch.filter((brand)=>brand.name.toLowerCase().includes(action.payload.toLowerCase()));
+     // state.filtro = action.payload;      
+    },
+    setByOrderAlphabetic(state){
+      if(state.orderAlphabetic ==='ascendente'){
+        state.brandsSearch.sort();
+        state.orderAlphabetic = 'descendente';
+      }else{
+        state.brandsSearch.sort().reverse();
+        state.orderAlphabetic = 'ascendente';
+      }
+        
+    }
   },
-},
   extraReducers:(builder) => {
     builder
       .addCase(getBrands.pending, (state) => {
@@ -63,4 +74,22 @@ const brandsSlice = createSlice({
       })
   },
 });
-export default brandsSlice.reducer;
+
+  export const { setBrands, setFiltro, setByOrderAlphabetic} = brandsSlice.actions;
+
+  export default brandsSlice.reducer;
+
+
+
+
+
+
+  
+    //     const newInput = action.payload;
+
+  //     const brandFound= state.brandsList.find((brand)=> brand.name === newInput.name);
+    
+  //   if(newInput === 'default'){
+  //    state.brandsList
+  //   } else{brandFound}    
+  // },

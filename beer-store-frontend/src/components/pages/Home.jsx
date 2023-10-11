@@ -108,9 +108,9 @@ useEffect(() => {
   return (
     <>
     <div>
-      {/* <div>
+      <div>
       <Filters/>
-      </div> */}
+      </div>
        <div className="flex flex-wrap justify-around">
         {currentBrands.map((brand) => (
           <BrandCard key={brand.id} data={brand} />

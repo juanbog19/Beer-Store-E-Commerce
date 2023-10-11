@@ -37,9 +37,14 @@ const beersSlice = createSlice({
   initialState,
   reducers: {
   setBeers(state,action){                  //aqui se vincula la action con el componente Filter en carpeta UI
-      state.beersSearch = action.payload
+      state.beersSearch = action.payload;
     },
-
+  setByPrice(state, action){
+    state.beersSearch = state.beersSearch.filter((beer)=> beer.price === action.payload.price)
+  },
+  setByType(state, action){
+    state.beersSearch = state.beersSearch.filter((beer)=>beer.type === action.payload.type) //aun falta crear la propiedad type en la tabla de las Beers
+  },
   },
   extraReducers:(builder) => {
     builder
@@ -57,6 +62,9 @@ const beersSlice = createSlice({
       })
   },
 });
+
+export const { setBeers, setByPrice, setByType} = beersSlice.actions;
+
 export default beersSlice.reducer;
 
 
