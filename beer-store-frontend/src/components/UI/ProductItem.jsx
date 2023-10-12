@@ -39,7 +39,7 @@ const ProductItem = ( props ) => {
     <li className="flex justify-between my-2 border-b border-secondary">
       <div className="flex">
         {/* <div className={ `w-14 h-14 rounded-full shadow-lg ${ img }` }></div> */}
-        <img src={ img.url } alt={ `logo of the beer ${ name }` } className="rounded-full shadow-lg w-14 h-14" />
+        <img src={ img.url } alt={ `Beer logo ${ name }` } className="rounded-full shadow-lg w-14 h-14" />
         <div className="ml-2">
           <h3 className="text-xl font-bold">{name}</h3>
           <div className="font-light">{description}</div>
@@ -60,24 +60,24 @@ const ProductItem = ( props ) => {
               className="w-12 pl-1 border border-gray-500"
               type="number"
               id="amount"
-              max={6}
+              max={9}
               min={1}
               defaultValue={1}
               ref={numberInput}
             />
           </div>
           <Link
-              className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
+              className="px-1 py- mr-2 text-gray-100 bg-primary hover:bg-secondary"
               to={`/beers/${id}`} // Usar brand.id para construir la ruta
             >
               Detalle
             </Link>
 
-          <button className="px-2 py-1 text-gray-100 bg-primary hover:bg-secondary">
+          <button className="px-2 py- text-gray-100 bg-primary hover:bg-secondary">
             Comprar
           </button>
           {!amountIsValid && (
-            <p className="mt-2 text-sm text-red-800">Please enter a value 1-6</p>
+            <p className="mt-2 text-sm text-red-800">Please enter a value below 10</p>
           )}
         </form>
       </div>
