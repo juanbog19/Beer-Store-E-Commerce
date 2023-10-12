@@ -14,8 +14,8 @@ export default function Filters() {
   //const brandsList = useSelector((state) => state.brandsList);
   //const filtro = useSelector((state) => state.filtro);
 
-  const [inputType, setInputType] = useState();
-  const [inputPrice, setInputPrice] = useState();
+  const [inputType, setByType] = useState();
+  const [inputPrice, setByPrice] = useState();
 
   const [brand, setBrand] = useState();
   const [option, setOption] = useState();   //estado local p/filterByOrderAlphabetic
@@ -28,12 +28,12 @@ export default function Filters() {
 
   const handleChangeType = (event) => {
     dispatch(setByType(event.target.value));
-    setInputType(!inputType);
+    setByType(!inputType);
   }
 
   const handleChangePrice = (event) => {
     dispatch(setByPrice(event.target.value));
-    setInputPrice(!inputPrice);
+    setByPrice(!inputPrice);
   }
 
   // const handleChangeBrands = (event) => {
