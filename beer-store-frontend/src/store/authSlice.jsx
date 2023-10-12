@@ -35,6 +35,22 @@ export const login = createAsyncThunk(
   }
 );
 
+export const loginWithGoogle = createAsyncThunk(
+  "auth/loginWithGoogle",
+  async (googleToken, thunkApi) => {
+    try {
+      const response = await axios.post("api/auth/google-login", {
+        token: googleToken,
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error al iniciar sesión con Google:", error);
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
+
 export const userRegister = createAsyncThunk(
   "auth/register",
   async ({ username, email, password }, thunkApi) => {
@@ -73,6 +89,21 @@ const authSlice = createSlice({
       state.jwt = action.payload.data.jwt;
     });
     builder.addCase(userRegister.rejected, ( state, action ) => {
+      state.loading = false;
+    });
+    builder.addCase(loginWithGoogle.pending, (state) => {
+      console.log( 'pending', action );
+      state.loading = true;
+    });
+    builder.addCase(loginWithGoogle.fulfilled, (state, action) => {
+      console.log( 'fulfilled', action );
+      state.loading = false;
+      state.loggedin = true;
+      state.user = action.payload.user;
+      state.jwt = action.payload.jwt;
+    });
+    builder.addCase(loginWithGoogle.rejected, (state) => {
+      console.log( 'rejected', action );
       state.loading = false;
     });
     builder.addCase( login.pending, ( state, action ) => {
