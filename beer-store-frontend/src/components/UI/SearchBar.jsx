@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getBrands } from '../../store/searchSlice';
-import { faRotateRight, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import Icons from './Icons'
+//import { faRotateRight, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+//import Icons from './Icons'
 
 const SearchBar = () => {   
     const [brand, setBrand] = useState('');
@@ -41,10 +41,10 @@ const SearchBar = () => {
 			<div>
 				<input value={brand} onChange={handleInputChange} onKeyPress={handleKeyPress} type='search' placeholder='Buscar...' className="px-12 py-2 border-black rounded-lg"/>
 				<button className='px-3 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handleOnClick}>
-                <Icons icon={faMagnifyingGlass} />
+                {/* <Icons icon={faMagnifyingGlass} /> */}
 				</button>
                 <button className='px-3 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handlerReset}>
-                <Icons icon={faRotateRight} />
+                {/* <Icons icon={faRotateRight} /> */}
                 </button>
                 
                 {/* <button className='px-8 py-2 ml-1 text-gray-100 rounded-lg bg-primary hover:bg-secondary' onClick={handlerReset}>

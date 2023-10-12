@@ -24,7 +24,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/orders?${query}`, {
+      .get(`/api/orders?populate=*`, {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },
@@ -38,25 +38,27 @@ const Orders = () => {
   console.log(user);
 
   return (
-    <div>
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">
+    <div className="border-collapse font-abril">
+    <h1 className="mb-3 text-2xl text-center uppercase">
+      Perfil Del Usuario
+    </h1>
+    <div className="mb-3 text-2xl text-gray-700 uppercase align-middle border border-black">
+      <h2 className="mx-3">
+        Nombre: {user.username}
+      </h2>
+      <h2 className="mx-3">
+        Email: {user.email}
+      </h2>
+    </div>
+      <ul className="border">
+      <h3 className="mb-3 text-2xl text-center text-gray-700 uppercase border border-black">
         Order history
-      </h1>
-      <ul>
+      </h3>
         {orders.map((order) => (
           <OrderList key={order.id} order={order} />
         ))}
       </ul>
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">
-        Nombre: {user.username}
-      </h1>
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">
-        Email: {user.email}
-      </h1>
-      <h1 className="text-2xl text-gray-700 uppercase text-center mb-3">
-        Contraseña: {user.password}
-      </h1>
-      <button className="text-2xl text-gray-700 uppercase text-center mb-3">
+      <button className="mb-3 text-2xl text-center text-gray-700 uppercase">
         Cambiar contraseña
       </button>
     </div>
