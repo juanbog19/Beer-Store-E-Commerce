@@ -13,27 +13,27 @@ const OrderList = props => {
   }-${date.getFullYear()}`;
 
   return (
-    <li className="bg-white border-b border-primary p-2">
-      <p className="text-sm mb-0 text-stone-800">
+    <li className="p-2 bg-white border-b border-primary">
+      <p className="mb-0 text-sm text-stone-800">
         <strong>Address</strong> : { address }
       </p>
-      <p className="text-sm mb-0 text-stone-800">
+      <p className="mb-0 text-sm text-stone-800">
         <strong>City</strong> : { city }
       </p>
-      <p className="text-sm mb-0 text-stone-800">
+      <p className="mb-0 text-sm text-stone-800">
         <strong>List of beers</strong> :{" "}
       </p>
-      <ul className="text-sm ml-5">
+      <ul className="ml-5 text-sm">
         {items.map(( item ) => (
           <li key={ `item-${item.id}` }>
             { item.name } (x { item.quant })
           </li>
         ))}
       </ul>
-      <p className="text-sm mb-0 text-red-800">
+      <p className="mb-0 text-sm text-red-800">
         <strong>Amount</strong> : { amount }
       </p>
-      <p className="text-sm mb-0 text-stone-800">
+      <p className="mb-0 text-sm text-stone-800">
         <strong>{ formatDate }</strong>{ " " }
       </p>
     </li>

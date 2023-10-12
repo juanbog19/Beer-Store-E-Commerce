@@ -18,7 +18,7 @@ import Input from '../UI/Input';
 import HolyBeer from '../svg/HolyBeer';
 import Spinner from '../svg/Spinner';
 import Button from '../UI/Button';
-import { GoogleLogin } from 'react-google-login';
+//import { GoogleLogin } from 'react-google-login';
 
 
 const SignUp = () => {

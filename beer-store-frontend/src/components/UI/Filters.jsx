@@ -1,20 +1,24 @@
 import { useEffect, useState } from "react";
-import { getBeers } from "../../store/beersSlice";
+import { getBeers, setByPrice, setByType } from "../../store/beersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../../store/searchSlice";
+import { setByOrderAlphabetic, setFiltro } from "../../store/brandFilterSlice";
 //import {brandsSearch} from "../../store/searchSlice";
 //import {beersSearch} from "../../store/beersSlice";
 
 export default function Filters() {
   const dispatch = useDispatch();
+
   const beersSearch = useSelector((state) => state.beers.beersSearch)
-  const brandsSearch = useSelector((state) => state.brands.brandsSearch);
+  const brandsSearch = useSelector((state)=>state.brands.brandsSearch)
+  //const brandsList = useSelector((state) => state.brandsList);
+  //const filtro = useSelector((state) => state.filtro);
 
   const [inputType, setInputType] = useState();
   const [inputPrice, setInputPrice] = useState();
 
   const [brand, setBrand] = useState();
-  const [inputAbc, setInputAbc] = useState();
+  const [option, setOption] = useState();   //estado local p/filterByOrderAlphabetic
 
   useEffect(() => {
     dispatch(getBrands());
@@ -22,33 +26,46 @@ export default function Filters() {
   }, [dispatch])
 
 
-  const handleChangeBeer = (event) => {
-    dispatch(getBeers(event.target.value));
+  const handleChangeType = (event) => {
+    dispatch(setByType(event.target.value));
     setInputType(!inputType);
   }
 
   const handleChangePrice = (event) => {
-    dispatch(getBeers(event.target.value));
+    dispatch(setByPrice(event.target.value));
     setInputPrice(!inputPrice);
   }
 
+  // const handleChangeBrands = (event) => {
+  //   setBrand(event.target.value);
+  //   dispatch(getBrands(brandInput));
+  //   // setBrand(!brand);
+  // }
   const handleChangeBrands = (event) => {
-    setBrand(event.target.value);
-    dispatch(getBrands(brand));
-    // setBrand(!brand);
+    dispatch(setFiltro(event.target.value));
+    setBrand(event.target.value)   
   }
 
-  const handleChangeABC = (event) => {
-    event.preventDefault();
-    dispatch((event.target.value))
-    setInputAbc(!inputAbc);
+  const handleChangeABC = () => {
+   if(option ===   "Filter by alphabetic"){
+    dispatch(getBrands())
+   }
+   dispatch(setByOrderAlphabetic(option))
   }
+
+    // const handleChangeABC = (event) => {
+  //   event.preventDefault();
+  //   dispatch(setByOrderAlphabetic(event.target.value))
+  //   setInputAbc(!inputAbc);
+  // }
+
+
 
   return (
     <div className="flex justify-center space-x-4 mb-4">
       <div className="flex flex-col items-center">
         <legend>Tipos de cerveza</legend>
-        <select onChange={(event) => handleChangeBeer(event)} defaultValue="default">
+        <select onChange={(event) => handleChangeType(event)} defaultValue="default">
           <option value="default" disabled>Filtrar por tipo</option>
           {beersSearch &&
             beersSearch?.map((typ) => (
@@ -74,10 +91,9 @@ export default function Filters() {
 
       <div className="flex flex-col items-center">
         <legend>Marcas</legend>
-        <select onChange={(event) => handleChangeBrands(event)} defaultValue="default">
+        <select onChange={(event) => handleChangeBrands(event)} value={brand}>
           <option value="default">Filtrar por marca</option>
-          {brandsSearch &&
-            brandsSearch?.map((brand) => (
+          {brandsSearch?.map((brand) => (
               <option key={brand.id} value={brand.name}>
                 {brand.name}
               </option>
@@ -87,8 +103,8 @@ export default function Filters() {
 
       <div className="flex flex-col items-center">
         <legend>Marcas en orden alfabético</legend>
-        <select onChange={(event) => handleChangeABC(event)}>
-          <option value="default">Filtrar en orden alfabético</option>
+        <select onClick={handleChangeABC} defaultValue={"Filter by alphabetic"} onChange={(event) => setOption(event.target.value)}>
+          <option value={"Filter by alphabetic"}>Filtrar en orden alfabético</option>
           <option value="A-Z">A-Z</option>
           <option value="Z-A">Z-A</option>
         </select>

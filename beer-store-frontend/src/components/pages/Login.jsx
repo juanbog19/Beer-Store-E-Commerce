@@ -15,7 +15,7 @@ import { login } from "../../store/authSlice";
 import Input from "../UI/Input";
 import Spinner from "../svg/Spinner";
 import Button from "../UI/Button";
-import { GoogleLogin } from 'react-google-login';
+//import { GoogleLogin } from 'react-google-login';
 
 const Login = () => {
   const loading = useSelector((state) => state.auth.loading);
@@ -131,13 +131,13 @@ const Login = () => {
           <Button type="submit" label="Ingresar" full />
         </form>
           <div className="flex items-center justify-center mt-4">
-            <GoogleLogin
+            {/* <GoogleLogin
               clientId="976149304153-pq3kqlvrqrc5mfpfsmlg9uvmd58q7poa.apps.googleusercontent.com"
               buttonText="Continuar con Google"
               onSuccess={googleResponse}
               onFailure={googleResponse}
               cookiePolicy={'single_host_origin'}
-            />
+            /> */}
           </div>
       </div>
     </>

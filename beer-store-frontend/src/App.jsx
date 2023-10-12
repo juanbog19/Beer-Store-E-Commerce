@@ -35,6 +35,12 @@ import Orders from "./components/pages/Orders";
 import Detail from "./components/pages/Detail";
 import AboutUs from "./components/pages/AboutUs";
 import UserProfile from "./components/pages/UserProfile";
+//Rutas para el admin dashboard
+import Dashboard from "./components/dashboard/Dashboard";
+import BeersForm from "./components/dashboard/BeersForm";
+import BrandsForm from "./components/dashboard/BrandsForm";
+import OrdersInfo from "./components/dashboard/OrdersInfo";
+import UsersInfo from "./components/dashboard/UsersInfo";
 
 function App() {
   const isLoggedin = useSelector((state) => state.auth.loggedin);
@@ -57,6 +63,12 @@ function App() {
             {isLoggedin && (
               <Route path="/my-profile" element={<UserProfile />} />
             )}
+            {/* Rutas para admin dashboard */}
+            <Route path="/admin" exact={true} element={<Dashboard />} />
+            <Route path="/admin/beers" exact={true} element={<BeersForm />} />
+            <Route path="/admin/brands" exact={true} element={<BrandsForm />} />
+            <Route path="/admin/orders" exact={true} element={<OrdersInfo />} />
+            <Route path="/admin/users" exact={true} element={<UsersInfo />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/about/us" element={<AboutUs />} />
           </Routes>
