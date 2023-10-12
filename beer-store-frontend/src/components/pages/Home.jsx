@@ -111,7 +111,10 @@ useEffect(() => {
     <>
     <div>
       <div>
-      <div className="mx-44">{isProductPage ? null : <SearchBar />}</div>
+      <div className="flex justify-center">
+  <div>{isProductPage ? null : <SearchBar />}</div>
+</div>
+
       <Filters/>
       </div>
        <div className="flex flex-wrap justify-around">
