@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getBrands } from '../../store/searchSlice';
 //import { faRotateRight, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +6,7 @@ import { getBrands } from '../../store/searchSlice';
 
 const SearchBar = () => {   
     const [brand, setBrand] = useState('');
+
     const dispatch = useDispatch();
     // console.log(brand);
 

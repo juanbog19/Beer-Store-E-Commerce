@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getBeers, setByPrice, setByType } from "../../store/beersSlice";
+import { getBeers } from "../../store/beersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../../store/searchSlice";
-import { setByOrderAlphabetic, setFiltro } from "../../store/brandFilterSlice";
+import { setByOrderAlphabetic, setFilter } from "../../store/brandFilterSlice";
 //import {brandsSearch} from "../../store/searchSlice";
 //import {beersSearch} from "../../store/beersSlice";
 
@@ -42,7 +42,7 @@ export default function Filters() {
   //   // setBrand(!brand);
   // }
   const handleChangeBrands = (event) => {
-    dispatch(setFiltro(event.target.value));
+    dispatch(setFilter(event.target.value));
     setBrand(event.target.value)   
   }
 
@@ -52,14 +52,6 @@ export default function Filters() {
    }
    dispatch(setByOrderAlphabetic(option))
   }
-
-    // const handleChangeABC = (event) => {
-  //   event.preventDefault();
-  //   dispatch(setByOrderAlphabetic(event.target.value))
-  //   setInputAbc(!inputAbc);
-  // }
-
-
 
   return (
     <div className="flex justify-center space-x-4 mb-4">
@@ -79,7 +71,7 @@ export default function Filters() {
       <div className="flex flex-col items-center">
         <legend>Precios</legend>
         <select onChange={(event) => handleChangePrice(event)} defaultValue="default">
-          <option>Filtrar por precio</option>
+          <option>Filter by Price</option>
           {beersSearch &&
             beersSearch?.map((pric) => (
               <option key={pric.id} value={pric.price}>
@@ -112,73 +104,3 @@ export default function Filters() {
     </div>
   )
 }
-
-
-
-
-
-// export default function Filters() {
-//       return (
-//     <div>      
-//         <div>
-
-//         <select>
-//             <option disabled>Order By Price</option>
-//             <option value="$1-$5">$1-$5</option>
-//             <option value="$5-$10">$5-$10</option>
-//             <option value="$10-$15">$10-$15</option>
-//             <option value="$15-$20">$10-$15</option>
-//         </select>
-//         {/* <TypeFilter /> */}
-//         {/* <select>
-//             <option disabled>Order By Type</option>
-
-//         </select> */}
-//     </div>
-//     </div>
-//   )
-// }
-//=======
-
-//export default function Filters() {
-//   return (
-// <div>      
-{/* <div>
-        <select>
-            <option disabled>Filter By Brands</option>
-            <option value="Antares">Antares</option>
-            <option value="Patagonia">Patagonia</option>
-            <option value="Corona">Corona</option>
-            <option value="Brahma">Brahma</option>
-            <option value="Quilmes">Quilmes</option>            
-        </select>
-
-        <select>
-            <option disabled>Order by Alphabetic</option>
-            <option value="A-Z">A-Z</option>
-            <option value="Z-A">Z-A</option>
-        </select>
-
-        <div>
-        
-        <select>
-            <option disabled>Order By Price</option>
-            <option value="menor a mayor">menor a mayor</option>
-            <option value="mayor a menor">mayor a menor</option>
-        </select>
-
-        <select>
-            <option disabled>Order By Type</option>
-            <option value="IPA">IPA</option>
-            <option value="STOUT">STOUT</option>
-            <option value="RED">RED</option> 
-            <option value="LAGER">LAGER</option> 
-            <option value="PALE ALE">PALE ALE</option> 
-            <option value="KOLSCH">KOLSCH</option> 
-            <option value="HIBRIDA">HIBRIDA</option>  
-        </select>
-    </div> */}
-//     </div>
-//   )
-// }
-// >>>>>>> 942c9c9a42b0e1b2352890ea6ddf56812ad2dbea

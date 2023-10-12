@@ -32,7 +32,7 @@ const initialState = {
   loading: false,  // Indica si se está cargando la información
   error: null,     // Almacena cualquier error que ocurra
   //brandsList:[],
-  filtro:'',
+  filter:'',
   orderAlphabetic:'ascendente',
 };
 
@@ -43,8 +43,8 @@ const brandsSlice = createSlice({
     setBrands(state, action){
       state.brandsSearch = action.payload;
     },
-    setFiltro(state, action){
-      state.filtro= state.brandsSearch.filter((brand)=>brand.name.toLowerCase().includes(action.payload.toLowerCase()));
+    setFilter(state, action){
+      state.filter= state.brandsSearch.filter((brand)=>brand.name.toLowerCase().includes(action.payload.toLowerCase()));
      // state.filtro = action.payload;      
     },
     setByOrderAlphabetic(state){
@@ -75,7 +75,7 @@ const brandsSlice = createSlice({
   },
 });
 
-  export const { setBrands, setFiltro, setByOrderAlphabetic} = brandsSlice.actions;
+  export const { setBrands, setFilter, setByOrderAlphabetic} = brandsSlice.actions;
 
   export default brandsSlice.reducer;
 

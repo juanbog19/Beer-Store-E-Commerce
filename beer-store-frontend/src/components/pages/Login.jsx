@@ -97,12 +97,12 @@ const Login = () => {
 
   return (
     <>
-      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">¡Bienvenido/a de nuevo!</h1>
+      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">Welcome back again!</h1>
       <div className="w-4/12 p-10 mx-auto bg-white">
         <form onSubmit={userLogin}>
           <Input
             id="username"
-            label="Usuario"
+            label="User"
             placeholder="JonDoe"
             ref={usernameInput}
             extraClass={classUsername}
@@ -114,7 +114,7 @@ const Login = () => {
           />
           <Input
             id="password"
-            label="Contraseña"
+            label="Password"
             placeholder="********"
             type="password"
             ref={passwordInput}
@@ -128,7 +128,7 @@ const Login = () => {
           {errorLogin && (
             <div className="p-2 mb-2 bg-red-200">Wrong password or username</div>
           )}
-          <Button type="submit" label="Ingresar" full />
+          <Button type="submit" label="Submit" full />
         </form>
           <div className="flex items-center justify-center mt-4">
             {/* <GoogleLogin

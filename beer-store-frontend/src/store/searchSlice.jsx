@@ -5,7 +5,7 @@ export const getBrands = createAsyncThunk(
   "brands/getBrands",
   async (brand) => {
     try {
-      const resp = await axios.get(`/api/brands?filters[name][$containsi]=${brand}&populate=img`, {      
+      const resp = await axios.get(`/api/brands?filters[name][$contains]=${brand}&populate=img`, { //code correction: *contains*      
         headers: {
           Accept: 'application/json',
         },
@@ -21,9 +21,9 @@ export const getBrands = createAsyncThunk(
 
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  brandsSearch: [],      // Almacena los datos de las marcas
-  loading: false,  // Indica si se está cargando la información
-  error: null,     // Almacena cualquier error que ocurra
+  brandsSearch: [],      // Stores brand data
+  loading: false,  // Shows if info is being loaded
+  error: null,     // Stores error history
 };
 
 const brandsSlice = createSlice({
