@@ -34,7 +34,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/orders?${query}`, {
+      .get(`/api/orders?populate=*`, {
         headers: {
           Authorization: `Bearer ${jwt}`,
         },
