@@ -34,7 +34,6 @@ import Checkout from "./components/pages/Checkout";
 import Orders from "./components/pages/Orders";
 import Detail from "./components/pages/Detail";
 import AboutUs from "./components/pages/AboutUs";
-import Beer from './components/pages/admin/Beer';
 import UserProfile from "./components/pages/UserProfile";
 //Rutas para el admin dashboard
 import Dashboard from "./components/dashboard/Dashboard";
@@ -73,7 +72,6 @@ function App() {
             <Route path="/admin/users" exact={true} element={<UsersInfo />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/about/us" element={<AboutUs />} />
-            <Route path="/beer" element={ <Beer /> } />
           </Routes>
         </Layout>
       </div>
