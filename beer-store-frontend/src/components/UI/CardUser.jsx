@@ -1,21 +1,22 @@
 /**
 Este componente es un menú desplegable que muestra la información del usuario autenticado. Permite al usuario ver su nombre de usuario y correo electrónico, acceder al historial de pedidos y cerrar sesión. El menú se activa al hacer clic en el botón y se desactiva al hacer clic fuera del menú o en el botón nuevamente. El botón cambia de estilo cuando el menú está activo. Cuando se hace clic en "Cerrar sesión", se despacha la acción de cierre de sesión para el usuario autenticado.
  */
-import { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { authLogout } from "../../store/authSlice";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const CardUser = () => {
-
   const divRef = useRef();
   const btnRef = useRef();
   const dispatch = useDispatch();
   const userinfo = useSelector((state) => state.auth.user);
-  const [ menuActive, setMenuActive ] = useState( false );
+  const [menuActive, setMenuActive] = useState(false);
 
   const activeClass = menuActive ? "absolute" : "hidden";
-  const btnClass = menuActive ? "border-transparent text-white bg-primary" : "text-black border-black";
+  const btnClass = menuActive
+    ? "border-transparent text-white bg-primary"
+    : "text-black border-black";
 
   useEffect(() => {
     const outsiderClick = (event) => {
@@ -59,15 +60,23 @@ const CardUser = () => {
         className={`${activeClass} bg-white mt-2 px-5 py-2 shadow-lg`}
       >
         <h3> {userinfo && userinfo.username}</h3>
-        <p className="text-sm text-gray-500 mb-2"> {userinfo && userinfo.email}</p>
+        <p className="text-sm text-gray-500 mb-2">
+          {" "}
+          {userinfo && userinfo.email}
+        </p>
         <Link to="/orders" onClick={toggleMenu}>
           Mis ordenes
+        </Link>
+        <hr className="my-2" />
+
+        <Link to="/my-profile" onClick={toggleMenu}>
+          My Profile
         </Link>
         <hr className="my-2" />
         <button onClick={logout}>Cerrar sesión</button>
       </div>
     </div>
   );
-}
+};
 
 export default CardUser;

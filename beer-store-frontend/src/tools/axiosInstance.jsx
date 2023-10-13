@@ -5,7 +5,7 @@ local en el puerto 1337. Esto permite realizar solicitudes HTTP a un servidor lo
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:1337/",
+  baseURL: "https://clever-wealth-8d301ae501.strapiapp.com",
 });
 
 export default instance;

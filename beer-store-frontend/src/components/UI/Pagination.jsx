@@ -1,7 +1,7 @@
 
 import { useSelector, useDispatch } from 'react-redux';
 
-const Paginated = ({brandsPerPage, allBrands, paginado}) => {
+const Pagination = ({brandsPerPage, allBrands, paginado}) => {
     
     const currentPage = useSelector((state)=>state.page)
     const dispatch = useDispatch();
@@ -50,7 +50,4 @@ const Paginated = ({brandsPerPage, allBrands, paginado}) => {
     )
 }
 
-
-
-
-export default Paginated
+export default Pagination

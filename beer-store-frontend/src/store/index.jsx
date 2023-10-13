@@ -29,6 +29,7 @@ import brandsSlice from "./searchSlice";
 import bannerSlice from "./bannerSlice";
 import searchSlice from "./searchSlice";
 import beersSlice from "./beersSlice";
+import brandFilterSlice from "./brandFilterSlice";
 
 // Configuración de Redux Persist. 
 const configReducer = {
@@ -44,7 +45,9 @@ const reducers = combineReducers({
   brands:brandsSlice,
   banner: bannerSlice,
   brandsSearch: searchSlice,
-  beers: beersSlice
+  beers: beersSlice,
+  brandsList:brandFilterSlice,
+  filtro:brandFilterSlice,
 });
 
 // Se aplica la persistencia al reducer combinado. 
