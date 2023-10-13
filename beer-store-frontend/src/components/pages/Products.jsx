@@ -42,11 +42,11 @@ const Products = () => {
       signal:controller.signal
     })
     .then(( response ) => {
-      // console.log( response );
+       //console.log( response );
       setBrand( response.data.data );
       setLoading( false );
     }).catch(( error ) => {
-      console.log( error );
+      //console.log( error );
       if ( axios.isCancel( error ) ) {
         console.log( 'request canceled' );
         return;

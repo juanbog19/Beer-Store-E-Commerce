@@ -34,6 +34,7 @@ import Checkout from "./components/pages/Checkout";
 import Orders from "./components/pages/Orders";
 import Detail from "./components/pages/Detail";
 import AboutUs from "./components/pages/AboutUs";
+import Beer from './components/pages/admin/Beer';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
             { isLoggedin && <Route path="/orders" element={ <Orders /> } />}
             <Route path="*" element={ <Navigate to='/' /> } />
             <Route path="/about/us" element={ <AboutUs /> } />
+            <Route path="/beer" element={ <Beer /> } />
           </Routes>
         </Layout>
       </div>

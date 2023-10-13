@@ -61,10 +61,10 @@ const CardUser = () => {
         <h3> {userinfo && userinfo.username}</h3>
         <p className="text-sm text-gray-500 mb-2"> {userinfo && userinfo.email}</p>
         <Link to="/orders" onClick={toggleMenu}>
-          Order History
+          Mis ordenes
         </Link>
         <hr className="my-2" />
-        <button onClick={logout}>Log out</button>
+        <button onClick={logout}>Cerrar sesión</button>
       </div>
     </div>
   );
