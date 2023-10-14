@@ -122,64 +122,65 @@ import { useEffect, useState } from "react";
 import { getBeers } from "../../store/beersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../../store/searchSlice";
-
+import { setByOrderAlphabetic, setFiltro } from "../../store/brandFilterSlice";
+//import {brandsSearch} from "../../store/searchSlice";
+//import {beersSearch} from "../../store/beersSlice";
 
 export default function Filters({listBrands}) {      // vienen del Home 
 
   const dispatch = useDispatch();
 
-  const items = useSelector((state) => state.cart.items)  //viene de cartSlice
+  const beersSearch = useSelector((state) => state.beers.beersSearch)
+  const brandsSearch = useSelector((state)=>state.brands.brandsSearch)
+  //const brandsList = useSelector((state) => state.brandsList);
+  //const filtro = useSelector((state) => state.filtro);
+
+  const [inputType, setInputType] = useState();
+  const [inputPrice, setInputPrice] = useState();
+
+  const [brand, setBrand] = useState();
+  const [option, setOption] = useState();   //estado local p/filterByOrderAlphabetic
 
   useEffect(() => {
     dispatch(getBrands());
     dispatch(getBeers());
   }, [dispatch])
 
-  const [inputBrand, setInputBrand] = useState(false);
 
-  const filterBrands =(payload)=>{
-    return listBrands&&
-    listBrands.filter((brand)=>brand?.name?.includes(payload))
+  const handleChangeType = (event) => {
+    dispatch(setByType(event.target.value));
+    setInputType(!inputType);
+  }
 
- }
-
- const handleChangeBrands = (event) => {
-  const value = event.target.value;
-  const filteredBrands = filterBrands(value);
-  setInputBrand(value);
-  dispatch(filteredBrands);
-};
+  const handleChangePrice = (event) => {
+    dispatch(setByPrice(event.target.value));
+    setInputPrice(!inputPrice);
+  }
 
   // const handleChangeBrands = (event) => {
-  // dispatch(filterBrands(event.target.value));
-  // setInputBrand(!inputBrand);
-  //   }
+  //   setBrand(event.target.value);
+  //   dispatch(getBrands(brandInput));
+  //   // setBrand(!brand);
+  // }
+  const handleChangeBrands = (event) => {
+    dispatch(setFiltro(event.target.value));
+    setBrand(event.target.value)   
+  }
 
+  const handleChangeABC = () => {
+   if(option ===   "Filter by alphabetic"){
+    dispatch(getBrands())
+   }
+   dispatch(setByOrderAlphabetic(option))
+  }
 
-      //   const brandsState = listBrands;
-      //   const brandsFilter = myInput === '' 
-      //   ? brandsState
-      //   : brandsState.filter((brand)=>brand.name && brand.name.includes(inputBrand))
-      //   return brandsFilter
-      // })
-    
-
-  // const handleChangeABC = () => {
-  //  if(option ===   "Filter by alphabetic"){
-  //   dispatch(getBrands())
-  //  }
-  //  dispatch(setByOrderAlphabetic(option))
+    // const handleChangeABC = (event) => {
+  //   event.preventDefault();
+  //   dispatch(setByOrderAlphabetic(event.target.value))
+  //   setInputAbc(!inputAbc);
   // }
 
-  // const handleChangeType = (event) => {
-  //   dispatch(setByType(event.target.value));
-  //   setInputType(!inputType);
-  // }
 
-  // const handleChangePrice = (event) => {
-  //   dispatch(setByPrice(event.target.value));
-  //   setInputPrice(!inputPrice);
-  // }
 
   return (
     <div className="flex justify-center space-x-4 mb-4">
@@ -197,8 +198,11 @@ export default function Filters({listBrands}) {      // vienen del Home
         <legend>Precios</legend>
         <select onChange={(event) => handleChangePrice(event)} defaultValue="default">
           <option>Filtrar por precio</option>
-          {items.map((beer) => (
-              <option key={beer.id} value={beer.price}>{beer.price}</option>
+          {beersSearch &&
+            beersSearch?.map((pric) => (
+              <option key={pric.id} value={pric.price}>
+                {pric.price}
+              </option>
             ))}
         </select>
       </div>

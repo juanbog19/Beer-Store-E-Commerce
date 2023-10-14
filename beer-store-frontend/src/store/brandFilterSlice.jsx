@@ -32,14 +32,32 @@ const initialState = {
   loading: false,  // Indica si se está cargando la información
   error: null,     // Almacena cualquier error que ocurra
   //brandsList:[],
-  filtro:[],
+  filtro:'',
   orderAlphabetic:'ascendente',
 };
 
 const brandsSlice = createSlice({
   name: "brands",
   initialState,
-  reducers: {},
+  reducers: {
+    setBrands(state, action){
+      state.brandsSearch = action.payload;
+    },
+    setFiltro(state, action){
+      state.filtro= state.brandsSearch.filter((brand)=>brand.name.toLowerCase().includes(action.payload.toLowerCase()));
+     // state.filtro = action.payload;      
+    },
+    setByOrderAlphabetic(state){
+      if(state.orderAlphabetic ==='ascendente'){
+        state.brandsSearch.sort();
+        state.orderAlphabetic = 'descendente';
+      }else{
+        state.brandsSearch.sort().reverse();
+        state.orderAlphabetic = 'ascendente';
+      }
+        
+    }
+  },
   extraReducers:(builder) => {
     builder
       .addCase(getBrands.pending, (state) => {
@@ -57,7 +75,7 @@ const brandsSlice = createSlice({
   },
 });
 
-  export const { setBrands, setFiltro, setByOrderAlphabetic} = brandsSlice.actions;
+  export const { setBrands, setFilter, setByOrderAlphabetic} = brandsSlice.actions;
 
   export default brandsSlice.reducer;
 

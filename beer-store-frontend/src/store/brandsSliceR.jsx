@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from "axios";
 
-const urlBeers = "http://localhost:1337/";
+const urlBeers = "https://clever-wealth-8d301ae501.strapiapp.com";
 
 export const getBrandsssssNoSirveee = createAsyncThunk(
   'api/brands',

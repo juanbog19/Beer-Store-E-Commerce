@@ -65,14 +65,15 @@ const CardUser = () => {
           {userinfo && userinfo.email}
         </p>
         <Link to="/orders" onClick={toggleMenu}>
-          Order History
+          Mis ordenes
         </Link>
         <hr className="my-2" />
+
         <Link to="/my-profile" onClick={toggleMenu}>
           My Profile
         </Link>
         <hr className="my-2" />
-        <button onClick={logout}>Log out</button>
+        <button onClick={logout}>Cerrar sesión</button>
       </div>
     </div>
   );
