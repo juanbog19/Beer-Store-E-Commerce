@@ -109,7 +109,7 @@ useEffect(() => {
     <>
     <div>
       <div>
-      <Filters/>
+      <Filters listBrands= {currentBrands}/>
       </div>
        <div className="flex flex-wrap justify-around">
         {currentBrands.map((brand) => (
