@@ -122,7 +122,7 @@ import { useEffect, useState } from "react";
 import { getBeers } from "../../store/beersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../../store/searchSlice";
-import { setByOrderAlphabetic, setFiltro } from "../../store/brandFilterSlice";
+//import { setByOrderAlphabetic, setFiltro } from "../../store/brandFilterSlice";
 //import {brandsSearch} from "../../store/searchSlice";
 //import {beersSearch} from "../../store/beersSlice";
 
@@ -131,15 +131,15 @@ export default function Filters({listBrands}) {      // vienen del Home
   const dispatch = useDispatch();
 
   const beersSearch = useSelector((state) => state.beers.beersSearch)
-  const brandsSearch = useSelector((state)=>state.brands.brandsSearch)
+ // const brandsSearch = useSelector((state)=>state.brands.brandsSearch)
   //const brandsList = useSelector((state) => state.brandsList);
   //const filtro = useSelector((state) => state.filtro);
 
   const [inputType, setInputType] = useState();
   const [inputPrice, setInputPrice] = useState();
 
-  const [brand, setBrand] = useState();
-  const [option, setOption] = useState();   //estado local p/filterByOrderAlphabetic
+  // const [brand, setBrand] = useState();
+  // const [option, setOption] = useState();   //estado local p/filterByOrderAlphabetic
 
   useEffect(() => {
     dispatch(getBrands());
@@ -167,12 +167,12 @@ export default function Filters({listBrands}) {      // vienen del Home
     setBrand(event.target.value)   
   }
 
-  const handleChangeABC = () => {
-   if(option ===   "Filter by alphabetic"){
-    dispatch(getBrands())
-   }
-   dispatch(setByOrderAlphabetic(option))
-  }
+  // const handleChangeABC = () => {
+  //  if(option ===   "Filter by alphabetic"){
+  //   dispatch(getBrands())
+  //  }
+  //  dispatch(setByOrderAlphabetic(option))
+  // }
 
     // const handleChangeABC = (event) => {
   //   event.preventDefault();
