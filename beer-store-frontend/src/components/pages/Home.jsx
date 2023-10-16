@@ -115,7 +115,7 @@ useEffect(() => {
   <div>{isProductPage ? null : <SearchBar />}</div>
 </div>
 
-      <Filters/>
+      {/* <Filters/> */}
       </div>
        <div className="flex flex-wrap justify-around">
         {currentBrands.map((brand) => (
