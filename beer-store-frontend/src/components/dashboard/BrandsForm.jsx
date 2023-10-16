@@ -1,4 +1,5 @@
-import axiosURL from "../../tools/axiosInstance";
+//import axiosURL from "../../tools/axiosInstance";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Section from "../UI/Section";
 import { Link } from "react-router-dom";
@@ -7,20 +8,31 @@ import { faEdit, faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./Sidebar";
 
 export default function Brands() {
+  const localURL = "http://localhost:1337";
+  const [form, setForm] = useState({});
   const [brands, setBrands] = useState([]);
 
+  //CRUD Controllers para el admin dashboard
+  //GET api/brands
+  const fetchData = async () => {
+    try {
+      //const resp = await axiosURL.get("/api/brands?populate=*");
+      const resp = await axios.get(localURL + "/api/brands?populate=*");
+      const responseData = resp.data.data || [];
+      console.log(responseData);
+      setBrands(responseData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //POST api/brands
+
+  //PUT api/brands/:id
+
+  //DELETE api/brands/:id
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await axiosURL.get("/api/brands?populate=*");
-        //const resp = await axiosURL.get("/api/brands");
-        const responseData = resp.data.data || [];
-        console.log(responseData);
-        setBrands(responseData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchData();
   }, []);
 
