@@ -29,20 +29,26 @@ export const allBrandsSlice = createSlice({
   initialState: {
     brands: [],
     isLoading: false,
+    error: "",
   },
   reducers: {
     startLoadingBrands: (state) => {
       state.isLoading = true;
     },
     setAllBrands: (state, action) => {
-      console.log(action);
+      state.isLoading = false;
+      state.brands = action.payload.brands;
     },
   },
 });
 
 export const getAllBrands = () => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch(startLoadingBrands());
+    const resp = await axios.get(localURL + "/api/brands?populate=*");
+    const respData = resp.data.data;
+    //console.log(respData);
+    dispatch(setAllBrands({ brands: respData }));
   };
 };
 

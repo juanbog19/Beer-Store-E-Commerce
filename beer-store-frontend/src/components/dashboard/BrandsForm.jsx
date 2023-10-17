@@ -1,7 +1,7 @@
 //import axiosURL from "../../tools/axiosInstance";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { faEdit, faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -10,28 +10,34 @@ import Icons from "../UI/Icons";
 import { getAllBrands } from "../../store/brandsSliceR";
 
 export default function Brands() {
+  //const localURL = "http://localhost:1337";
+
+  const allBrandsFetch = useSelector((state) => state.allBrands.brands);
   const dispatch = useDispatch();
-  const localURL = "http://localhost:1337";
   const [form, setForm] = useState({
     name: "",
     description: "",
   });
+  const [allBrands, setAllBrands] = useState([]);
   const [brands, setBrands] = useState([]);
   const [errors, setErrors] = useState({});
 
+  console.log(allBrands);
+
   //CRUD Controllers para el admin dashboard
   //GET api/brands
-  const fetchData = async () => {
-    try {
-      //const resp = await axiosURL.get("/api/brands?populate=*");
-      const resp = await axios.get(localURL + "/api/brands?populate=*");
-      const responseData = resp.data.data || [];
-      console.log(responseData);
-      setBrands(responseData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // fetchData se usa para obtener data sin redux
+  // const fetchData = async () => {
+  //   try {
+  //     //const resp = await axiosURL.get("/api/brands?populate=*");
+  //     const resp = await axios.get(localURL + "/api/brands?populate=*");
+  //     const responseData = resp.data.data || [];
+  //     console.log(responseData);
+  //     setBrands(responseData);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   //POST api/brands
 
@@ -93,14 +99,16 @@ export default function Brands() {
   useEffect(() => {
     //fetchData();
     dispatch(getAllBrands());
+    setAllBrands(allBrandsFetch);
   }, []);
 
-  console.log(form);
-  console.log(errors);
+  // console.log(form);
+  // console.log(errors);
 
   return (
     <div>
       <Sidebar />
+      {/* Formulario para crear marca */}
       <div className="mb-3 text-center">
         <h3>
           <b>Crear nueva marca</b>
@@ -133,13 +141,14 @@ export default function Brands() {
           </button>
         </div>
       </div>
+      {/* Listado de todas las marcas */}
       <div className="mb-3 text-center">
         <h3>
           <b>Lista de Marcas</b>
         </h3>
         <Section>
           <ul>
-            {brands.map((brand) => (
+            {allBrands.map((brand) => (
               <li
                 className="flex justify-between my-2 border-b border-secondary"
                 key={brand.id}
@@ -153,9 +162,6 @@ export default function Brands() {
                   <div className="ml-2">
                     <h3 className="text-xl font-bold">{brand.name}</h3>
                     <div className="font-light">{brand.description}</div>
-                    <p className="text-lg font-semibold text-primary">
-                      $ {brand.price}
-                    </p>
                   </div>
                 </div>
                 <div>
