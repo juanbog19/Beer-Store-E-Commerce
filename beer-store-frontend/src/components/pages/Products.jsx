@@ -111,19 +111,11 @@ const Products = () => {
     setPriceRange(priceRange);
   };
 
-  // const filteredProducts = copyProducts.filter((product) => {
-  //   if (priceRange === "all") {
-  //     return true; // Mostrar todos los productos
-  //   } else if (priceRange === "0-3") {
-  //     return product.price >= 0 && product.price <= 3;
-  //   } else if (priceRange === "3-5") {
-  //     return product.price > 3 && product.price <= 5;
-  //   }
-  // });
+
   const filteredProducts = priceRange === "all"
   ? copyProducts // Muestra todos los productos si no se selecciona un rango de precios
   : copyProducts.filter((product) => {
-      const price = product.price; // Asegúrate de que el campo price esté correctamente definido en tus productos
+      const price = product.price; 
       if (priceRange === "0-3") {
         return price >= 0 && price <= 3;
       } else if (priceRange === "3-5") {

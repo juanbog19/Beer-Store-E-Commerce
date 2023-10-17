@@ -28,7 +28,6 @@ export default function FilterProduct({ onOrderChange, onPriceChange }) {      /
           <option value="all">Todos los precios</option>
           <option value="0-3">0 - 3</option>
           <option value="3-5">3 - 5</option>
-          {/* Agrega más opciones según tus necesidades */}
         </select>
       </div>
 
