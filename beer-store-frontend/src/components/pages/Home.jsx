@@ -112,7 +112,7 @@ useEffect(() => {
 
   const handleOrderChange = (newOrder) => {
     setOrderBy(newOrder);
-  }; 
+  };  
   
   if (orderBy === "A-Z") {
     brands.sort((a, b) =>
