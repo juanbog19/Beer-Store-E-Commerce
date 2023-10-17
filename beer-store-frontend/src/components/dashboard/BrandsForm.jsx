@@ -10,7 +10,7 @@ import Icons from "../UI/Icons";
 import { getAllBrands } from "../../store/brandsSliceR";
 
 export default function Brands() {
-  //const localURL = "http://localhost:1337";
+  const localURL = "http://localhost:1337";
 
   const allBrandsFetch = useSelector((state) => state.allBrands.brands);
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export default function Brands() {
 
   //CRUD Controllers para el admin dashboard
   //GET api/brands
-  // fetchData se usa para obtener data sin redux
+  // USAR fetchData SOLO PARA OBTENER DATA SIN REDUX
   // const fetchData = async () => {
   //   try {
   //     //const resp = await axiosURL.get("/api/brands?populate=*");
@@ -40,7 +40,25 @@ export default function Brands() {
   // };
 
   //POST api/brands
+  const createBrand = (payload) =>
+    axios.post(localURL + "/api/brands", payload);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!form.name || !form.description) {
+      return alert("Complete mandatory fields");
+    }
+    if (errors.name || errors.description) {
+      return alert("Wrong input, please fill only with valid data");
+    }
+    const payload = { data: form };
+    createBrand(payload);
+    alert("Brand created succesfully!");
+    setForm({
+      name: "",
+      description: "",
+    });
+  };
   //PUT api/brands/:id
 
   //DELETE api/brands/:id
@@ -79,28 +97,13 @@ export default function Brands() {
     );
   };
   //handleSubmit se dispara al hacer clic en el boton submit si el formulario no contiene errores
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!form.name || !form.description) {
-      return alert("Complete mandatory fields");
-    }
-    if (errors.name || errors.description) {
-      return alert("Wrong input, please fill only with valid data");
-    }
-    dispatch(postActivity(form));
-    alert("Brand created succesfully!");
-    setForm({
-      name: "",
-      description: "",
-    });
-  };
 
   //Carga la data desde la base de datos al montarse el componente
   useEffect(() => {
     //fetchData();
     dispatch(getAllBrands());
     setAllBrands(allBrandsFetch);
-  }, []);
+  }, [form]);
 
   // console.log(form);
   // console.log(errors);
@@ -134,12 +137,15 @@ export default function Brands() {
             onChange={handleChange}
           />
           {errors.description && <span className="">{errors.description}</span>}
+          <div className="flex flex-start ml-20 px-20">
+            <button
+              className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
+              type="submit"
+            >
+              <Icons icon={faPlus} /> Agregar marca
+            </button>
+          </div>
         </form>
-        <div className="flex flex-start ml-20 px-20">
-          <button className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary">
-            <Icons icon={faPlus} /> Agregar producto
-          </button>
-        </div>
       </div>
       {/* Listado de todas las marcas */}
       <div className="mb-3 text-center">
@@ -154,11 +160,11 @@ export default function Brands() {
                 key={brand.id}
               >
                 <div className="flex">
-                  <img
+                  {/* <img
                     src={brand.img.url}
                     alt={`logo of the brand ${brand.name}`}
                     className="rounded-full shadow-lg w-14 h-14"
-                  />
+                  /> */}
                   <div className="ml-2">
                     <h3 className="text-xl font-bold">{brand.name}</h3>
                     <div className="font-light">{brand.description}</div>
@@ -169,13 +175,13 @@ export default function Brands() {
                     className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
                     to={`/admin/brands`}
                   >
-                    <Icons icon={faEdit} />
+                    <Icons icon={faEdit} /> Editar
                   </Link>
                   <Link
                     className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
                     to={`/admin/brands`}
                   >
-                    <Icons icon={faTrashAlt} />
+                    <Icons icon={faTrashAlt} /> Eliminar
                   </Link>
                 </div>
               </li>
