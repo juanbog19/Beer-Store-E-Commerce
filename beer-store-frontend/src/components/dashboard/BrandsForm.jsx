@@ -12,17 +12,17 @@ import { getAllBrands } from "../../store/brandsSliceR";
 export default function Brands() {
   const localURL = "http://localhost:1337";
 
-  const allBrandsFetch = useSelector((state) => state.allBrands.brands);
+  const allItemsFetch = useSelector((state) => state.allBrands.brands);
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     name: "",
     description: "",
   });
-  const [allBrands, setAllBrands] = useState([]);
+  const [allItems, setAllItems] = useState([]);
   const [brands, setBrands] = useState([]);
   const [errors, setErrors] = useState({});
 
-  console.log(allBrands);
+  //console.log(allItems);
 
   //CRUD Controllers para el admin dashboard
   //GET api/brands
@@ -40,25 +40,38 @@ export default function Brands() {
   // };
 
   //POST api/brands
-  const createBrand = (payload) =>
-    axios.post(localURL + "/api/brands", payload);
+  const createItem = (payload) => axios.post(localURL + "/api/brands", payload);
+
+  const updateItem = (payload, id) =>
+    axios.put(localURL + "/api/brands/" + id, payload);
+
+  const deleteItem = async (id) => {
+    if (confirm("Esta item se borrará permanentemente. ¿Continuar?")) {
+      await axios.delete(localURL + "/api/brands/" + id);
+      alert("Item borrado con éxito");
+    }
+    dispatch(getAllBrands());
+    setAllItems(allItemsFetch);
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     if (!form.name || !form.description) {
-      return alert("Complete mandatory fields");
+      return alert("Completar campos obligatorios");
     }
     if (errors.name || errors.description) {
-      return alert("Wrong input, please fill only with valid data");
+      return alert("Revisar campos introducidos");
     }
     const payload = { data: form };
-    createBrand(payload);
-    alert("Brand created succesfully!");
+    createItem(payload);
+    alert("Item creado con éxito!");
     setForm({
       name: "",
       description: "",
     });
   };
+
+  const handleDelete = (event) => {};
   //PUT api/brands/:id
 
   //DELETE api/brands/:id
@@ -67,14 +80,14 @@ export default function Brands() {
   const validation = (form) => {
     const errors = {};
     if (!form.name) {
-      errors.name = "Enter brand name";
+      errors.name = "Escribe el nombre del item";
     } else if (/[^A-Za-z0-9 ]+/g.test(form.name)) {
-      errors.name = "Only letters or numbers allowed";
+      errors.name = "Solo se permiten letras o numeros";
     }
     if (!form.description) {
-      errors.description = "Enter description";
+      errors.description = "Escribe la descripcion del item";
     } else if (/[^A-Za-z0-9 ]+/g.test(form.description)) {
-      errors.descritpion = "Only letters or numbers allowed";
+      errors.descritpion = "Solo se permiten letras o numeros";
     }
     return errors;
   };
@@ -102,8 +115,8 @@ export default function Brands() {
   useEffect(() => {
     //fetchData();
     dispatch(getAllBrands());
-    setAllBrands(allBrandsFetch);
-  }, [form]);
+    setAllItems(allItemsFetch);
+  }, []);
 
   // console.log(form);
   // console.log(errors);
@@ -117,7 +130,7 @@ export default function Brands() {
           <b>Crear nueva marca</b>
         </h3>
         <form onSubmit={(event) => handleSubmit(event)}>
-          <label className="">Name: </label>
+          <label className="">Nombre: </label>
           <input
             className=""
             name="name"
@@ -127,7 +140,7 @@ export default function Brands() {
             onChange={handleChange}
           />
           {errors.name && <span className="">{errors.name}</span>}
-          <label className="">Description: </label>
+          <label className="">Descripcion: </label>
           <input
             className=""
             name="description"
@@ -144,6 +157,12 @@ export default function Brands() {
             >
               <Icons icon={faPlus} /> Agregar marca
             </button>
+            <button
+              className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
+              type="submit"
+            >
+              <Icons icon={faPlus} /> Editar marca
+            </button>
           </div>
         </form>
       </div>
@@ -154,10 +173,10 @@ export default function Brands() {
         </h3>
         <Section>
           <ul>
-            {allBrands.map((brand) => (
+            {allItemsFetch.map((item) => (
               <li
                 className="flex justify-between my-2 border-b border-secondary"
-                key={brand.id}
+                key={item.id}
               >
                 <div className="flex">
                   {/* <img
@@ -166,23 +185,23 @@ export default function Brands() {
                     className="rounded-full shadow-lg w-14 h-14"
                   /> */}
                   <div className="ml-2">
-                    <h3 className="text-xl font-bold">{brand.name}</h3>
-                    <div className="font-light">{brand.description}</div>
+                    <h3 className="text-xl font-bold">{item.name}</h3>
+                    <div className="font-light">{item.description}</div>
                   </div>
                 </div>
                 <div>
-                  <Link
+                  <button
                     className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
-                    to={`/admin/brands`}
+                    onClick={() => console.log(item.id)}
                   >
                     <Icons icon={faEdit} /> Editar
-                  </Link>
-                  <Link
+                  </button>
+                  <button
                     className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
-                    to={`/admin/brands`}
+                    onClick={() => deleteItem(item.id)}
                   >
                     <Icons icon={faTrashAlt} /> Eliminar
-                  </Link>
+                  </button>
                 </div>
               </li>
             ))}
