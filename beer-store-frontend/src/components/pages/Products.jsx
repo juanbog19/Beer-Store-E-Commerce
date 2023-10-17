@@ -19,7 +19,11 @@ const Products = () => {
   const [ hasError, setHasError ] = useState( false );
   const [ loading, setLoading ] = useState( false );
   const [orderBy, setOrderBy] = useState("A-Z");
-  const [priceRange, setPriceRange] = useState("all")
+  const [priceRange, setPriceRange] = useState("all");
+  const [beerType, setBeerType] = useState("all");
+
+
+  
   const id = params.id;
 
   const query = qs.stringify({
@@ -111,22 +115,46 @@ const Products = () => {
     setPriceRange(priceRange);
   };
 
+  const handleType = (type) => {
+    setBeerType(type);
+  };
 
-  const filteredProducts = priceRange === "all"
-  ? copyProducts // Muestra todos los productos si no se selecciona un rango de precios
-  : copyProducts.filter((product) => {
-      const price = product.price; 
-      if (priceRange === "0-3") {
-        return price >= 0 && price <= 3;
-      } else if (priceRange === "3-5") {
-        return price > 3 && price <= 5;
-      }
-    });
+  
+  const filteredProducts = copyProducts.filter((product) => {
+    const price = product.price;
+    const type = product.type;
+
+    const priceCondition = priceRange === "all" || (
+      (priceRange === "0-3" && price >= 0 && price <= 3) ||
+      (priceRange === "3-5" && price > 3 && price <= 5)
+    );
+
+    const typeCondition = beerType === "all" || type === beerType;
+
+    return priceCondition && typeCondition;
+  });
+
+
+  // const filteredProducts = priceRange === "all"
+  // ? copyProducts // Muestra todos los productos si no se selecciona un rango de precios
+  // : copyProducts.filter((product) => {
+  //     const price = product.price; 
+  //     if (priceRange === "0-3") {
+  //       return price >= 0 && price <= 3;
+  //     } else if (priceRange === "3-5") {
+  //       return price > 3 && price <= 5;
+  //     }
+  //   });
+
   
 
   return (
     <>
-    <FilterProduct onOrderChange={handleOrderChange} onPriceChange={handlePrice} />
+    <FilterProduct 
+      onOrderChange={handleOrderChange} 
+      onPriceChange={handlePrice} 
+      onTypeChange={handleType}
+    />
       <div className="mb-3 text-center">
         {/* <div className={ `w-24 h-24 rounded-full ${ brand.img } mx-auto shadow-lg` }></div> */}
         <img
