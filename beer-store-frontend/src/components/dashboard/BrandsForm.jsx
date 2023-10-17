@@ -1,13 +1,16 @@
 //import axiosURL from "../../tools/axiosInstance";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Section from "../UI/Section";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Icons from "../UI/Icons";
-import { faEdit, faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./Sidebar";
+import { faEdit, faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import Section from "../UI/Section";
+import Icons from "../UI/Icons";
+import { getAllBrands } from "../../store/brandsSliceR";
 
 export default function Brands() {
+  const dispatch = useDispatch();
   const localURL = "http://localhost:1337";
   const [form, setForm] = useState({
     name: "",
@@ -88,7 +91,8 @@ export default function Brands() {
 
   //Carga la data desde la base de datos al montarse el componente
   useEffect(() => {
-    fetchData();
+    //fetchData();
+    dispatch(getAllBrands());
   }, []);
 
   console.log(form);
