@@ -115,11 +115,11 @@ useEffect(() => {
   };  
   
   if (orderBy === "A-Z") {
-    brands.sort((a, b) =>
+    currentBrands.sort((a, b) =>
       a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
     );
   } else if (orderBy === "Z-A") {
-    brands.sort((a, b) =>
+    currentBrands.sort((a, b) =>
       a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
     );
   } 
