@@ -13,9 +13,11 @@
     "@spotodo0/strapi-google-auth": "^0.2.1",
     "@strapi/plugin-i18n": "4.13.5",
     "@strapi/plugin-users-permissions": "4.13.5",
+    "@strapi/provider-email-nodemailer": "^4.14.4",
     "@strapi/provider-upload-cloudinary": "^4.14.4",
     "@strapi/strapi": "4.13.5",
     "better-sqlite3": "8.5.0",
+    "nodemailer": "^6.9.6",
     "strapi-google-auth": "^0.1.2",
     "strapi-plugin-transformer": "^3.1.1"
   },
