@@ -15,13 +15,13 @@ Finalmente, se configura el store de Redux utilizando configureStore, pasando el
 
 El store configurado se exporta como valor por defecto.
 */
-// Se importan las funciones y librerías necesarias. 
+// Se importan las funciones y librerías necesarias.
 import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
-// Se importan los reducers creados para cada slice. 
+// Se importan los reducers creados para cada slice.
 import counterSlice from "./counterSlice";
 import cartSlice from "./cartSlice";
 import authSlice from "./authSlice";
@@ -30,33 +30,35 @@ import bannerSlice from "./bannerSlice";
 import searchSlice from "./searchSlice";
 import beersSlice from "./beersSlice";
 import brandFilterSlice from "./brandFilterSlice";
+import allBrandsSlice from "./brandsSliceR";
 
-// Configuración de Redux Persist. 
+// Configuración de Redux Persist.
 const configReducer = {
-  key:"beer-market",
-  storage
-}
+  key: "beer-market",
+  storage,
+};
 
-// Se combinan los reducers en uno solo. 
+// Se combinan los reducers en uno solo.
 const reducers = combineReducers({
-  counter:counterSlice, 
-  cart:cartSlice,
-  auth:authSlice,
-  brands:brandsSlice,
+  counter: counterSlice,
+  cart: cartSlice,
+  auth: authSlice,
+  allBrands: allBrandsSlice,
+  brands: brandsSlice,
   banner: bannerSlice,
   brandsSearch: searchSlice,
   beers: beersSlice,
-  brandsList:brandFilterSlice,
-  filtro:brandFilterSlice,
+  brandsList: brandFilterSlice,
+  filtro: brandFilterSlice,
 });
 
-// Se aplica la persistencia al reducer combinado. 
-const persitedReducer = persistReducer(configReducer, reducers)
+// Se aplica la persistencia al reducer combinado.
+const persitedReducer = persistReducer(configReducer, reducers);
 
-// Configuración final del store de Redux. 
+// Configuración final del store de Redux.
 const store = configureStore({
   reducer: persitedReducer,
-  middleware: [ thunk ],
+  middleware: [thunk],
 });
 
 export default store;
