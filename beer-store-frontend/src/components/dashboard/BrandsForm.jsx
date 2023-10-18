@@ -1,4 +1,4 @@
-//import axiosURL from "../../tools/axiosInstance";
+import axiosURL from "../../tools/axiosInstance";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,7 @@ export default function Brands() {
     description: "",
   });
   const [allItems, setAllItems] = useState([]);
+  const [edit, setEdit] = useState(false);
   const [brands, setBrands] = useState([]);
   const [errors, setErrors] = useState({});
 
@@ -40,10 +41,27 @@ export default function Brands() {
   // };
 
   //POST api/brands
-  const createItem = (payload) => axios.post(localURL + "/api/brands", payload);
+  const createItem = async (payload) =>
+    await axios.post(localURL + "/api/brands", payload);
 
-  const updateItem = (payload, id) =>
-    axios.put(localURL + "/api/brands/" + id, payload);
+  const updateItem = async (payload, id) =>
+    await axios.put(localURL + "/api/brands" + id, payload);
+
+  const handleUpdate = (id, name, description) => {
+    setEdit(true);
+    setForm({
+      id,
+      name,
+      description,
+    });
+    // updateItem(payload, id);
+    // alert("Item modificado con éxito!");
+    // setForm({
+    //   name: "",
+    //   description: "",
+    // });
+  };
+  //axios.put(localURL + "/api/brands/" + id, payload);
 
   const deleteItem = async (id) => {
     if (confirm("Esta item se borrará permanentemente. ¿Continuar?")) {
@@ -124,48 +142,6 @@ export default function Brands() {
   return (
     <div>
       <Sidebar />
-      {/* Formulario para crear marca */}
-      <div className="mb-3 text-center">
-        <h3>
-          <b>Crear nueva marca</b>
-        </h3>
-        <form onSubmit={(event) => handleSubmit(event)}>
-          <label className="">Nombre: </label>
-          <input
-            className=""
-            name="name"
-            type="text"
-            placeholder="Nombre de la marca..."
-            value={form.name}
-            onChange={handleChange}
-          />
-          {errors.name && <span className="">{errors.name}</span>}
-          <label className="">Descripcion: </label>
-          <input
-            className=""
-            name="description"
-            type="text"
-            placeholder="Descripcion de la marca..."
-            value={form.description}
-            onChange={handleChange}
-          />
-          {errors.description && <span className="">{errors.description}</span>}
-          <div className="flex flex-start ml-20 px-20">
-            <button
-              className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
-              type="submit"
-            >
-              <Icons icon={faPlus} /> Agregar marca
-            </button>
-            <button
-              className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
-              type="submit"
-            >
-              <Icons icon={faPlus} /> Editar marca
-            </button>
-          </div>
-        </form>
-      </div>
       {/* Listado de todas las marcas */}
       <div className="mb-3 text-center">
         <h3>
@@ -179,23 +155,27 @@ export default function Brands() {
                 key={item.id}
               >
                 <div className="flex">
-                  {/* <img
-                    src={brand.img.url}
-                    alt={`logo of the brand ${brand.name}`}
-                    className="rounded-full shadow-lg w-14 h-14"
-                  /> */}
+                  {item.img ? (
+                    <img
+                      src={item.img.url}
+                      alt={`logo of the brand ${item.name}`}
+                      className="rounded-full shadow-lg w-14 h-14"
+                    />
+                  ) : (
+                    <small>Img not found</small>
+                  )}
                   <div className="ml-2">
                     <h3 className="text-xl font-bold">{item.name}</h3>
                     <div className="font-light">{item.description}</div>
                   </div>
                 </div>
                 <div>
-                  <button
+                  <Link
                     className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
-                    onClick={() => console.log(item.id)}
+                    to={`/admin/brands/edit/${item.id}`}
                   >
                     <Icons icon={faEdit} /> Editar
-                  </button>
+                  </Link>
                   <button
                     className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
                     onClick={() => deleteItem(item.id)}
