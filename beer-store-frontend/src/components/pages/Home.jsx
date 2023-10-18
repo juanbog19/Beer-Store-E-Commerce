@@ -31,6 +31,8 @@ const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);   
+  const [orderBy, setOrderBy] = useState("A-Z");
+  
 
   const dispatch = useDispatch();
   const { data } = useSelector(state=>state.banner.banner);
@@ -46,7 +48,7 @@ const Home = () => {
   const indexOfFirstBrand= indexOfLastBrand - brandsPerPage // 6 - 6 = 0
   //const currentBrand = displayBrand.slice(indexOfFirstBrand, indexOfLastBrand) //para dividir la cantidad de Brands opor pagina
   const currentBrands = Array.isArray(renderBrands) ? renderBrands.slice(indexOfFirstBrand, indexOfLastBrand) : [];
-  console.log(currentBrands);
+  //console.log(currentBrands);
 
   const paginado = (pageNumber) => { //establece el numero de pagina  
     setCurrentPage(pageNumber)
@@ -107,6 +109,22 @@ useEffect(() => {
     );
   }
 
+
+  const handleOrderChange = (newOrder) => {
+    setOrderBy(newOrder);
+  };  
+  
+  if (orderBy === "A-Z") {
+    currentBrands.sort((a, b) =>
+      a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+    );
+  } else if (orderBy === "Z-A") {
+    currentBrands.sort((a, b) =>
+      a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
+    );
+  } 
+
+
   return (
     <>
     <div>
@@ -115,12 +133,13 @@ useEffect(() => {
   <div>{isProductPage ? null : <SearchBar />}</div>
 </div>
 
-      <Filters/>
+      <Filters onOrderChange={handleOrderChange} />
       </div>
        <div className="flex flex-wrap justify-around">
         {currentBrands.map((brand) => (
           <BrandCard key={brand.id} data={brand} />
         ))
+        
         }
         
         {currentBrands.length <= 0 && <p>No beer data available</p>}

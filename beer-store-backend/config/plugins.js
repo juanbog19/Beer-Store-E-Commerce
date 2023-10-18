@@ -26,4 +26,21 @@ module.exports = ({ env }) => ({
    "strapi-google-auth": {
     enabled: true,
   },
+  email: {
+    config: {
+      provider: 'nodemailer',
+      providerOptions: {
+        host: env('SMTP_HOST', 'smtp.gmail.com'),
+        port: env('SMTP_PORT', 465),
+        auth: {
+          user: env('SMTP_USERNAME'),
+          pass: env('SMTP_PASSWORD'),
+        },
+      },
+      settings: {
+        defaultFrom: 'e.beerstore1@gmail.com',
+        defaultReplyTo: 'e.beerstore1@gmail.com',
+      },
+    },
+  },
 });

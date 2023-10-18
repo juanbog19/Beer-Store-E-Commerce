@@ -5,7 +5,7 @@ export const getBrands = createAsyncThunk(
   "brands/getBrands",
   async (brand) => {
     try {
-      const resp = await axios.get(`/api/brands?filters[name][$contains]=${brand}&populate=img`, { //code correction: *contains*      
+      const resp = await axios.get(`/api/brands?filters[name][$containsi]=${brand}&populate=img`, { //filtra por nombre, *containsi* es el parametro que brinda strapi para buscar sin importar Mayusculas y para hacer busquedas inexactas, populate=img agrega la imagen al endpoint ya que sino trae la data sin la img     
         headers: {
           Accept: 'application/json',
         },

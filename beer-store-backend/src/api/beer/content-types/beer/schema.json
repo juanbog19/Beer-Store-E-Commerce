@@ -4,7 +4,8 @@
   "info": {
     "singularName": "beer",
     "pluralName": "beers",
-    "displayName": "beers"
+    "displayName": "beers",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -21,14 +22,24 @@
       "type": "decimal"
     },
     "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Pilsen",
+        "Lager",
+        "Stout"
       ],
-      "type": "media",
-      "multiple": false
+      "required": true
     }
   }
 }

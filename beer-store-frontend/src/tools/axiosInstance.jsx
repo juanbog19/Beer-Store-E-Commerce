@@ -6,7 +6,9 @@ import axios from "axios";
 
 const instance = axios.create({
   //baseURL: "https://clever-wealth-8d301ae501.strapiapp.com",
-  baseURL: "http://localhost:1337",
+  //baseURL: "http://localhost:1337",
+  baseURL: "positive-light-71aa924272.strapiapp.com",
+
 });
 
 export default instance;
