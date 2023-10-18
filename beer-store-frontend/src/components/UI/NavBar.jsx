@@ -7,13 +7,12 @@ import { useSelector } from "react-redux";
 //import Logo from "../svg/Logo";
 import CartButton from "../cart/CartButton";
 import CardUser from "./CardUser";
-import SearchBar from "./SearchBar";
+//import SearchBar from "./SearchBar";
 
 
 const NavBar = () => {
 
   const location = useLocation();
-  const isProductPage = location.pathname.startsWith('/products') || location.pathname.startsWith('/beers')
 
   // const dispatch = useDispatch();
   const isLoggedin = useSelector((state) => state.auth.loggedin);
@@ -67,7 +66,6 @@ const NavBar = () => {
             </NavLink>
           </div>
         </div>
-          <div className="mx-44">{isProductPage ? null : <SearchBar />}</div>
           <div className="flex">
             {!isLoggedin && (
               <NavLink

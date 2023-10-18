@@ -10,7 +10,7 @@ import Section from "../UI/Section";
 import qs from 'qs';
 import HasError from "../svg/HasError";
 import Spinner from "../svg/Spinner";
-import FiltersHome from "../UI/FilterHome";
+import FilterProduct from "../UI/FilterProduct";
 
 
 const Products = () => {
@@ -18,6 +18,12 @@ const Products = () => {
   const [ brand, setBrand ] = useState( null );
   const [ hasError, setHasError ] = useState( false );
   const [ loading, setLoading ] = useState( false );
+  const [orderBy, setOrderBy] = useState("A-Z");
+  const [priceRange, setPriceRange] = useState("all");
+  const [beerType, setBeerType] = useState("all");
+
+
+  
   const id = params.id;
 
   const query = qs.stringify({
@@ -42,11 +48,11 @@ const Products = () => {
       signal:controller.signal
     })
     .then(( response ) => {
-      // console.log( response );
+       //console.log( response );
       setBrand( response.data.data );
       setLoading( false );
     }).catch(( error ) => {
-      console.log( error );
+      //console.log( error );
       if ( axios.isCancel( error ) ) {
         console.log( 'request canceled' );
         return;
@@ -89,10 +95,66 @@ const Products = () => {
   }
 
   const productsList = brand.beers;
+  const copyProducts = productsList
+
+  const handleOrderChange = (newOrder) => {
+    setOrderBy(newOrder);
+  }; 
+  
+  if (orderBy === "A-Z") {
+    copyProducts.sort((a, b) =>
+      a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+    );
+  } else if (orderBy === "Z-A") {
+    copyProducts.sort((a, b) =>
+      a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
+    );
+  }
+
+  const handlePrice = (priceRange) => {
+    setPriceRange(priceRange);
+  };
+
+  const handleType = (type) => {
+    setBeerType(type);
+  };
+
+  
+  const filteredProducts = copyProducts.filter((product) => {
+    const price = product.price;
+    const type = product.type;
+
+    const priceCondition = priceRange === "all" || (
+      (priceRange === "0-3" && price >= 0 && price <= 3) ||
+      (priceRange === "3-5" && price > 3 && price <= 5)
+    );
+
+    const typeCondition = beerType === "all" || type === beerType;
+
+    return priceCondition && typeCondition;
+  });
+
+
+  // const filteredProducts = priceRange === "all"
+  // ? copyProducts // Muestra todos los productos si no se selecciona un rango de precios
+  // : copyProducts.filter((product) => {
+  //     const price = product.price; 
+  //     if (priceRange === "0-3") {
+  //       return price >= 0 && price <= 3;
+  //     } else if (priceRange === "3-5") {
+  //       return price > 3 && price <= 5;
+  //     }
+  //   });
+
+  
 
   return (
     <>
-    <FiltersHome />
+    <FilterProduct 
+      onOrderChange={handleOrderChange} 
+      onPriceChange={handlePrice} 
+      onTypeChange={handleType}
+    />
       <div className="mb-3 text-center">
         {/* <div className={ `w-24 h-24 rounded-full ${ brand.img } mx-auto shadow-lg` }></div> */}
         <img
@@ -106,7 +168,7 @@ const Products = () => {
 
       <Section>
         <ul>
-          {productsList.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductItem key={product.id} data={product} />
           ))}
         </ul>

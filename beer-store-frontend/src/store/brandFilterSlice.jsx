@@ -75,9 +75,11 @@ const brandsSlice = createSlice({
   },
 });
 
-  export const { setBrands, setFiltro, setByOrderAlphabetic} = brandsSlice.actions;
+  export const { setBrands, setFilter, setByOrderAlphabetic} = brandsSlice.actions;
 
   export default brandsSlice.reducer;
+
+
 
 
 
@@ -93,3 +95,25 @@ const brandsSlice = createSlice({
   //    state.brandsList
   //   } else{brandFound}    
   // },
+
+
+
+
+  ///////////////////////////
+  // setBrands(state, action){
+  //   state.brandsSearch = action.payload;
+  // },
+  // setFiltro(state, action){
+  //   state.filtro= state.brandsSearch.filter((brand)=>brand.name.toLowerCase().includes(action.payload.toLowerCase()));
+  //  // state.filtro = action.payload;      
+  // },
+  // setByOrderAlphabetic(state){
+  //   if(state.orderAlphabetic ==='ascendente'){
+  //     state.brandsSearch.sort();
+  //     state.orderAlphabetic = 'descendente';
+  //   }else{
+  //     state.brandsSearch.sort().reverse();
+  //     state.orderAlphabetic = 'ascendente';
+  //   }
+      
+  // }

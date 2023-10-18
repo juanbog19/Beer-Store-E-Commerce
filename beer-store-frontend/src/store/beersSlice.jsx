@@ -1,23 +1,18 @@
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../tools/axiosInstance";
 
 
 export const getBeers = createAsyncThunk(
   "beers/getBeers",
-  async (inputPrice) => {
+  async ({ inputPrice, inputType }) => {   // this will invoque either a filter by Price or by Type under the beer parameter
     try {
-      const resp = await axios.get('/api/beers?populate=*', {
+      const resp = await axios.get(`/api/beers?populate=*&price=${inputPrice}&type=${inputType}`, {
         headers: {
           Accept: 'application/json',
         },
       });
       const beers = resp.data.data;
-      // const searchedType = beers.filter((beer)=>beer.type===inputType);
-      const searchedPrice = beers.filter((beer)=>beer.price===inputPrice);
-    //console.log(searchedType);
-      return searchedPrice;      
-       //return resp.data
+      return beers;
     } catch (error) {
       throw new Error(error.response.data.message);
     }
@@ -54,19 +49,27 @@ const beersSlice = createSlice({
       })
       .addCase(getBeers.fulfilled, (state, action) => {
         state.loading = false;
-        state.beersSearch= action.payload;
+        state.beersSearch = action.payload;
       })
       .addCase(getBeers.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message; 
-      })
+        state.error = action.error.message;
+      });
   },
 });
 
-export const { setBeers, setByPrice, setByType} = beersSlice.actions;
+export const { setBeers } = beersSlice.actions;
 
 export default beersSlice.reducer;
 
 
-
-
+/////////////////////
+// setBeers(state,action){                  //aqui se vincula la action con el componente Filter en carpeta UI
+//   state.beersSearch = action.payload;
+// },
+// setByPrice(state, action){
+// state.beersSearch = state.beersSearch.filter((beer)=> beer.price === action.payload.price)
+// },
+// setByType(state, action){
+// state.beersSearch = state.beersSearch.filter((beer)=>beer.type === action.payload.type) //aun falta crear la propiedad type en la tabla de las Beers
+// },
