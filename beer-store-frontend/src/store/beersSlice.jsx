@@ -31,11 +31,17 @@ const beersSlice = createSlice({
   name: "beers",
   initialState,
   reducers: {
-    setBeers(state, action) {
+  setBeers(state,action){                  //aqui se vincula la action con el componente Filter en carpeta UI
       state.beersSearch = action.payload;
     },
+  setByPrice(state, action){
+    state.beersSearch = state.beersSearch.filter((beer)=> beer.price === action.payload.price)
   },
-  extraReducers: (builder) => {
+  setByType(state, action){
+    state.beersSearch = state.beersSearch.filter((beer)=>beer.type === action.payload.type) //aun falta crear la propiedad type en la tabla de las Beers
+  },
+  },
+  extraReducers:(builder) => {
     builder
       .addCase(getBeers.pending, (state) => {
         state.loading = true;
@@ -55,3 +61,15 @@ const beersSlice = createSlice({
 export const { setBeers } = beersSlice.actions;
 
 export default beersSlice.reducer;
+
+
+/////////////////////
+// setBeers(state,action){                  //aqui se vincula la action con el componente Filter en carpeta UI
+//   state.beersSearch = action.payload;
+// },
+// setByPrice(state, action){
+// state.beersSearch = state.beersSearch.filter((beer)=> beer.price === action.payload.price)
+// },
+// setByType(state, action){
+// state.beersSearch = state.beersSearch.filter((beer)=>beer.type === action.payload.type) //aun falta crear la propiedad type en la tabla de las Beers
+// },

@@ -32,7 +32,7 @@ const initialState = {
   loading: false,  // Indica si se está cargando la información
   error: null,     // Almacena cualquier error que ocurra
   //brandsList:[],
-  filter:'',
+  filtro:'',
   orderAlphabetic:'ascendente',
 };
 
@@ -43,8 +43,8 @@ const brandsSlice = createSlice({
     setBrands(state, action){
       state.brandsSearch = action.payload;
     },
-    setFilter(state, action){
-      state.filter= state.brandsSearch.filter((brand)=>brand.name.toLowerCase().includes(action.payload.toLowerCase()));
+    setFiltro(state, action){
+      state.filtro= state.brandsSearch.filter((brand)=>brand.name.toLowerCase().includes(action.payload.toLowerCase()));
      // state.filtro = action.payload;      
     },
     setByOrderAlphabetic(state){
@@ -84,6 +84,8 @@ const brandsSlice = createSlice({
 
 
 
+
+
   
     //     const newInput = action.payload;
 
@@ -93,3 +95,25 @@ const brandsSlice = createSlice({
   //    state.brandsList
   //   } else{brandFound}    
   // },
+
+
+
+
+  ///////////////////////////
+  // setBrands(state, action){
+  //   state.brandsSearch = action.payload;
+  // },
+  // setFiltro(state, action){
+  //   state.filtro= state.brandsSearch.filter((brand)=>brand.name.toLowerCase().includes(action.payload.toLowerCase()));
+  //  // state.filtro = action.payload;      
+  // },
+  // setByOrderAlphabetic(state){
+  //   if(state.orderAlphabetic ==='ascendente'){
+  //     state.brandsSearch.sort();
+  //     state.orderAlphabetic = 'descendente';
+  //   }else{
+  //     state.brandsSearch.sort().reverse();
+  //     state.orderAlphabetic = 'ascendente';
+  //   }
+      
+  // }
