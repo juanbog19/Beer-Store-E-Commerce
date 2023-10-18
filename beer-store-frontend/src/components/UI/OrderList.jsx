@@ -15,13 +15,13 @@ const OrderList = props => {
   return (
     <li className="p-2 bg-white border-b border-primary">
       <p className="mb-0 text-sm text-stone-800">
-        <strong>Address</strong> : { address }
+        <strong>Dirección</strong> : { address }
       </p>
       <p className="mb-0 text-sm text-stone-800">
-        <strong>City</strong> : { city }
+        <strong>Ciudad</strong> : { city }
       </p>
       <p className="mb-0 text-sm text-stone-800">
-        <strong>List of beers</strong> :{" "}
+        <strong>Lista de Cervezas</strong> :{" "}
       </p>
       <ul className="ml-5 text-sm">
         {items.map(( item ) => (
@@ -31,7 +31,7 @@ const OrderList = props => {
         ))}
       </ul>
       <p className="mb-0 text-sm text-red-800">
-        <strong>Amount</strong> : { amount }
+        <strong>Total</strong> : { amount }
       </p>
       <p className="mb-0 text-sm text-stone-800">
         <strong>{ formatDate }</strong>{ " " }

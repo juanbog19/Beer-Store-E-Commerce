@@ -1,7 +1,7 @@
 /**
 Componente de barra de navegación que muestra el logo y los enlaces a las diferentes secciones del sitio web, así como los botones de inicio de sesión, registro y carrito de compras. El botón de inicio de sesión y registro se muestra dependiendo si el usuario ha iniciado sesión o no. Si el usuario ha iniciado sesión, se muestra un componente de usuario con su información. Se utiliza la librería react-router-dom para manejar las rutas de navegación. Se utiliza la librería react-redux para obtener el estado de inicio de sesión del usuario.
  */
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { authLogout } from "../../store/authSlice";
 //import Logo from "../svg/Logo";
@@ -11,8 +11,6 @@ import CardUser from "./CardUser";
 
 
 const NavBar = () => {
-
-  const location = useLocation();
 
   // const dispatch = useDispatch();
   const isLoggedin = useSelector((state) => state.auth.loggedin);
@@ -31,14 +29,14 @@ const NavBar = () => {
         </div>
         <div className="flex items-center grow">
           <div className="grow">
-            <NavLink
+            {/* <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-              {location.pathname !== "/home" && "Landing"}
-            </NavLink>
+            Landing
+            </NavLink> */}
 
             <NavLink
               to="/home"
@@ -46,7 +44,7 @@ const NavBar = () => {
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-              {location.pathname !== "/" && "Inicio"}
+            Home
             </NavLink>
 
             <NavLink
