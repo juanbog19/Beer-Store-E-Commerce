@@ -11,8 +11,11 @@ El slice exporta la acción "logout" y el reducer por defecto.
 */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../tools/axiosInstance';
+import emailjs from 'emailjs-com';
 
+emailjs.init('O16QNAbD4CtFz7Hmb');
 const initialState = { loggedin:true, user:null, jwt:null, loading:false };
+
 
 // Test
 // const delay = ( time ) => {
@@ -60,6 +63,11 @@ export const userRegister = createAsyncThunk(
         email,
         password,
       });
+      const templateParams = {
+        to_email: email, // Dirección de correo electrónico del usuario registrado
+      };
+
+      await emailjs.send('service_7g4qye6', 'template_kiwb6to', templateParams);
       return response;
     } catch ( error ) {
       console.log( error );
