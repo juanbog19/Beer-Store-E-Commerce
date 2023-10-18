@@ -41,6 +41,8 @@ import BeersForm from "./components/dashboard/BeersForm";
 import BrandsForm from "./components/dashboard/BrandsForm";
 import OrdersInfo from "./components/dashboard/OrdersInfo";
 import UsersInfo from "./components/dashboard/UsersInfo";
+import BeersCreateForm from "./components/dashboard/BeersCreateForm";
+import BeersEditForm from "./components/dashboard/BeersEditForm";
 
 
 function App() {
@@ -67,6 +69,8 @@ function App() {
             {/* Rutas para admin dashboard */}
             <Route path="/admin" exact={true} element={<Dashboard />} />
             <Route path="/admin/beers" exact={true} element={<BeersForm />} />
+            <Route path="/admin/beers/create" exact={true} element={<BeersCreateForm />} />
+            <Route path="/admin/beers/edit/:id" exact={true} element={<BeersEditForm />} />
             <Route path="/admin/brands" exact={true} element={<BrandsForm />} />
             <Route path="/admin/orders" exact={true} element={<OrdersInfo />} />
             <Route path="/admin/users" exact={true} element={<UsersInfo />} />
