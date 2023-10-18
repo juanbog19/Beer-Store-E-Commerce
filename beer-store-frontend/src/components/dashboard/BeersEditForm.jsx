@@ -59,6 +59,7 @@ export default function BeersEditForm() {
             }
         }
 
+        console.log(obj)
         try {
             const response = await axiosURL.put(`/api/beers/${id}`, obj);
 
