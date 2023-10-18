@@ -58,9 +58,6 @@ const Orders = () => {
           <OrderList key={order.id} order={order} />
         ))}
       </ul>
-      <button className="mb-3 text-2xl text-center text-gray-700 uppercase">
-        Cambiar contraseña
-      </button>
     </div>
   );
 };
