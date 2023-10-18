@@ -147,6 +147,14 @@ export default function Brands() {
         <h3>
           <b>Lista de Marcas</b>
         </h3>
+        <div className="flex flex-start ml-20 px-20">
+          <Link
+            className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
+            to={`/admin/brands/create`}
+          >
+            <Icons icon={faPlus} /> Agregar marca
+          </Link>
+        </div>
         <Section>
           <ul>
             {allItemsFetch.map((item) => (
