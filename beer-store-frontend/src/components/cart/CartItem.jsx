@@ -4,6 +4,7 @@ El componente CartItem es un componente de React que muestra un elemento del car
 */
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../../store/cartSlice";
+import Swal from 'sweetalert2';
 
 const CartItem = ( props ) => {
   const { name, price, quant, id, img } = props;
@@ -11,12 +12,23 @@ const CartItem = ( props ) => {
   const dispatch = useDispatch();
 
   const add = () => {
-    dispatch( addItem({ ...props, amount:1 }) );
+    dispatch( addItem({ ...props, amount:1 }) )
+    Swal.fire(
+      'Beer added',
+      'Please click to continue',
+      'success'
+    );
   }
 
   const remove = () => {
-    dispatch( removeItem( id ));
+    dispatch( removeItem( id ))
+    Swal.fire(
+      'Beer removed',
+      'Please click to continue',
+      'info'
+    );
   }
+
   
   return (
     <li className="flex justify-between pb-2 my-2 border-b border-secondary">
