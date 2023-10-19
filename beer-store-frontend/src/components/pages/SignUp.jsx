@@ -75,24 +75,24 @@ const SignUp = () => {
 
     const validateUsername = async (username) => {
       
-        try{
-       const responseUser = await axios.get(`http://beer-store-frontend-production.up.railway.app/api/users?populate=*`)
-        console.log("responseUser listadoo",responseUser)
+    //    try{
+    //   const responseUser = await axios.get(`http://beer-store-frontend-production.up.railway.app/api/users?populate=*`)
+    //    console.log("responseUser listadoo",responseUser)
       //  console.log("aqui los usersname",response)
         //await fetch(`/api/users/${username}`);
-        const existingUsers= responseUser.data;
-        const usernameExists= existingUsers.some((user)=> user.username===username);
-        console.log("aqui mi existingUserss", existingUsers)
-        if(usernameExists){
-         return "El nombre de usuario ya está en uso";
-        }else{
-          return false;
-        }        
-       }catch(error){
-         console.error("Error en validate", error);
-         return{error: error.message};
-       }
-    }
+    //    const existingUsers= responseUser.data;
+    //    const usernameExists= existingUsers.some((user)=> user.username===username);
+    //    console.log("aqui mi existingUserss", existingUsers)
+    //    if(usernameExists){
+    //     return "El nombre de usuario ya está en uso";
+    //    }else{
+    //      return false;
+    //    }        
+    //   }catch(error){
+    //     console.error("Error en validate", error);
+    //     return{error: error.message};
+    //   }
+    //}
    
 
   if ( loading ) {
