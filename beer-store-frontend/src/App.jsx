@@ -43,6 +43,7 @@ import OrdersInfo from "./components/dashboard/OrdersInfo";
 import UsersInfo from "./components/dashboard/UsersInfo";
 import BeersCreateForm from "./components/dashboard/BeersCreateForm";
 import BeersEditForm from "./components/dashboard/BeersEditForm";
+import UploadWidget from "./components/pages/UploadWidget";
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
             <Route path="/admin/users" exact={true} element={<UsersInfo />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/about/us" element={<AboutUs />} />
+            <Route path="/uploadwidget" element={<UploadWidget />} />
           </Routes>
         </Layout>
       </div>

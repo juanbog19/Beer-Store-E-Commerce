@@ -43,7 +43,7 @@ const Detail = ()=>{
           alt={`logo of ${beer.name}`}
           className="w-24 h-24 mx-auto rounded-full shadow-lg"
         />*/}<img
-          src={beer.img.url} 
+          src={beer.img} 
           alt={`logo of ${beer.name}`}
           className="w-32 h-32 mx-auto mb-3 rounded-full shadow-xl"
         />
