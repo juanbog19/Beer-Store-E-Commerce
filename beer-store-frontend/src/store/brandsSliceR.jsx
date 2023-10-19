@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const urlBeers = "https://clever-wealth-8d301ae501.strapiapp.com";
-const localURL = "http://localhost:1337";
+const urlBeers = "http://beer-store-frontend-production.up.railway.app/";
+//const localURL = "http://localhost:1337";
 
 export const getBrandsssssNoSirveee = createAsyncThunk(
   "api/brands",
