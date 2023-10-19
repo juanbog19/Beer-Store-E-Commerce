@@ -16,7 +16,7 @@ const BrandCard = (props) => {
         {/* <div className={ `w-32 h-32 ${ img } shadow-xl rounded-full mb-3 mx-auto` }></div> */}
         {img ? (
           <img
-            src={img.url}
+            src={img}
             alt={img.alternativeText}
             className="w-32 h-32 mx-auto mb-3 rounded-full shadow-xl"
           />

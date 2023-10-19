@@ -18,21 +18,13 @@
     "description": {
       "type": "text"
     },
-    "img": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "beers": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::beer.beer"
+    },
+    "img": {
+      "type": "string"
     }
   }
 }

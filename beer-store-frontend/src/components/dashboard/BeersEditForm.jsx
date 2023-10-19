@@ -7,13 +7,14 @@ import UploadWidget from "../pages/UploadWidget";
 export default function BeersEditForm() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const params = useParams();
-  console.log(params);
+  //const params = useParams();
+  //console.log(params);
   const [beers, setBeers] = useState({
     name: "",
     description: "",
     price: "",
     img: "",
+    type: ""
   });
 
   const [newBeers, setNewBeers] = useState({
@@ -21,6 +22,7 @@ export default function BeersEditForm() {
     description: "",
     price: "",
     img: "",
+    type: ""
   });
 
   useEffect(() => {
@@ -61,6 +63,7 @@ export default function BeersEditForm() {
         description: newBeers.description,
         price: newBeers.price,
         img: newBeers.img,
+        type: newBeers.type
       },
     };
 
@@ -72,6 +75,7 @@ export default function BeersEditForm() {
         description: "",
         price: "",
         img: "",
+        type: ""
       });
 
       navigate("/admin/beers");
@@ -103,6 +107,15 @@ export default function BeersEditForm() {
                     <label htmlFor="price" className='mb-5'>
                         <span>Precio:</span>
                         <input type="text" placeholder='Ingresa el precio del producto' name="price" id="price" key="price" value={newBeers.price} onChange={handleChange} required />
+                    </label>
+                    <label htmlFor="type" className='mb-5'>
+                        <span>Tipo:</span>
+                        <select name="type" id="type" value={newBeers.type} onChange={handleChange}>
+                            <option value="" disabled>Selecciona una opción</option>
+                            <option value="Pilsen">Pilsen</option>
+                            <option value="Lager">Lager</option>
+                            <option value="Stout">Stout</option>
+                        </select>
                     </label>
                     <button type='submit' className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary">Actualizar</button>
                 </form>

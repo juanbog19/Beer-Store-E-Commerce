@@ -7,65 +7,67 @@ import axios from "axios";
 import axiosURL from "../../tools/axiosInstance";
 import ProductItem from "../UI/ProductItem";
 import Section from "../UI/Section";
-import qs from 'qs';
+import qs from "qs";
 import HasError from "../svg/HasError";
 import Spinner from "../svg/Spinner";
 import FilterProduct from "../UI/FilterProduct";
 
-
 const Products = () => {
   const params = useParams();
-  const [ brand, setBrand ] = useState( null );
-  const [ hasError, setHasError ] = useState( false );
-  const [ loading, setLoading ] = useState( false );
+  const [brand, setBrand] = useState(null);
+  const [hasError, setHasError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [orderBy, setOrderBy] = useState("A-Z");
   const [priceRange, setPriceRange] = useState("all");
   const [beerType, setBeerType] = useState("all");
 
-
-  
   const id = params.id;
 
-  const query = qs.stringify({
-    populate:{
-      img:{
-        populate:'*',
+  const query = qs.stringify(
+    {
+      populate: {
+        img: {
+          populate: "*",
+        },
+        beers: {
+          populate: "*",
+        },
       },
-      beers:{
-        populate:'*',
-      }
+    },
+    {
+      encodeValuesOnly: true,
     }
-  },{
-    encodeValuesOnly:true,
-  });
+  );
 
   // console.log(query);
 
   useEffect(() => {
     const controller = new AbortController();
-    setLoading( true );
-    axiosURL.get(`/api/brands/${id}?${query}`,{
-      signal:controller.signal
-    })
-    .then(( response ) => {
-       //console.log( response );
-      setBrand( response.data.data );
-      setLoading( false );
-    }).catch(( error ) => {
-      //console.log( error );
-      if ( axios.isCancel( error ) ) {
-        console.log( 'request canceled' );
-        return;
-      }
-      setHasError( true );
-      setLoading( false );
-    });
+    setLoading(true);
+    axiosURL
+      .get(`/api/brands/${id}?${query}`, {
+        signal: controller.signal,
+      })
+      .then((response) => {
+        //console.log( response );
+        setBrand(response.data.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        //console.log( error );
+        if (axios.isCancel(error)) {
+          console.log("request canceled");
+          return;
+        }
+        setHasError(true);
+        setLoading(false);
+      });
     return () => {
       controller.abort();
-    }
-  },[id, query]);
+    };
+  }, [id, query]);
 
-  if ( loading ) {
+  if (loading) {
     return (
       <div className="w-24 mx-auto">
         <Spinner />
@@ -73,34 +75,40 @@ const Products = () => {
     );
   }
 
-  if ( hasError ) {
+  if (hasError) {
     return (
       <div>
-        <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">404</h1>
-        <h2 className="mb-2 text-center text-stone-600">Please try again later</h2>
+        <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">
+          404
+        </h1>
+        <h2 className="mb-2 text-center text-stone-600">
+          Please try again later
+        </h2>
         <HasError />
       </div>
     );
   }
 
-  if ( !brand ) {
+  if (!brand) {
     return (
-    <>
-      <div className="text-center">
-        <p>Products not found</p>
-        <Link className="btn-primary" to='/'>Back to Home</Link>
-      </div>
-    </>
+      <>
+        <div className="text-center">
+          <p>Products not found</p>
+          <Link className="btn-primary" to="/">
+            Back to Home
+          </Link>
+        </div>
+      </>
     );
   }
 
   const productsList = brand.beers;
-  const copyProducts = productsList
+  const copyProducts = productsList;
 
   const handleOrderChange = (newOrder) => {
     setOrderBy(newOrder);
-  }; 
-  
+  };
+
   if (orderBy === "A-Z") {
     copyProducts.sort((a, b) =>
       a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
@@ -119,26 +127,24 @@ const Products = () => {
     setBeerType(type);
   };
 
-  
   const filteredProducts = copyProducts.filter((product) => {
     const price = product.price;
     const type = product.type;
 
-    const priceCondition = priceRange === "all" || (
+    const priceCondition =
+      priceRange === "all" ||
       (priceRange === "0-3" && price >= 0 && price <= 3) ||
-      (priceRange === "3-5" && price > 3 && price <= 5)
-    );
+      (priceRange === "3-5" && price > 3 && price <= 5);
 
     const typeCondition = beerType === "all" || type === beerType;
 
     return priceCondition && typeCondition;
   });
 
-
   // const filteredProducts = priceRange === "all"
   // ? copyProducts // Muestra todos los productos si no se selecciona un rango de precios
   // : copyProducts.filter((product) => {
-  //     const price = product.price; 
+  //     const price = product.price;
   //     if (priceRange === "0-3") {
   //       return price >= 0 && price <= 3;
   //     } else if (priceRange === "3-5") {
@@ -146,24 +152,28 @@ const Products = () => {
   //     }
   //   });
 
-  
-
   return (
     <>
-    <FilterProduct 
-      onOrderChange={handleOrderChange} 
-      onPriceChange={handlePrice} 
-      onTypeChange={handleType}
-    />
+      <FilterProduct
+        onOrderChange={handleOrderChange}
+        onPriceChange={handlePrice}
+        onTypeChange={handleType}
+      />
       <div className="mb-3 text-center">
         {/* <div className={ `w-24 h-24 rounded-full ${ brand.img } mx-auto shadow-lg` }></div> */}
-        <img
-          src={brand.img.url}
-          alt={`logo of ${brand.name}`}
-          className="w-24 h-24 mx-auto rounded-full shadow-lg"
-        />
+        {brand.img ? (
+          <img
+            src={brand.img}
+            alt={`logo of ${brand.name}`}
+            className="w-24 h-24 mx-auto rounded-full shadow-lg"
+          />
+        ) : (
+          <p>Missing img</p>
+        )}
         <h1 className="text-gray-700 uppercase text-2x1">{brand.name}</h1>
-        <p className="my-2 font-semibold test-sm text-stone-600">{ brand.description }</p>
+        <p className="my-2 font-semibold test-sm text-stone-600">
+          {brand.description}
+        </p>
       </div>
 
       <Section>
@@ -172,7 +182,9 @@ const Products = () => {
             <ProductItem key={product.id} data={product} />
           ))}
         </ul>
-        { productsList.length <= 0 && <div className="text-center">No beer were found</div> }
+        {productsList.length <= 0 && (
+          <div className="text-center">No beer were found</div>
+        )}
       </Section>
 
       <div className="mt-3 text-center">
@@ -185,6 +197,6 @@ const Products = () => {
       </div>
     </>
   );
-}
+};
 
 export default Products;
