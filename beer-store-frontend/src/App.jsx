@@ -56,7 +56,7 @@ import BrandsEditForm from "./components/dashboard/BrandsEditForm";
 import NotAllowed from "./components/dashboard/NotAllowed";
 
 function App() {
-  const isAdmin = useSelector((state) => state.auth.user.isAdmin);
+  const isAdmin = useSelector((state) => state.auth.user?.isAdmin);
   const isLoggedin = useSelector((state) => state.auth.loggedin);
 
   const location = useLocation();

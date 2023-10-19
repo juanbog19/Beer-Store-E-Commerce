@@ -7,7 +7,7 @@ import { authLogout } from "../../store/authSlice";
 import { Link } from "react-router-dom";
 
 const CardUser = () => {
-  const isAdmin = useSelector((state) => state.auth.user.isAdmin);
+  const isAdmin = useSelector((state) => state.auth.user?.isAdmin);
   const isLoggedin = useSelector((state) => state.auth.loggedin);
   const divRef = useRef();
   const btnRef = useRef();
