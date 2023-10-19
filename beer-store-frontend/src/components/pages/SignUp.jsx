@@ -19,8 +19,8 @@ import HolyBeer from '../svg/HolyBeer';
 import Spinner from '../svg/Spinner';
 import Button from '../UI/Button';
 import axios from 'axios';
-import AuthGoogle from './authGoogle';
-import { GoogleLogin } from 'react-google-login';
+//import AuthGoogle from './authGoogle';
+//import { GoogleLogin } from 'react-google-login';
 
 
 const SignUp = () => {
