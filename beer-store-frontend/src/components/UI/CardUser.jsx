@@ -7,6 +7,8 @@ import { authLogout } from "../../store/authSlice";
 import { Link } from "react-router-dom";
 
 const CardUser = () => {
+  const isAdmin = useSelector((state) => state.auth.user.isAdmin);
+  const isLoggedin = useSelector((state) => state.auth.loggedin);
   const divRef = useRef();
   const btnRef = useRef();
   const dispatch = useDispatch();
@@ -73,6 +75,12 @@ const CardUser = () => {
           My Profile
         </Link>
         <hr className="my-2" />
+        {isLoggedin && isAdmin && (
+          <Link to="/admin" onClick={toggleMenu}>
+            Dashboard
+          </Link>
+        )}
+        {isLoggedin && isAdmin && <hr className="my-2" />}
         <button onClick={logout}>Cerrar sesión</button>
       </div>
     </div>
