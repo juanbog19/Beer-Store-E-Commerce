@@ -1,3 +1,4 @@
+import axiosURL from "../tools/axiosInstance";
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -45,7 +46,7 @@ export const allBrandsSlice = createSlice({
 export const getAllBrands = () => {
   return async (dispatch, getState) => {
     dispatch(startLoadingBrands());
-    const resp = await axios.get(localURL + "/api/brands?populate=*");
+    const resp = await axios.get(axiosURL + "/api/brands?populate=*");
     const respData = resp.data.data;
     //console.log(respData);
     dispatch(setAllBrands({ brands: respData }));

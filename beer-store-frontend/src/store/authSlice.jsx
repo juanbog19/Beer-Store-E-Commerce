@@ -11,9 +11,9 @@ El slice exporta la acción "logout" y el reducer por defecto.
 */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../tools/axiosInstance';
-import emailjs from 'emailjs-com';
+//import emailjs from 'emailjs-com';
 
-emailjs.init('O16QNAbD4CtFz7Hmb');
+//emailjs.init('O16QNAbD4CtFz7Hmb');
 const initialState = { loggedin:true, user:null, jwt:null, loading:false };
 
 

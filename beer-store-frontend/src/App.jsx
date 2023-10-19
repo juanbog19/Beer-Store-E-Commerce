@@ -22,9 +22,9 @@ import {
   Routes,
   Navigate,
   useLocation,
-  useParams,
   useNavigate,
 } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Layout from "./components/UI/Layout";
 import NavBar from "./components/UI/NavBar";
@@ -53,10 +53,11 @@ import BeersEditForm from "./components/dashboard/BeersEditForm";
 import UploadWidget from "./components/pages/UploadWidget";
 import BrandsCreateForm from "./components/dashboard/BrandsCreateForm";
 import BrandsEditForm from "./components/dashboard/BrandsEditForm";
+import NotAllowed from "./components/dashboard/NotAllowed";
 
 function App() {
   const isLoggedin = useSelector((state) => state.auth.loggedin);
-  const isAdmin = useParams();
+
   const location = useLocation();
 
   return (
@@ -78,31 +79,57 @@ function App() {
               <Route path="/my-profile" element={<UserProfile />} />
             )}
             {/* Rutas para admin dashboard */}
-            <Route path="/admin" exact={true} element={<Dashboard />} />
-            <Route path="/admin/beers" exact={true} element={<BeersForm />} />
-            <Route
-              path="/admin/beers/create"
-              exact={true}
-              element={<BeersCreateForm />}
-            />
-            <Route
-              path="/admin/beers/edit/:id"
-              exact={true}
-              element={<BeersEditForm />}
-            />
-            <Route
-              path="/admin/brands/create"
-              exact={true}
-              element={<BrandsCreateForm />}
-            />
-            <Route
-              path="/admin/brands/edit/:id"
-              exact={true}
-              element={<BrandsEditForm />}
-            />
-            <Route path="/admin/brands" exact={true} element={<BrandsForm />} />
-            <Route path="/admin/orders" exact={true} element={<OrdersInfo />} />
-            <Route path="/admin/users" exact={true} element={<UsersInfo />} />
+            {isLoggedin && (
+              <Route path="/admin" exact={true} element={<Dashboard />} />
+            )}
+            {isLoggedin && (
+              <Route path="/admin/beers" exact={true} element={<BeersForm />} />
+            )}
+            {isLoggedin && (
+              <Route
+                path="/admin/beers/create"
+                exact={true}
+                element={<BeersCreateForm />}
+              />
+            )}
+            {isLoggedin && (
+              <Route
+                path="/admin/beers/edit/:id"
+                exact={true}
+                element={<BeersEditForm />}
+              />
+            )}
+            {isLoggedin && (
+              <Route
+                path="/admin/brands/create"
+                exact={true}
+                element={<BrandsCreateForm />}
+              />
+            )}
+            {isLoggedin && (
+              <Route
+                path="/admin/brands/edit/:id"
+                exact={true}
+                element={<BrandsEditForm />}
+              />
+            )}
+            {isLoggedin && (
+              <Route
+                path="/admin/brands"
+                exact={true}
+                element={<BrandsForm />}
+              />
+            )}
+            {isLoggedin && (
+              <Route
+                path="/admin/orders"
+                exact={true}
+                element={<OrdersInfo />}
+              />
+            )}
+            {isLoggedin && (
+              <Route path="/admin/users" exact={true} element={<UsersInfo />} />
+            )}
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/about/us" element={<AboutUs />} />
             <Route path="/uploadwidget" element={<UploadWidget />} />
