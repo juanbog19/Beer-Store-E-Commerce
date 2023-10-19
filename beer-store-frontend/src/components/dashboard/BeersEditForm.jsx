@@ -81,6 +81,7 @@ export default function BeersEditForm() {
         }
     }
 
+
     return (
         <div>
             <Sidebar />
@@ -90,7 +91,7 @@ export default function BeersEditForm() {
                         <span>Imagen:</span>
                         <input type="text" name="img" id="img" key="img" value={newBeers.img} onChange={handleChange} />
                         <UploadWidget setImageUrlCallback={handleSetImageUrl} />
-                        {newBeers.img !== '' ? <img src={newBeers.img} className=" w-14 h-14" /> : ''}
+                        {newBeers.img && <img src={newBeers.img} className="w-14 h-14" alt="Beer" />}
                     </label>
                     <label htmlFor="name" className='mb-5'>
                         <span>Nombre:</span>

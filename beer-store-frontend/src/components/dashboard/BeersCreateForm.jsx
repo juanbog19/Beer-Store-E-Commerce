@@ -71,7 +71,7 @@ export default function BeersCreateForm() {
                         <span>Imagen:</span>
                         <input type="text" name="img" id="img" key="img" value={newBeers.img} onChange={handleChange} hidden />
                         <UploadWidget setImageUrlCallback={handleSetImageUrl} />
-                        {newBeers.img !== '' ? <img src={newBeers.img} className=" w-14 h-14" /> : ''}
+                        {newBeers.img && <img src={newBeers.img} className="w-14 h-14" alt="Beer" />}
                     </label>
                     <label htmlFor="">
                     </label>
