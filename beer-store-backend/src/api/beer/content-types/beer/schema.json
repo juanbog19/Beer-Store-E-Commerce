@@ -21,17 +21,6 @@
     "price": {
       "type": "decimal"
     },
-    "img": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "type": {
       "type": "enumeration",
       "enum": [
@@ -39,7 +28,10 @@
         "Lager",
         "Stout"
       ],
-      "required": true
+      "required": false
+    },
+    "img": {
+      "type": "string"
     }
   }
 }

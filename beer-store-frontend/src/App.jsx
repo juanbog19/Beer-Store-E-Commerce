@@ -17,7 +17,14 @@ Las rutas incluyen las siguientes páginas:
 
 El componente App se exporta como el componente principal de la aplicación.
  */
-import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  Navigate,
+  useLocation,
+  useParams,
+  useNavigate,
+} from "react-router-dom";
 import { useSelector } from "react-redux";
 import Layout from "./components/UI/Layout";
 import NavBar from "./components/UI/NavBar";
@@ -43,17 +50,19 @@ import OrdersInfo from "./components/dashboard/OrdersInfo";
 import UsersInfo from "./components/dashboard/UsersInfo";
 import BeersCreateForm from "./components/dashboard/BeersCreateForm";
 import BeersEditForm from "./components/dashboard/BeersEditForm";
-
+import UploadWidget from "./components/pages/UploadWidget";
+import BrandsCreateForm from "./components/dashboard/BrandsCreateForm";
+import BrandsEditForm from "./components/dashboard/BrandsEditForm";
 
 function App() {
   const isLoggedin = useSelector((state) => state.auth.loggedin);
-
+  const isAdmin = useParams();
   const location = useLocation();
 
   return (
     <>
       <div className="min-h-screen bg-accent">
-      {location.pathname !== "/" && <NavBar />}
+        {location.pathname !== "/" && <NavBar />}
         <Layout>
           <Routes>
             <Route path="/" element={<Landing />} />
@@ -71,13 +80,32 @@ function App() {
             {/* Rutas para admin dashboard */}
             <Route path="/admin" exact={true} element={<Dashboard />} />
             <Route path="/admin/beers" exact={true} element={<BeersForm />} />
-            <Route path="/admin/beers/create" exact={true} element={<BeersCreateForm />} />
-            <Route path="/admin/beers/edit/:id" exact={true} element={<BeersEditForm />} />
+            <Route
+              path="/admin/beers/create"
+              exact={true}
+              element={<BeersCreateForm />}
+            />
+            <Route
+              path="/admin/beers/edit/:id"
+              exact={true}
+              element={<BeersEditForm />}
+            />
+            <Route
+              path="/admin/brands/create"
+              exact={true}
+              element={<BrandsCreateForm />}
+            />
+            <Route
+              path="/admin/brands/edit/:id"
+              exact={true}
+              element={<BrandsEditForm />}
+            />
             <Route path="/admin/brands" exact={true} element={<BrandsForm />} />
             <Route path="/admin/orders" exact={true} element={<OrdersInfo />} />
             <Route path="/admin/users" exact={true} element={<UsersInfo />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/about/us" element={<AboutUs />} />
+            <Route path="/uploadwidget" element={<UploadWidget />} />
           </Routes>
         </Layout>
       </div>

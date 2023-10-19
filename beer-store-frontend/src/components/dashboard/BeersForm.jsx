@@ -48,7 +48,7 @@ export default function Beer() {
                         {beers.map((beer) => (
                             <li className="flex justify-between my-2 border-b border-secondary" key={beer.id}>
                                 <div className="flex">
-                                    {beer.img !== null ? <img src={beer.img.url} alt={`logo of the beer ${name}`} className="rounded-full shadow-lg w-14 h-14" /> : ''}
+                                    {beer.img !== null ? <img src={beer.img} alt={`logo of the beer ${name}`} className="rounded-full shadow-lg w-14 h-14" /> : ''}
                                     <div className="ml-2">
                                         <h3 className="text-xl font-bold">{beer.name}</h3>
                                         <div className="font-light">{beer.description}</div>
@@ -57,9 +57,9 @@ export default function Beer() {
                                 </div>
                                 <div>
                                     <Link className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary" to={`/admin/beers/edit/${beer.id}`}>
-                                        <Icons icon={faEdit} />
+                                        <Icons icon={faEdit} /> Editar
                                     </Link>
-                                    <button className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary" onClick={() => handleDelete(beer.id)}><Icons icon={faTrashAlt} /></button>
+                                    <button className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary" onClick={() => handleDelete(beer.id)}><Icons icon={faTrashAlt} /> Eliminar</button>
                                 </div>
                             </li>
                         ))}
