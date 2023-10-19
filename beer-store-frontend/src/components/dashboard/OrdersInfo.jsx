@@ -18,7 +18,7 @@ export default function Orders() {
   const fetchData = async () => {
     try {
       //const resp = await axiosURL.get("/api/brands?populate=*");
-      const resp = await axios.get(localURL + "/api/orders?populate=*");
+      const resp = await axiosURL.get("/api/orders?populate=*");
       const responseData = resp.data.data || [];
       console.log(responseData);
       setAllItems(responseData);
