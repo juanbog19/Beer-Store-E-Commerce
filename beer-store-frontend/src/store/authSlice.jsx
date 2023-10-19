@@ -10,6 +10,7 @@ El slice utiliza el método "createAsyncThunk" para manejar las acciones asincr�
 El slice exporta la acción "logout" y el reducer por defecto.
 */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axiosURL from "../tools/axiosInstance";
 import axios from "../tools/axiosInstance";
 import emailjs from "emailjs-com";
 
