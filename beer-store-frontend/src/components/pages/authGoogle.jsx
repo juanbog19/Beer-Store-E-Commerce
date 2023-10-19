@@ -1,7 +1,6 @@
-
 import { loginWithGoogle } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
-import GoogleLogin from "react-google-login";
+// import GoogleLogin from "react-google-login";
 
 const AuthGoogle = () => {
   const IDCLIENT =
