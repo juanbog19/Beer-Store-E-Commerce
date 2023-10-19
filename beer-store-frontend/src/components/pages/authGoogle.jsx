@@ -32,13 +32,13 @@ const AuthGoogle = () => {
 
   return (
     <div className="flex items-center justify-center mt-4">
-      <GoogleLogin
+      {/* <GoogleLogin
         clientId={IDCLIENT}
         buttonText="Registrarse con Google"
         onSuccess={googleResponse}
         onFailure={googleResponse}
         cookiePolicy={"single_host_origin"}
-      />
+      /> */}
     </div>
   );
 };
