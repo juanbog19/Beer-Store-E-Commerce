@@ -1,6 +1,6 @@
 import { loginWithGoogle } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
-// import GoogleLogin from "react-google-login";
+import GoogleLogin from "react-google-login";
 
 const AuthGoogle = () => {
   const IDCLIENT =
@@ -12,9 +12,15 @@ const AuthGoogle = () => {
       try {
         const resultAction = dispatch(loginWithGoogle(response.accessToken));
         if (loginWithGoogle.fulfilled.match(resultAction)) {
-          console.log("Inicio de sesión con Google exitoso", resultAction.payload);
+          console.log(
+            "Inicio de sesión con Google exitoso",
+            resultAction.payload
+          );
         } else {
-          console.error("Error al iniciar sesión con Google", resultAction.error);
+          console.error(
+            "Error al iniciar sesión con Google",
+            resultAction.error
+          );
         }
       } catch (error) {
         console.error("Error al iniciar sesión con Google", error);
