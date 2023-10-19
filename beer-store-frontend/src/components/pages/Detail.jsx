@@ -23,7 +23,7 @@ const Detail = ()=>{
 
 
   useEffect(() => {    
-    axiosURL.get(`/api/beers/${id}?${query}`)
+    axiosURL.get(`/api/orders?populate=*`)
     .then(( response ) => {
       // console.log( response );
       setBeer( response.data.data );      
