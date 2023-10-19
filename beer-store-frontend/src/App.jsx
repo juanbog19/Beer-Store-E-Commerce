@@ -17,7 +17,14 @@ Las rutas incluyen las siguientes páginas:
 
 El componente App se exporta como el componente principal de la aplicación.
  */
-import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  Navigate,
+  useLocation,
+  useParams,
+  useNavigate,
+} from "react-router-dom";
 import { useSelector } from "react-redux";
 import Layout from "./components/UI/Layout";
 import NavBar from "./components/UI/NavBar";
@@ -49,7 +56,7 @@ import BrandsEditForm from "./components/dashboard/BrandsEditForm";
 
 function App() {
   const isLoggedin = useSelector((state) => state.auth.loggedin);
-
+  const isAdmin = useParams();
   const location = useLocation();
 
   return (
