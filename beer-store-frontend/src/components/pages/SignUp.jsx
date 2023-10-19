@@ -42,6 +42,17 @@ const SignUp = () => {
       value: 5,
       message: "Minimum 5 characters",
     },
+    validate: async (value) => {
+      try {
+        const response = await fetch(`/api/users/${value}`);
+        console.log("mi response en SigUp",response)
+        if (response.status === 200) {
+          throw new Error("El nombre de usuario ya está en uso");
+        }
+      } catch (error) {
+        throw new Error("El nombre de usuario ya está en uso");
+      }
+    }
   };
 
   const onSubmit = (data) => {
@@ -61,6 +72,15 @@ const SignUp = () => {
     // console.log(data);
   };
 
+    const validateUsername = async (username) => {
+      const response = await fetch(`/api/users/${username}`);
+      if (response.status === 200) {
+        return true; //el nombre del usuario esta disponible
+      }else{
+        return false; //el nombre del usuario ya esta en uso
+    }
+  }
+
   if ( loading ) {
     return (
       <div className="w-24 mx-auto">
@@ -77,7 +97,18 @@ const SignUp = () => {
         <div className="col-span-3 p-10">
           <form onSubmit={handleSubmit(onSubmit)}>
             <Input
-              {...register("username", minValidation)}
+              {...register("username",{
+                required: "Este campo es obligatorio",
+              minLength: {
+                value: 5,
+                message: "Mínimo 5 caracteres",
+              },
+              validate: async (value) => {
+                if (await validateUsername(value)) {
+                  return "El nombre de usuario ya está en uso";
+                }
+              },
+            })}
               label="Usuario"
               placeholder="Digita tu usuario"
               extraClass={errors.username ? "border-error" : ""}

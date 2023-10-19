@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from '../../tools/axiosInstance';
 import OrderList from "../UI/OrderList";
+import Ratings from "../UI/Rating";
 import qs from 'qs';
 
 const Orders = () => {
@@ -53,7 +54,11 @@ const Orders = () => {
       </h1>
       <ul>
         {orders.map(( order ) => (
-          <OrderList key={ order.id } order={ order } />
+          <div key={ order.id } >
+          <OrderList order={ order } />
+          <Ratings order={order} />
+          </div>
+          
         ))}
       </ul>
     </div>

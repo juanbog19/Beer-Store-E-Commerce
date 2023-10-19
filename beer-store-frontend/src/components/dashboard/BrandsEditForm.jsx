@@ -3,6 +3,7 @@ import axiosURL from "../../tools/axiosInstance";
 import Sidebar from "./Sidebar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import UploadWidget from "../pages/UploadWidget";
 
 export default function BrandsEditForm() {
   const { id } = useParams();
@@ -44,6 +45,13 @@ export default function BrandsEditForm() {
     }));
   };
 
+  const handleSetImageUrl = (url) => {
+    setNewBrands((prevState) => ({
+      ...prevState,
+      img: url,
+    }));
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -51,6 +59,7 @@ export default function BrandsEditForm() {
       data: {
         name: newBrands.name,
         description: newBrands.description,
+        img: newBrands.img
       },
     };
 
@@ -78,54 +87,27 @@ export default function BrandsEditForm() {
       <Sidebar />
       <div className="flex justify-center">
         <form onSubmit={handleSubmit} className="flex flex-col">
+          <label htmlFor="img" className='mb-5'>
+            <span>Imagen:</span>
+            <input type="text" name="img" id="img" key="img" value={newBrands.img} onChange={handleChange} />
+            <UploadWidget setImageUrlCallback={handleSetImageUrl} />
+            {newBrands.img && <img src={newBrands.img} className="w-14 h-14" alt="Beer" />}
+          </label>
           <label htmlFor="name" className="mb-5">
             <span>Nombre:</span>
-            <input
-              type="text"
-              placeholder="Ingresa el nombre de la marca"
-              name="name"
-              id="name"
-              value={newBrands.name}
-              onChange={handleChange}
-              required
-            />
+            <input type="text" placeholder="Ingresa el nombre de la marca" name="name" id="name" value={newBrands.name} onChange={handleChange} required />
           </label>
           <label htmlFor="description" className="mb-5">
             <span>Descripción:</span>
-            <input
-              type="text"
-              placeholder="Ingresa la descripcion de la marca"
-              name="description"
-              id="description"
-              key="description"
-              value={newBrands.description}
-              onChange={handleChange}
-              required
-            />
+            <input type="text" placeholder="Ingresa la descripcion de la marca" name="description" id="description" key="description" value={newBrands.description} onChange={handleChange} required />
           </label>
-          <label htmlFor="img" className="mb-5">
-            <span>Imagen:</span>
-            <input
-              type="text"
-              name="img"
-              id="img"
-              key="img"
-              value={newBrands.img}
-              onChange={handleChange}
-            />
-          </label>
-          <button
-            type="submit"
-            className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
-          >
-            Guardar
-          </button>
-          <Link
+          <button type="submit" className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary">Actualizar</button>
+          {/* <Link
             className="px-2 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary"
             to={"/admin/brands/"}
           >
             Regresar
-          </Link>
+          </Link> */}
         </form>
       </div>
     </div>

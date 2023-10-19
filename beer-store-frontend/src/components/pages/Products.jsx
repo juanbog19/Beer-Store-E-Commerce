@@ -163,7 +163,7 @@ const Products = () => {
         {/* <div className={ `w-24 h-24 rounded-full ${ brand.img } mx-auto shadow-lg` }></div> */}
         {brand.img ? (
           <img
-            src={brand.img.url}
+            src={brand.img}
             alt={`logo of ${brand.name}`}
             className="w-24 h-24 mx-auto rounded-full shadow-lg"
           />

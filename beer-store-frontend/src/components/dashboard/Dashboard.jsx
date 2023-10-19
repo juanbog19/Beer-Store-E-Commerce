@@ -7,8 +7,7 @@ const Dashboard = () => {
       <div>
         <Sidebar />
       </div>
-
-      <div>Dashboard</div>
+      <div>Bienvenido/a al panel administrativo</div>
     </div>
   );
 };

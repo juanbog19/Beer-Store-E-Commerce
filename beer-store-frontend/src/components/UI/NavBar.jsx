@@ -44,7 +44,7 @@ const NavBar = () => {
                 isActive ? "btn-primary-active" : "btn-primary"
               }
             >
-            Home
+            Inicio
             </NavLink>
 
             <NavLink

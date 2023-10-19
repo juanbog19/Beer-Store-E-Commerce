@@ -52,6 +52,7 @@ export default function Beer() {
                                     <div className="ml-2">
                                         <h3 className="text-xl font-bold">{beer.name}</h3>
                                         <div className="font-light">{beer.description}</div>
+                                        <div className="font-light">{beer.type}</div>
                                         <p className="text-lg font-semibold text-primary">$ {beer.price}</p>
                                     </div>
                                 </div>
