@@ -18,7 +18,8 @@ import Input from '../UI/Input';
 import HolyBeer from '../svg/HolyBeer';
 import Spinner from '../svg/Spinner';
 import Button from '../UI/Button';
-import AuthGoogle from './authGoogle';
+import axios from 'axios';
+//import AuthGoogle from './authGoogle';
 //import { GoogleLogin } from 'react-google-login';
 
 
@@ -73,13 +74,26 @@ const SignUp = () => {
   };
 
     const validateUsername = async (username) => {
-      const response = await fetch(`/api/users/${username}`);
-      if (response.status === 200) {
-        return true; //el nombre del usuario esta disponible
-      }else{
-        return false; //el nombre del usuario ya esta en uso
+      
+        try{
+       const responseUser = await axios.get(`http://localhost:1337/api/users?populate=*`)
+        console.log("responseUser listadoo",responseUser)
+      //  console.log("aqui los usersname",response)
+        //await fetch(`/api/users/${username}`);
+        const existingUsers= responseUser.data;
+        const usernameExists= existingUsers.some((user)=> user.username===username);
+        console.log("aqui mi existingUserss", existingUsers)
+        if(usernameExists){
+         return "El nombre de usuario ya está en uso";
+        }else{
+          return false;
+        }        
+       }catch(error){
+         console.error("Error en validate", error);
+         return{error: error.message};
+       }
     }
-  }
+   
 
   if ( loading ) {
     return (
@@ -105,7 +119,7 @@ const SignUp = () => {
               },
               validate: async (value) => {
                 if (await validateUsername(value)) {
-                  return "El nombre de usuario ya está en uso";
+                  return `El nombre de usuario "${value}" ya está en uso`;
                 }
               },
             })}
@@ -153,7 +167,7 @@ const SignUp = () => {
             <Button type="submit" label="Registrarse" full />
           </form>
           <div className="flex items-center justify-center mt-4">
-           <AuthGoogle/>
+           {/* <AuthGoogle/> */}
           </div>
         </div>
         <div className="grid content-center col-span-3 justify-items-center">

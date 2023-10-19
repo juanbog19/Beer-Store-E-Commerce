@@ -152,8 +152,6 @@ const Home = () => {
         <div>
           <Pagination brandsPerPage={brandsPerPage} allBrands={renderBrands.length} paginado={paginado} />
         </div>
-
-
         <Footer />
       </div>
     </>

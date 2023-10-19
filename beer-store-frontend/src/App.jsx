@@ -56,6 +56,7 @@ import BrandsEditForm from "./components/dashboard/BrandsEditForm";
 import NotAllowed from "./components/dashboard/NotAllowed";
 
 function App() {
+  const isAdmin = useSelector((state) => state.auth.user.isAdmin);
   const isLoggedin = useSelector((state) => state.auth.loggedin);
 
   const location = useLocation();
@@ -78,58 +79,119 @@ function App() {
             {isLoggedin && (
               <Route path="/my-profile" element={<UserProfile />} />
             )}
+            {/* Si no eres admin se muestra esto */}
+            {!isAdmin && (
+              <Route path="/admin" exact={true} element={<NotAllowed />} />
+            )}
+            {!isAdmin && (
+              <Route
+                path="/admin/beers"
+                exact={true}
+                element={<NotAllowed />}
+              />
+            )}
+            {!isAdmin && (
+              <Route
+                path="/admin/beers/create"
+                exact={true}
+                element={<NotAllowed />}
+              />
+            )}
+            {!isAdmin && (
+              <Route
+                path="/admin/beers/edit"
+                exact={true}
+                element={<NotAllowed />}
+              />
+            )}
+            {!isAdmin && (
+              <Route
+                path="/admin/brands"
+                exact={true}
+                element={<NotAllowed />}
+              />
+            )}
+            {!isAdmin && (
+              <Route
+                path="/admin/brands/create"
+                exact={true}
+                element={<NotAllowed />}
+              />
+            )}
+            {!isAdmin && (
+              <Route
+                path="/admin/brands/edit"
+                exact={true}
+                element={<NotAllowed />}
+              />
+            )}
+            {!isAdmin && (
+              <Route
+                path="/admin/users"
+                exact={true}
+                element={<NotAllowed />}
+              />
+            )}
+            {!isAdmin && (
+              <Route
+                path="/admin/orders"
+                exact={true}
+                element={<NotAllowed />}
+              />
+            )}
             {/* Rutas para admin dashboard */}
-            {isLoggedin && (
+            {isLoggedin && isAdmin && (
               <Route path="/admin" exact={true} element={<Dashboard />} />
             )}
-            {isLoggedin && (
+            {isLoggedin && isAdmin && (
               <Route path="/admin/beers" exact={true} element={<BeersForm />} />
             )}
-            {isLoggedin && (
+            {isLoggedin && isAdmin && (
               <Route
                 path="/admin/beers/create"
                 exact={true}
                 element={<BeersCreateForm />}
               />
             )}
-            {isLoggedin && (
+            {isLoggedin && isAdmin && (
               <Route
                 path="/admin/beers/edit/:id"
                 exact={true}
                 element={<BeersEditForm />}
               />
             )}
-            {isLoggedin && (
+            {isLoggedin && isAdmin && (
               <Route
                 path="/admin/brands/create"
                 exact={true}
                 element={<BrandsCreateForm />}
               />
             )}
-            {isLoggedin && (
+            {isLoggedin && isAdmin && (
               <Route
                 path="/admin/brands/edit/:id"
                 exact={true}
                 element={<BrandsEditForm />}
               />
             )}
-            {isLoggedin && (
+            {isLoggedin && isAdmin && (
               <Route
                 path="/admin/brands"
                 exact={true}
                 element={<BrandsForm />}
               />
             )}
-            {isLoggedin && (
+            {isLoggedin && isAdmin && (
               <Route
                 path="/admin/orders"
                 exact={true}
                 element={<OrdersInfo />}
               />
             )}
-            {isLoggedin && (
+            {isLoggedin && isAdmin && (
               <Route path="/admin/users" exact={true} element={<UsersInfo />} />
             )}
+
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/about/us" element={<AboutUs />} />
             <Route path="/uploadwidget" element={<UploadWidget />} />
