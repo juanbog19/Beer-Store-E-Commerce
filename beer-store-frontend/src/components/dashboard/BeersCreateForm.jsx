@@ -12,7 +12,8 @@ export default function BeersCreateForm() {
         "name": "",
         "description": "",
         "price": "",
-        "img": ""
+        "img": "",
+        "type": ""
     })
 
     const handleChange = (event) => {
@@ -39,7 +40,8 @@ export default function BeersCreateForm() {
                 "name": newBeers.name,
                 "description": newBeers.description,
                 "price": newBeers.price,
-                "img": newBeers.img
+                "img": newBeers.img,
+                "type": newBeers.type
             }
         }
 
@@ -52,7 +54,8 @@ export default function BeersCreateForm() {
                 "name": "",
                 "description": "",
                 "price": "",
-                "img": ""
+                "img": "",
+                "type": "",
             });
 
             navigate('/admin/beers')
@@ -86,6 +89,15 @@ export default function BeersCreateForm() {
                     <label htmlFor="price" className='mb-5'>
                         <span>Precio:</span>
                         <input type="text" placeholder='Ingresa el precio del producto' name="price" id="price" key="price" value={newBeers.price} onChange={handleChange} required />
+                    </label>
+                    <label htmlFor="type" className="mb-5">
+                        <span>Tipo:</span>
+                        <select name="type" id="type" value={newBeers.type} onChange={handleChange}>
+                            <option value="" disabled>Selecciona una opción</option>
+                            <option value="Pilsen">Pilsen</option>
+                            <option value="Lager">Lager</option>
+                            <option value="Stout">Stout</option>
+                        </select>
                     </label>
                     <button type='submit' className="px-1 py-1 mr-2 text-gray-100 bg-primary hover:bg-secondary">Guardar</button>
                 </form>
