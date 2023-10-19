@@ -21,7 +21,6 @@ const CartItem = (props) => {
   return (
     <li className="flex justify-between pb-2 my-2 border-b border-secondary">
       <div className="flex">
-<<<<<<< HEAD
         {img ? (
           <img
             src={img.url}
@@ -44,47 +43,17 @@ const CartItem = (props) => {
           <button
             className="font-semibold text-sm text-stone-900 hover:text-primary ml-1"
             onClick={add}
-=======
-        <img src={ img } alt={ name } className={`w-16 h-16 rounded-full shadow-lg mr-2`} />
-
-        <div>
-          <h3 
-            className="text-xl font-bold"
-          >
-            { name }
-          </h3>
-          <div 
-            className="text-sm text-stone-600"
-          >
-            Unit: ${ price }
-          </div>
-          <button 
-            className="text-sm font-semibold text-stone-900 hover:text-primary" 
-            onClick={ remove }
-          >
-            Remove
-          </button>
-          <button 
-            className="ml-1 text-sm font-semibold text-stone-900 hover:text-primary" 
-            onClick={ add }
->>>>>>> 55c2339a1630e8c47e6f6c4223da643c34eb85fe
           >
             Add
           </button>
         </div>
       </div>
 
-<<<<<<< HEAD
       <div className="text-right grid content-end">
         <span className="uppercase tracking-wide text-gray-700 text-xs font-bold">
           Amount x ( {quant} )
         </span>
         <span className="text-semibold text-lg text-primary">${totalItem}</span>
-=======
-      <div className="grid content-end text-right">
-        <span className="text-xs font-bold tracking-wide text-gray-700 uppercase">Amount x ( { quant } )</span>
-        <span className="text-lg text-semibold text-primary">${ totalItem }</span>
->>>>>>> 55c2339a1630e8c47e6f6c4223da643c34eb85fe
       </div>
     </li>
   );
