@@ -43,18 +43,18 @@ const SignUp = () => {
       value: 5,
       message: "Minimum 5 characters",
     },
-    //validate: async (value) => {
-    //  try {
-    //    const response = await fetch(`http://beer-store-frontend-production.up.railway.app/api/users/${value}`);
-    //    console.log("mi response en SigUp",response)
-    //    if (response.status === 200) {
-    //      throw new Error("El nombre de usuario ya está en uso");
-    //    }
-    //  } catch (error) {
-    //    throw new Error("El nombre de usuario ya está en uso");
-    //  }
-    //}
-  //};
+    validate: async (value) => {
+      try {
+        const response = await axios.get(`http://beer-store-frontend-production.up.railway.app/api/users/${value}`);
+        console.log("mi response en SigUp",response)
+        if (response.status === 200) {
+          throw new Error("El nombre de usuario ya está en uso");
+        }
+      } catch (error) {
+        throw new Error("El nombre de usuario ya está en uso");
+      }
+    }
+  };
 
   const onSubmit = (data) => {
     setErrorRegister( null );
