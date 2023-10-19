@@ -8,8 +8,7 @@ autenticar al usuario. Si la autenticación es exitosa, se redirige al usuario a
 Si hay un error durante el proceso de autenticación, se muestra un mensaje de error en pantalla. 
 Si el estado de carga es verdadero, se muestra un spinner de carga.
  */
-import axiosURL from "../../tools/axiosInstance";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/authSlice";
@@ -17,29 +16,8 @@ import Input from "../UI/Input";
 import Spinner from "../svg/Spinner";
 import Button from "../UI/Button";
 
+
 const Login = () => {
-  //USUARIOS BANEADOS
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await axiosURL.get("/api/users?populate=*");
-        const responseData = resp.data || [];
-        setUsers(responseData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  //console.log(users);
-
-  const bannedUsers = users.filter((user) => user.status === false);
-  console.log(bannedUsers);
-  //USUARIOS BANEADOS
-
   const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -106,11 +84,12 @@ const Login = () => {
     );
   }
 
+  
+ 
+
   return (
     <>
-      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">
-        Welcome back again!
-      </h1>
+      <h1 className="mb-3 text-2xl text-center text-gray-700 uppercase">Welcome back again!</h1>
       <div className="w-4/12 p-10 mx-auto bg-white">
         <form onSubmit={userLogin}>
           <Input
@@ -139,13 +118,13 @@ const Login = () => {
             errors={errorMessagePassword}
           />
           {errorLogin && (
-            <div className="p-2 mb-2 bg-red-200">
-              Wrong password or username
-            </div>
+            <div className="p-2 mb-2 bg-red-200">Wrong password or username</div>
           )}
           <Button type="submit" label="Submit" full />
         </form>
-        <div className="flex items-center justify-center mt-4"></div>
+          <div className="flex items-center justify-center mt-4">
+           
+          </div>
       </div>
     </>
   );
