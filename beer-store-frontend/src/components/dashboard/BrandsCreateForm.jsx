@@ -160,6 +160,7 @@ export default function BrandsCreateForm() {
               onChange={(event) => handleAddBeer(event)}
               value=""
             >
+              <option value="null"></option>
               {beers.map((beer) => (
                 <option key={beer.id} value={beer.id}>
                   {beer.name}
