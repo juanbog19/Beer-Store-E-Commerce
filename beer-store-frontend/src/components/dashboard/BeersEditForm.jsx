@@ -1,86 +1,85 @@
-import { useNavigate, useParams } from 'react-router-dom'
-import axiosURL from '../../tools/axiosInstance'
-import Sidebar from './Sidebar'
-import { useEffect, useState } from 'react'
-import UploadWidget from '../pages/UploadWidget'
+import { useNavigate, useParams } from "react-router-dom";
+import axiosURL from "../../tools/axiosInstance";
+import Sidebar from "./Sidebar";
+import { useEffect, useState } from "react";
+import UploadWidget from "../pages/UploadWidget";
 
 export default function BeersEditForm() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const params = useParams();
+  console.log(params);
+  const [beers, setBeers] = useState({
+    name: "",
+    description: "",
+    price: "",
+    img: "",
+  });
 
-    const { id } = useParams()
-    const navigate = useNavigate()
+  const [newBeers, setNewBeers] = useState({
+    name: "",
+    description: "",
+    price: "",
+    img: "",
+  });
 
-    const [beers, setBeers] = useState({
-        "name": "",
-        "description": "",
-        "price": "",
-        "img": ""
-    })
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resp = await axiosURL.get(`/api/beers/${id}`);
+        const responseData = resp.data.data || {};
+        setBeers(responseData);
+        setNewBeers(responseData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [id]);
 
-    const [newBeers, setNewBeers] = useState({
-        "name": "",
-        "description": "",
-        "price": "",
-        "img": ""
-    })
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setNewBeers((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const resp = await axiosURL.get(`/api/beers/${id}`)
-                const responseData = resp.data.data || {}
-                setBeers(responseData)
-                setNewBeers(responseData)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        fetchData()
-    }, [id])
+  const handleSetImageUrl = (url) => {
+    setNewBeers((prevState) => ({
+      ...prevState,
+      img: url,
+    }));
+  };
 
-    const handleChange = (event) => {
-        const { name, value } = event.target
-        setNewBeers(prevState => ({
-            ...prevState,
-            [name]: value
-        }))
-    }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    const handleSetImageUrl = (url) => {
-        setNewBeers(prevState => ({
-            ...prevState,
-            img: url,
-        }));
+    const obj = {
+      data: {
+        name: newBeers.name,
+        description: newBeers.description,
+        price: newBeers.price,
+        img: newBeers.img,
+      },
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault()
+    try {
+      const response = await axiosURL.put(`/api/beers/${id}`, obj);
 
-        const obj = {
-            "data": {
-                "name": newBeers.name,
-                "description": newBeers.description,
-                "price": newBeers.price,
-                "img": newBeers.img
-            }
-        }
+      setNewBeers({
+        name: "",
+        description: "",
+        price: "",
+        img: "",
+      });
 
-        try {
-            const response = await axiosURL.put(`/api/beers/${id}`, obj)
-
-            setNewBeers({
-                "name": "",
-                "description": "",
-                "price": "",
-                "img": ""
-            });
-
-            navigate('/admin/beers')
-        } catch (error) {
-            console.error('Error al enviar la solicitud:', error)
-            console.log('Detalles del error:', error.response)
-        }
+      navigate("/admin/beers");
+    } catch (error) {
+      console.error("Error al enviar la solicitud:", error);
+      console.log("Detalles del error:", error.response);
     }
-
+  };
 
     return (
         <div>
