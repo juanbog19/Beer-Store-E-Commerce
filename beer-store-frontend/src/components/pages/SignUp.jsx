@@ -19,8 +19,8 @@ import HolyBeer from '../svg/HolyBeer';
 import Spinner from '../svg/Spinner';
 import Button from '../UI/Button';
 import axios from 'axios';
-//import AuthGoogle from './authGoogle';
-//import { GoogleLogin } from 'react-google-login';
+import AuthGoogle from './authGoogle';
+import { GoogleLogin } from 'react-google-login';
 
 
 const SignUp = () => {
@@ -76,7 +76,7 @@ const SignUp = () => {
     const validateUsername = async (username) => {
       
         try{
-       const responseUser = await axios.get(`http://localhost:1337/api/users?populate=*`)
+       const responseUser = await axios.get(`http://beer-store-frontend-production.up.railway.app//api/users?populate=*`)
         console.log("responseUser listadoo",responseUser)
       //  console.log("aqui los usersname",response)
         //await fetch(`/api/users/${username}`);
