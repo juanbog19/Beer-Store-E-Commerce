@@ -19,6 +19,7 @@ import HolyBeer from '../svg/HolyBeer';
 import Spinner from '../svg/Spinner';
 import Button from '../UI/Button';
 import AuthGoogle from './authGoogle';
+import axios from '../../tools/axiosInstance';
 //import { GoogleLogin } from 'react-google-login';
 
 
@@ -44,7 +45,7 @@ const SignUp = () => {
     },
     validate: async (value) => {
       try {
-        const response = await fetch(`/api/users/${value}`);
+        const response = await axios.get(`/api/users/${value}`);
         console.log("mi response en SigUp",response)
         if (response.status === 200) {
           throw new Error("El nombre de usuario ya está en uso");
@@ -73,7 +74,7 @@ const SignUp = () => {
   };
 
     const validateUsername = async (username) => {
-      const response = await fetch(`/api/users/${username}`);
+      const response = await axios.get(`/api/users/${username}`);
       if (response.status === 200) {
         return true; //el nombre del usuario esta disponible
       }else{
